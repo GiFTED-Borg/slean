@@ -1,16 +1,10 @@
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import React, { useState, useRef } from "react";
-import {
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-  View,
-} from "react-native";
+import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import { Toast } from "@/components/Toast";
+import { ThemedText } from "@/components/themed-text";
+import { ThemedView } from "@/components/themed-view";
+import { Toast } from "@/components/toast";
 import { dynamicClient } from "@/clients/dynamic";
 
 export default function VerifyOTPScreen() {

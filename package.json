@@ -48,15 +48,16 @@
     "react-native-gesture-handler": "~2.24.0",
     "react-native-get-random-values": "^1.11.0",
     "react-native-passkeys": "^0.3.3",
+    "react-native-progress": "^5.0.1",
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.11.1",
+    "react-native-svg": "15.11.2",
     "react-native-web": "~0.20.0",
     "react-native-webview": "13.13.5",
     "stream-browserify": "^3.0.0",
     "text-encoding": "^0.7.0",
-    "web-streams-polyfill": "^4.1.0",
-    "react-native-svg": "15.11.2"
+    "web-streams-polyfill": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

@@ -5,7 +5,13 @@ module.exports = {
   presets: [require("nativewind/preset")],
   theme: {
     extend: {
+      fontFamily: {
+        geist: ["GeistMono-Regular", "Courier New", "Courier", "monospace"],
+      },
       colors: {
+        black: "#0B0C10",
+        white: "#FFFFFF",
+        "white-75": "rgba(255, 255, 255, 0.75)",
         red: {
           50: "#fee6e6",
           100: "#fcb0b0",
@@ -42,6 +48,17 @@ module.exports = {
           800: "#511c81",
           900: "#3e1562",
         },
+      },
+      boxShadow: {
+        "inner-white": `
+          inset -2px -2px 2px 0 rgba(255, 255, 255, 0.1),
+          inset -1px -1px 2px 0 rgba(255, 255, 255, 0.1)
+        `,
+        "inner-gold-dual": `
+          inset 1px 1px 1px 0 rgba(154, 96, 19, 0.1),
+          inset -1px -1px 1px 0 rgba(154, 96, 19, 0.2)
+        `,
+        "inner-silver-dual": `inset 1px 1px 0 rgba(255, 255, 255, 0.1), inset -1px -1px 1px 0 rgba(255, 255, 255, 0.2)`,
       },
     },
   },

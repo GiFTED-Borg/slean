@@ -1,8 +1,4 @@
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from "@react-navigation/native";
+import { ThemeProvider } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
@@ -11,15 +7,14 @@ import "react-native-reanimated";
 import "./global.css";
 
 import { dynamicClient } from "@/clients/dynamic";
-
-import { useColorScheme } from "@/hooks/useColorScheme";
-
 import { useDynamic } from "@/clients/dynamic/hooks";
+import { CustomTheme } from "@/constants/theme";
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
   const [loaded] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    "GeistMono-Regular": require("../assets/fonts/GeistMono-Regular.ttf"),
+    "GeistMono-Medium": require("../assets/fonts/GeistMono-Medium.ttf"),
+    "GeistMono-SemiBold": require("../assets/fonts/GeistMono-SemiBold.ttf"),
   });
 
   if (!loaded) {
@@ -30,7 +25,7 @@ export default function RootLayout() {
   console.log("loaded", dynamicClient.reactNative);
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+    <ThemeProvider value={CustomTheme}>
       <dynamicClient.reactNative.WebView />
 
       <RootNavigator />
@@ -45,11 +40,11 @@ function RootNavigator() {
   return (
     <Stack>
       <Stack.Protected guard={!!auth.token}>
-        <Stack.Screen name="(app)/(tabs)" options={{ headerShown: true }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack.Protected>
       <Stack.Protected guard={!auth.token}>
-        <Stack.Screen name="sign-in" />
-        <Stack.Screen name="verify-otp" />
+        <Stack.Screen name="(auth)/sign-in" />
+        <Stack.Screen name="(auth)/verify-otp" />
         <Stack.Screen name="+not-found" />
       </Stack.Protected>
     </Stack>

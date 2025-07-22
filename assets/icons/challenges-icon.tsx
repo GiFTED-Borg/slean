@@ -1,5 +1,5 @@
 import * as React from "react";
-import Svg, { ClipPath, Defs, G, Path } from "react-native-svg";
+import Svg, { ClipPath, Defs, G, Path, Rect } from "react-native-svg";
 
 type Props = {
   width?: number;
@@ -47,7 +47,7 @@ const ChallengesIcon = ({ width = 20, height = 20, fill = "black" }: Props) => (
     </G>
     <Defs>
       <ClipPath id="clip0_91_333">
-        <rect width="20" height="20" fill="white" />
+        <Rect width="20" height="20" fill="white" />
       </ClipPath>
     </Defs>
   </Svg>

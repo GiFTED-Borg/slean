@@ -43,10 +43,10 @@ const variantStyles = {
 export default function Chip({ size, text, variant }: ChipProps) {
   return (
     <View
-      className={`${chipStyles.container[size]} font-semibold  ${variantStyles.container[variant]}`}
+      className={`${chipStyles.container[size]} ${variantStyles.container[variant]}`}
     >
       <Text
-        className={`${chipStyles.text[size]} ${variantStyles.text[variant]}`}
+        className={`${chipStyles.text[size]} ${variantStyles.text[variant]} font-semibold`}
       >
         {text}
       </Text>

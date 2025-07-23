@@ -2,11 +2,11 @@ import { View, Text } from "react-native";
 
 type CardProps = {
   gap: number;
-  headerExtraGap?: string;
+  headerExtraGap?: "sm" | "lg";
   title: string;
   desc?: string;
   info?: React.ReactNode;
-  footer: React.ReactNode;
+  footer?: React.ReactNode;
   rightExtra: React.ReactNode;
   headerExtra?: React.ReactNode;
   shadow: "gold" | "silver";
@@ -40,7 +40,9 @@ export default function Card({
         style={{ gap: headerExtraGap && (headerExtraGap === "sm" ? 7 : 11) }}
       >
         <View className="flex flex-row items-center justify-between">
-          <Text className="font-semibold text-white text-lg  ">{title}</Text>
+          <Text className="font-semibold text-white text-lg max-w-[192px]">
+            {title}
+          </Text>
           {rightExtra}
         </View>
         {headerExtra}

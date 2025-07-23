@@ -1,5 +1,6 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView, View, Text, TouchableOpacity } from "react-native";
+import { useRouter } from "expo-router";
 import Chip, { IconChip } from "@/components/chip";
 import Card from "@/components/card";
 import StatCard from "@/components/stat-card";
@@ -7,6 +8,7 @@ import TimeIcon from "@/assets/icons/time-icon";
 import ChevronRight from "@/assets/icons/chevron-right";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <SafeAreaView className="flex-1 bg-black">
       <ScrollView
@@ -48,7 +50,10 @@ export default function Home() {
               </View>
             }
             footer={
-              <TouchableOpacity className="rounded-[10px] w-full py-[9px] bg-cyan-600 items-center">
+              <TouchableOpacity
+                className="rounded-[10px] w-full py-[9px] items-center"
+                style={{ backgroundColor: "#84E8E8" }}
+              >
                 <Text className="text-[#000]">Complete Today’s task</Text>
               </TouchableOpacity>
             }
@@ -66,7 +71,10 @@ export default function Home() {
             >
               Today’s Challenge
             </Text>
-            <TouchableOpacity className="flex flex-row items-center">
+            <TouchableOpacity
+              className="flex flex-row items-center"
+              onPress={() => router.push("/challenges")}
+            >
               <Text className="text-sm" style={{ color: "#84E8E8" }}>
                 View All
               </Text>
@@ -97,7 +105,10 @@ export default function Home() {
               </View>
             }
             footer={
-              <TouchableOpacity className="rounded-[10px] w-full py-[9px] bg-cyan-600 items-center">
+              <TouchableOpacity
+                className="rounded-[10px] w-full py-[9px] items-center"
+                style={{ backgroundColor: "#84E8E8" }}
+              >
                 <Text className="text-[#000]">Complete Today’s task</Text>
               </TouchableOpacity>
             }
@@ -146,7 +157,10 @@ export default function Home() {
               </View>
             }
             footer={
-              <TouchableOpacity className="rounded-[10px] w-full py-[9px] bg-cyan-600 items-center">
+              <TouchableOpacity
+                className="rounded-[10px] w-full py-[9px] items-center"
+                style={{ backgroundColor: "#84E8E8" }}
+              >
                 <Text className="text-[#000]">Complete Today’s task</Text>
               </TouchableOpacity>
             }

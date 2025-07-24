@@ -10,6 +10,14 @@ type CardProps = {
   rightExtra: React.ReactNode;
   headerExtra?: React.ReactNode;
   shadow: "gold" | "silver";
+  descColor?: string;
+};
+
+const shadows = {
+  gold: `inset 1px 1px 1px 0 rgba(154, 96, 19, 0.1),
+          inset -1px -1px 1px 0 rgba(154, 96, 19, 0.2)`,
+  silver: `inset 1px 1px 1px 0 rgba(255, 255, 255, 0.1), 
+            inset -1px -1px 1px 0 rgba(255, 255, 255, 0.2)`,
 };
 
 export default function Card({
@@ -22,18 +30,15 @@ export default function Card({
   rightExtra,
   headerExtraGap,
   headerExtra,
+  descColor = "#ffffff",
 }: CardProps) {
   return (
     <View
       style={{
         gap,
-        boxShadow:
-          shadow === "gold"
-            ? `inset 1px 1px 1px 0 rgba(154, 96, 19, 0.1),
-          inset -1px -1px 1px 0 rgba(154, 96, 19, 0.2)`
-            : `inset 1px 1px 0 rgba(255, 255, 255, 0.1), inset -1px -1px 1px 0 rgba(255, 255, 255, 0.2)`,
+        boxShadow: shadows[shadow],
       }}
-      className={`flex flex-col rounded-[1.25rem] py-3.5 px-[13px] ${shadow === "gold" ? "shadow-inner-gold-dual" : "shadow-inner-silver-dual"}`}
+      className={`flex flex-col rounded-[1.25rem] py-3.5 px-[13px]`}
     >
       <View
         className="flex flex-col"
@@ -50,7 +55,9 @@ export default function Card({
       {info && info}
       {desc && (
         <View>
-          <Text className="text-white text-xs">{desc}</Text>
+          <Text className="text-xs" style={{ color: descColor }}>
+            {desc}
+          </Text>
         </View>
       )}
       {footer}

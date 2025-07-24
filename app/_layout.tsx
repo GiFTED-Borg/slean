@@ -38,7 +38,7 @@ function RootNavigator() {
   const { auth } = useDynamic();
 
   return (
-    <Stack>
+    <Stack screenOptions={{ headerShown: false }}>
       <Stack.Protected guard={!!auth.token}>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack.Protected>

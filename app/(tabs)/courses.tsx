@@ -1,5 +1,6 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView, View, Text } from "react-native";
+import { Link } from "expo-router";
 import Card from "@/components/card";
 import Chip from "@/components/chip";
 import TimeIcon from "@/assets/icons/time-icon";
@@ -35,40 +36,42 @@ export default function Courses() {
           </View>
         </View>
         <View className="flex flex-col" style={{ marginBottom: 13 }}>
-          <Card
-            gap={20}
-            title="Hello Solana World"
-            rightExtra={<Chip size="lg" text="Beginner" variant="green" />}
-            headerExtraGap="lg"
-            desc="Begin your journey into Solana blockchain development with fundamental concepts"
-            headerExtra={
-              <View
-                className="flex flex-row items-center"
-                style={{ gap: 8.71 }}
-              >
+          <Link href={`/courses/solana-fundamentals`}>
+            <Card
+              gap={20}
+              title="Solana Fundamentals"
+              rightExtra={<Chip size="lg" text="Beginner" variant="green" />}
+              headerExtraGap="lg"
+              desc="Begin your journey into Solana blockchain development with fundamental concepts"
+              headerExtra={
                 <View
                   className="flex flex-row items-center"
-                  style={{ gap: 2.71 }}
+                  style={{ gap: 8.71 }}
                 >
-                  <PlayIcon width={12} height={12} fill="#FFFFFF66" />
-                  <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
-                    12 lessons
-                  </Text>
+                  <View
+                    className="flex flex-row items-center"
+                    style={{ gap: 2.71 }}
+                  >
+                    <PlayIcon width={12} height={12} fill="#FFFFFF66" />
+                    <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                      12 lessons
+                    </Text>
+                  </View>
+                  <View
+                    className="flex flex-row items-center"
+                    style={{ gap: 2.71 }}
+                  >
+                    <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
+                    <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                      2h 30min
+                    </Text>
+                  </View>
                 </View>
-                <View
-                  className="flex flex-row items-center"
-                  style={{ gap: 2.71 }}
-                >
-                  <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                  <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
-                    2h 30min
-                  </Text>
-                </View>
-              </View>
-            }
-            footer={<ProgressBar progress={0.65} />}
-            shadow="gold"
-          />
+              }
+              footer={<ProgressBar progress={0.65} />}
+              shadow="gold"
+            />
+          </Link>
         </View>
         <View className="flex flex-col" style={{ marginBottom: 13 }}>
           <Card

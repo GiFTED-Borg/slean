@@ -5,8 +5,10 @@ import Chip from "@/components/chip";
 import PlayIcon from "@/assets/icons/play-icon";
 import Card from "@/components/card";
 import CompleteIcon from "@/assets/icons/complete-icon";
+import { useRouter } from "expo-router";
 
 export default function Course() {
+  const router = useRouter();
   return (
     <SafeAreaView className="flex-1 bg-black">
       <ScrollView
@@ -73,7 +75,10 @@ export default function Course() {
               </View>
             }
             footer={
-              <TouchableOpacity className="rounded-[10px] w-full py-[9px] items-center border border-cyan-600">
+              <TouchableOpacity
+                onPress={() => router.push("/lessons/1")}
+                className="rounded-[10px] w-full py-[9px] items-center border border-cyan-600"
+              >
                 <Text style={{ color: "#84e8e8" }}>Review Lesson</Text>
               </TouchableOpacity>
             }

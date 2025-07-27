@@ -45,7 +45,7 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="courses"
+        name="(courses)"
         options={{
           title: "Courses",
           headerShown: false,
@@ -55,7 +55,7 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="challenges"
+        name="(challenges)"
         options={{
           title: "Challenges",
           headerShown: false,

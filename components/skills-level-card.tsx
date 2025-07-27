@@ -27,7 +27,7 @@ export default function SkillsLevelCard() {
             Lvl 4
           </Text>
         </View>
-        <ProgressBar progress={0.75} color="#FFAA2C" width={289} />
+        <ProgressBar progress={0.6} color="#FFAA2C" width={289} />
       </View>
       <View className="flex flex-col" style={{ gap: 4 }}>
         <View className="flex flex-row items-center justify-between">
@@ -41,7 +41,7 @@ export default function SkillsLevelCard() {
             Lvl 1
           </Text>
         </View>
-        <ProgressBar progress={0.75} color="#FFAA2C" width={289} />
+        <ProgressBar progress={0.2} color="#FFAA2C" width={289} />
       </View>
       <View className="flex flex-col" style={{ gap: 4 }}>
         <View className="flex flex-row items-center justify-between">
@@ -55,7 +55,7 @@ export default function SkillsLevelCard() {
             Lvl 5
           </Text>
         </View>
-        <ProgressBar progress={0.75} color="#FFAA2C" width={289} />
+        <ProgressBar progress={1} color="#FFAA2C" width={289} />
       </View>
       <View className="flex flex-col" style={{ gap: 4 }}>
         <View className="flex flex-row items-center justify-between">
@@ -69,7 +69,7 @@ export default function SkillsLevelCard() {
             Lvl 2
           </Text>
         </View>
-        <ProgressBar progress={0.75} color="#FFAA2C" width={289} />
+        <ProgressBar progress={0.4} color="#FFAA2C" width={289} />
       </View>
     </View>
   );

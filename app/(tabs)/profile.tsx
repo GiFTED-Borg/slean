@@ -4,6 +4,7 @@ import { Calendar } from "react-native-calendars";
 import ProfileCard from "@/components/profile-card";
 import SkillsLevelCard from "@/components/skills-level-card";
 import { IconChip } from "@/components/chip";
+import SettingsIcon from "@/assets/icons/settings-icon";
 
 const markedDates: Record<string, { selected?: boolean; marked?: boolean }> = {
   "2025-07-23": {
@@ -31,7 +32,18 @@ export default function Profile() {
       >
         <View className="flex flex-col" style={{ marginBottom: 25 }}>
           <View className="flex flex-row items-center justify-between">
-            <Text className="font-medium text-white text-lg">Profile</Text>
+            <Text
+              className="font-medium text-white text-lg"
+              style={{ fontFamily: "GeistMono-Regular" }}
+            >
+              Profile
+            </Text>
+            <SettingsIcon
+              width={24}
+              height={24}
+              stroke="#292D32"
+              fill="#FFFFFF"
+            />
           </View>
         </View>
         <View style={{ marginBottom: 27 }}>

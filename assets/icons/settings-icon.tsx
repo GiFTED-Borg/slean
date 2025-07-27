@@ -14,7 +14,7 @@ const SettingsIcon = ({
   fill = "#ffffff",
   stroke = "#292D32",
 }: Props) => (
-  <Svg width={width} height={height} viewBox="0 0 16 16" fill="none">
+  <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
     <Path
       fill={fill}
       stroke={stroke}

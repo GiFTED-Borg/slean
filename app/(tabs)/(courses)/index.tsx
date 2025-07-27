@@ -36,7 +36,7 @@ export default function Courses() {
           </View>
         </View>
         <View className="flex flex-col" style={{ marginBottom: 13 }}>
-          <Link href={`/courses/solana-fundamentals`}>
+          <Link href={`/course/solana-fundamentals`}>
             <Card
               gap={20}
               title="Solana Fundamentals"

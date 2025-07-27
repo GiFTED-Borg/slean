@@ -4,8 +4,10 @@ import Card from "@/components/card";
 import Chip, { IconChip } from "@/components/chip";
 import { ScrollView, View, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useRouter } from "expo-router";
 
 export default function Challenges() {
+  const router = useRouter();
   return (
     <SafeAreaView className="flex-1 bg-black">
       <ScrollView
@@ -60,6 +62,7 @@ export default function Challenges() {
             footer={
               <TouchableOpacity
                 className="rounded-[10px] w-full py-[9px] bg-cyan-600 items-center"
+                onPress={() => router.push("/challenge/hello-solana-world")}
                 style={{ backgroundColor: "#84E8E8" }}
               >
                 <View className="flex flex-row items-center justify-center">

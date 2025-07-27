@@ -6,6 +6,8 @@ import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { Toast } from "@/components/toast";
 import { dynamicClient } from "@/clients/dynamic";
+import { useSession } from "@/contexts/SessionContext";
+import { API_BASE_URL } from "@/clients/api";
 
 export default function VerifyOTPScreen() {
   const { email } = useLocalSearchParams<{ email: string }>();
@@ -22,6 +24,7 @@ export default function VerifyOTPScreen() {
     type: "success",
   });
   const inputRefs = useRef<TextInput[]>([]);
+  const { login } = useSession();
 
   const handleOtpChange = (text: string, index: number) => {
     const newOtp = [...otp];
@@ -56,18 +59,43 @@ export default function VerifyOTPScreen() {
     setIsLoading(true);
 
     try {
-      await dynamicClient.auth.email.verifyOTP(otpString);
+      const response = await dynamicClient.auth.email.verifyOTP(otpString);
 
-      setToast({
-        visible: true,
-        message: "OTP verified successfully!",
-        type: "success",
-      });
+      console.log("response");
 
-      // Navigate to main app after a short delay
-      setTimeout(() => {
-        router.push("/");
-      }, 1500);
+      if (response) {
+        const res = await fetch(`${API_BASE_URL}/auth/signin`, {
+          method: "POST",
+          body: JSON.stringify({
+            authToken: response.jwt,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        const data = await res.json();
+
+        console.log("data", data);
+
+        if (response.jwt && data?.user) {
+          // Use the session handler to store the JWT from your backend
+          await login(response.jwt, data.user);
+
+          // Navigate to main app after a short delay
+          setTimeout(() => {
+            router.push("/");
+          }, 500);
+
+          setToast({
+            visible: true,
+            message: "OTP verified successfully!",
+            type: "success",
+          });
+        } else {
+          throw new Error(data?.message || "Authentication failed");
+        }
+      }
     } catch (error) {
       setToast({
         visible: true,

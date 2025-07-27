@@ -7,7 +7,8 @@ import "react-native-reanimated";
 import "./global.css";
 
 import { dynamicClient } from "@/clients/dynamic";
-import { useDynamic } from "@/clients/dynamic/hooks";
+
+import { SessionProvider, useSession } from "@/contexts/SessionContext";
 import { CustomTheme } from "@/constants/theme";
 
 export default function RootLayout() {
@@ -23,27 +24,27 @@ export default function RootLayout() {
     return null;
   }
 
-  console.log("loaded", dynamicClient.reactNative);
-
   return (
-    <ThemeProvider value={CustomTheme}>
-      <dynamicClient.reactNative.WebView />
+    <SessionProvider>
+      <ThemeProvider value={CustomTheme}>
+        <dynamicClient.reactNative.WebView />
 
-      <RootNavigator />
-      <StatusBar style="auto" />
-    </ThemeProvider>
+        <RootNavigator />
+        <StatusBar style="auto" />
+      </ThemeProvider>
+    </SessionProvider>
   );
 }
 
 function RootNavigator() {
-  const { auth } = useDynamic();
+  const { isAuthenticated } = useSession();
 
   return (
     <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Protected guard={!!auth.token}>
+      <Stack.Protected guard={isAuthenticated}>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack.Protected>
-      <Stack.Protected guard={!auth.token}>
+      <Stack.Protected guard={!isAuthenticated}>
         <Stack.Screen name="(auth)/sign-in" />
         <Stack.Screen name="(auth)/verify-otp" />
         <Stack.Screen name="+not-found" />

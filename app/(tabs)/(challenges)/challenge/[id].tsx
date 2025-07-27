@@ -41,14 +41,25 @@ export default function Challenge() {
             marginBottom: 24.5,
           }}
         >
-          <Text className="font-semibold text-white text-lg">
+          <Text
+            className="font-semibold text-white text-lg"
+            style={{ fontFamily: "GeistMono-SemiBold" }}
+          >
             Token Transfer Logic
           </Text>
           <View className="flex flex-row items-center" style={{ gap: 8 }}>
             <Chip text="Intermediate" variant="violet" size="lg" />
             <View className="flex flex-row items-center" style={{ gap: 2.71 }}>
               <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-              <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>15 min</Text>
+              <Text
+                style={{
+                  color: "#FFFFFF66",
+                  fontSize: 10,
+                  fontFamily: "GeistMono-Regular",
+                }}
+              >
+                15 min
+              </Text>
             </View>
           </View>
         </View>
@@ -58,13 +69,17 @@ export default function Challenge() {
         >
           <Text
             className="font-semibold text-white text-base"
-            style={{ marginBottom: 31 }}
+            style={{ marginBottom: 31, fontFamily: "GeistMono-SemiBold" }}
           >
             Challenge Description
           </Text>
           <Text
             className="text-base font-medium"
-            style={{ color: "#FFFFFFBF", marginBottom: 20 }}
+            style={{
+              color: "#FFFFFFBF",
+              marginBottom: 20,
+              fontFamily: "GeistMono-Medium",
+            }}
           >
             Build a function that transfers SPL tokens between accounts safely
           </Text>
@@ -82,46 +97,76 @@ export default function Challenge() {
         >
           <Text
             className="text-white text-sm font-medium"
-            style={{ marginBottom: 25 }}
+            style={{ marginBottom: 25, fontFamily: "GeistMono-Medium" }}
           >
             Instructions
           </Text>
           <View className="flex flex-col" style={{ gap: 2, marginBottom: 28 }}>
-            <Text className="text-xs" style={{ color: "#FFFFFFBF" }}>
+            <Text
+              className="text-xs"
+              style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Regular" }}
+            >
               1. Takes sender and receiver account addresses
             </Text>
-            <Text className="text-xs" style={{ color: "#FFFFFFBF" }}>
+            <Text
+              className="text-xs"
+              style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Regular" }}
+            >
               2. Takes the amount to transfer
             </Text>
-            <Text className="text-xs" style={{ color: "#FFFFFFBF" }}>
+            <Text
+              className="text-xs"
+              style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Regular" }}
+            >
               3. Validates the sender has sufficient balance
             </Text>
-            <Text className="text-xs" style={{ color: "#FFFFFFBF" }}>
+            <Text
+              className="text-xs"
+              style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Regular" }}
+            >
               4. Performs the transfer using Solana’s token program
             </Text>
-            <Text className="text-xs" style={{ color: "#FFFFFFBF" }}>
+            <Text
+              className="text-xs"
+              style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Regular" }}
+            >
               5. Returns a success/error result
             </Text>
           </View>
           <View className="flex flex-col" style={{ gap: 2, marginBottom: 31 }}>
-            <Text className="text-xs" style={{ color: "#FFFFFFBF" }}>
+            <Text
+              className="text-xs"
+              style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Regular" }}
+            >
               Requirements
             </Text>
             <Text
               className="text-xs"
-              style={{ color: "#FFFFFFBF", paddingLeft: 5 }}
+              style={{
+                color: "#FFFFFFBF",
+                paddingLeft: 5,
+                fontFamily: "GeistMono-Regular",
+              }}
             >
               • Use proper error handling
             </Text>
             <Text
               className="text-xs"
-              style={{ color: "#FFFFFFBF", paddingLeft: 5 }}
+              style={{
+                color: "#FFFFFFBF",
+                paddingLeft: 5,
+                fontFamily: "GeistMono-Regular",
+              }}
             >
               • Validate input parameters
             </Text>
             <Text
               className="text-xs"
-              style={{ color: "#FFFFFFBF", paddingLeft: 5 }}
+              style={{
+                color: "#FFFFFFBF",
+                paddingLeft: 5,
+                fontFamily: "GeistMono-Regular",
+              }}
             >
               • Include appropriate comments
             </Text>
@@ -132,9 +177,13 @@ export default function Challenge() {
               backgroundColor: "#84E8E8",
               boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
             }}
+            onPress={() => router.push("/code-challenge/1")}
           >
             <View className="flex flex-row items-center justify-center">
-              <Text className="text-[#000]" style={{ marginRight: 10 }}>
+              <Text
+                className="text-[#000]"
+                style={{ marginRight: 10, fontFamily: "GeistMono-Regular" }}
+              >
                 Start Challenge
               </Text>
               <PlayIcon fill="#292D32" />

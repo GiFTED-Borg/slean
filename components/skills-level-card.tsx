@@ -14,15 +14,23 @@ export default function SkillsLevelCard() {
           inset -2px -2px 4px 0 rgba(255, 255, 255, 0.1)`,
       }}
     >
-      <Text className="text-white font-semibold text-base leading-[19.7px]">
+      <Text
+        className="text-white font-semibold text-base leading-[19.7px]"
+        style={{ fontFamily: "GeistMono-SemiBold" }}
+      >
         Skills
       </Text>
       <View className="flex flex-col" style={{ gap: 4 }}>
         <View className="flex flex-row items-center justify-between">
-          <Text className="text-xs leading-[19.7px] text-white">Rust</Text>
+          <Text
+            className="text-xs leading-[19.7px] text-white"
+            style={{ fontFamily: "GeistMono-Regular" }}
+          >
+            Rust
+          </Text>
           <Text
             className="text-[8px] font-semibold leading-[8.72px]"
-            style={{ color: "#FFFFFF99" }}
+            style={{ color: "#FFFFFF99", fontFamily: "GeistMono-SemiBold" }}
           >
             Lvl 4
           </Text>
@@ -31,12 +39,15 @@ export default function SkillsLevelCard() {
       </View>
       <View className="flex flex-col" style={{ gap: 4 }}>
         <View className="flex flex-row items-center justify-between">
-          <Text className="text-xs leading-[19.7px] text-white">
+          <Text
+            className="text-xs leading-[19.7px] text-white"
+            style={{ fontFamily: "GeistMono-Regular" }}
+          >
             Solana Programs
           </Text>
           <Text
             className="text-[8px] font-semibold leading-[8.72px]"
-            style={{ color: "#FFFFFF99" }}
+            style={{ color: "#FFFFFF99", fontFamily: "GeistMono-SemiBold" }}
           >
             Lvl 1
           </Text>
@@ -45,12 +56,15 @@ export default function SkillsLevelCard() {
       </View>
       <View className="flex flex-col" style={{ gap: 4 }}>
         <View className="flex flex-row items-center justify-between">
-          <Text className="text-xs leading-[19.7px] text-white">
+          <Text
+            className="text-xs leading-[19.7px] text-white"
+            style={{ fontFamily: "GeistMono-Regular" }}
+          >
             Anchor Framewok
           </Text>
           <Text
             className="text-[8px] font-semibold leading-[8.72px]"
-            style={{ color: "#FFFFFF99" }}
+            style={{ color: "#FFFFFF99", fontFamily: "GeistMono-SemiBold" }}
           >
             Lvl 5
           </Text>
@@ -59,12 +73,15 @@ export default function SkillsLevelCard() {
       </View>
       <View className="flex flex-col" style={{ gap: 4 }}>
         <View className="flex flex-row items-center justify-between">
-          <Text className="text-xs leading-[19.7px] text-white">
+          <Text
+            className="text-xs leading-[19.7px] text-white"
+            style={{ fontFamily: "GeistMono-Regular" }}
+          >
             Token Standards
           </Text>
           <Text
             className="text-[8px] font-semibold leading-[8.72px]"
-            style={{ color: "#FFFFFF99" }}
+            style={{ color: "#FFFFFF99", fontFamily: "GeistMono-SemiBold" }}
           >
             Lvl 2
           </Text>

@@ -1,7 +1,7 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView, View, Text, TouchableOpacity } from "react-native";
 import TimeIcon from "@/assets/icons/time-icon";
-import Chip from "@/components/chip";
+import Chip, { IconChip } from "@/components/chip";
 import PlayIcon from "@/assets/icons/play-icon";
 import Card from "@/components/card";
 import CompleteIcon from "@/assets/icons/complete-icon";
@@ -22,7 +22,10 @@ export default function Course() {
         }}
       >
         <View className="flex flex-col" style={{ marginBottom: 19, gap: 16 }}>
-          <Text className="font-medium text-white text-lg">
+          <Text
+            className="font-medium text-white text-lg"
+            style={{ fontFamily: "GeistMono-Medium" }}
+          >
             Solana fundamentals
           </Text>
           <View className="flex flex-row items-center justify-between">
@@ -32,7 +35,13 @@ export default function Course() {
                 style={{ gap: 2.71 }}
               >
                 <PlayIcon width={12} height={12} fill="#FFFFFF66" />
-                <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                <Text
+                  style={{
+                    color: "#FFFFFF66",
+                    fontSize: 10,
+                    fontFamily: "GeistMono-Regular",
+                  }}
+                >
                   12 lessons
                 </Text>
               </View>
@@ -41,7 +50,13 @@ export default function Course() {
                 style={{ gap: 2.71 }}
               >
                 <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                <Text
+                  style={{
+                    color: "#FFFFFF66",
+                    fontSize: 10,
+                    fontFamily: "GeistMono-Regular",
+                  }}
+                >
                   2h 30min
                 </Text>
               </View>
@@ -68,7 +83,13 @@ export default function Course() {
                   style={{ gap: 2.71 }}
                 >
                   <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                  <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                  <Text
+                    style={{
+                      color: "#FFFFFF66",
+                      fontSize: 10,
+                      fontFamily: "GeistMono-Regular",
+                    }}
+                  >
                     15 min
                   </Text>
                 </View>
@@ -82,7 +103,11 @@ export default function Course() {
                   boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
                 }}
               >
-                <Text style={{ color: "#84e8e8" }}>Review Lesson</Text>
+                <Text
+                  style={{ color: "#84e8e8", fontFamily: "GeistMono-Regular" }}
+                >
+                  Review Lesson
+                </Text>
               </TouchableOpacity>
             }
             shadow="silver"
@@ -107,7 +132,13 @@ export default function Course() {
                   style={{ gap: 2.71 }}
                 >
                   <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                  <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                  <Text
+                    style={{
+                      color: "#FFFFFF66",
+                      fontSize: 10,
+                      fontFamily: "GeistMono-Regular",
+                    }}
+                  >
                     15 min
                   </Text>
                 </View>
@@ -121,7 +152,12 @@ export default function Course() {
                   boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
                 }}
               >
-                <Text className="text-[#000]">Review Lesson</Text>
+                <Text
+                  className="text-[#000]"
+                  style={{ fontFamily: "GeistMono-Regular" }}
+                >
+                  Review Lesson
+                </Text>
               </TouchableOpacity>
             }
             shadow="silver"
@@ -146,7 +182,13 @@ export default function Course() {
                   style={{ gap: 2.71 }}
                 >
                   <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                  <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                  <Text
+                    style={{
+                      color: "#FFFFFF66",
+                      fontSize: 10,
+                      fontFamily: "GeistMono-Regular",
+                    }}
+                  >
                     15 min
                   </Text>
                 </View>
@@ -160,13 +202,18 @@ export default function Course() {
                   boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
                 }}
               >
-                <Text className="text-[#000]">Review Lesson</Text>
+                <Text
+                  className="text-[#000]"
+                  style={{ fontFamily: "GeistMono-Regular" }}
+                >
+                  Review Lesson
+                </Text>
               </TouchableOpacity>
             }
             shadow="silver"
           />
         </View>
-        <View>
+        <View style={{ marginBottom: 12.38 }}>
           <Card
             gap={20}
             title="Your First Transaction"
@@ -185,7 +232,13 @@ export default function Course() {
                   style={{ gap: 2.71 }}
                 >
                   <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                  <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                  <Text
+                    style={{
+                      color: "#FFFFFF66",
+                      fontSize: 10,
+                      fontFamily: "GeistMono-Regular",
+                    }}
+                  >
                     15 min
                   </Text>
                 </View>
@@ -199,10 +252,52 @@ export default function Course() {
                   boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
                 }}
               >
-                <Text className="text-[#000]">Review Lesson</Text>
+                <Text
+                  className="text-[#000]"
+                  style={{ fontFamily: "GeistMono-Regular" }}
+                >
+                  Review Lesson
+                </Text>
               </TouchableOpacity>
             }
             shadow="silver"
+          />
+        </View>
+        <View>
+          <Card
+            gap={20}
+            title="Solana Fundamentals"
+            rightExtra={<PlayIcon width={24} height={24} fill="#25F082" />}
+            headerExtraGap="lg"
+            desc="Solana Fundamentals Assessment"
+            descColor="#FFFFFF99"
+            headerExtra={
+              <View
+                className="flex flex-row items-center"
+                style={{ gap: 8.71 }}
+              >
+                <Chip variant="blue" text="Hands-on" size="md" />
+                <IconChip type="xp" text="50 XP" />
+              </View>
+            }
+            footer={
+              <TouchableOpacity
+                className="rounded-[10px] w-full py-[9px] items-center"
+                style={{
+                  backgroundColor: "#84e8e8",
+                  boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+                }}
+                onPress={() => router.push("/quiz/solana-fundamentals")}
+              >
+                <Text
+                  className="text-[#000]"
+                  style={{ fontFamily: "GeistMono-Regular" }}
+                >
+                  Start Quiz
+                </Text>
+              </TouchableOpacity>
+            }
+            shadow="gold"
           />
         </View>
       </ScrollView>

@@ -28,13 +28,19 @@ export default function Home() {
             className="flex flex-row items-center justify-between"
             style={{ marginBottom: 16 }}
           >
-            <Text className="font-medium text-white text-lg">
+            <Text
+              className="font-medium text-white text-lg"
+              style={{ fontFamily: "GeistMono-Medium" }}
+            >
               Welcome Cadet 🫡
             </Text>
             <IconChip type="streak" text="3 days" />
           </View>
           <View>
-            <Text className="text-sm  text-[#FFFFFF99]">
+            <Text
+              className="text-sm  text-[#FFFFFF99]"
+              style={{ fontFamily: "GeistMono-Regular" }}
+            >
               Level 3 • Rust Rookie
             </Text>
           </View>
@@ -59,7 +65,12 @@ export default function Home() {
                   boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
                 }}
               >
-                <Text className="text-[#000]">Complete Today’s task</Text>
+                <Text
+                  className="text-[#000]"
+                  style={{ fontFamily: "GeistMono-Regular" }}
+                >
+                  Complete Today’s task
+                </Text>
               </TouchableOpacity>
             }
             shadow="gold"
@@ -72,7 +83,7 @@ export default function Home() {
           >
             <Text
               className="font-medium text-white text-lg"
-              style={{ lineHeight: 19.7 }}
+              style={{ lineHeight: 19.7, fontFamily: "GeistMono-Medium" }}
             >
               Today’s Challenge
             </Text>
@@ -80,7 +91,10 @@ export default function Home() {
               className="flex flex-row items-center"
               onPress={() => router.push("/(tabs)/(challenges)")}
             >
-              <Text className="text-sm" style={{ color: "#84E8E8" }}>
+              <Text
+                className="text-sm"
+                style={{ color: "#84E8E8", fontFamily: "GeistMono-Regular" }}
+              >
                 View All
               </Text>
               <ChevronRight width={14} height={14} stroke="#84E8E8" />
@@ -103,7 +117,13 @@ export default function Home() {
                   style={{ gap: 2.71 }}
                 >
                   <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                  <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                  <Text
+                    style={{
+                      color: "#FFFFFF66",
+                      fontSize: 10,
+                      fontFamily: "GeistMono-Regular",
+                    }}
+                  >
                     15 min
                   </Text>
                 </View>
@@ -117,7 +137,12 @@ export default function Home() {
                   boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
                 }}
               >
-                <Text className="text-[#000]">Complete Today’s task</Text>
+                <Text
+                  className="text-[#000]"
+                  style={{ fontFamily: "GeistMono-Regular" }}
+                >
+                  Complete Today’s task
+                </Text>
               </TouchableOpacity>
             }
             shadow="gold"
@@ -130,7 +155,7 @@ export default function Home() {
           >
             <Text
               className="font-medium text-white text-lg"
-              style={{ lineHeight: 19.7 }}
+              style={{ lineHeight: 19.7, fontFamily: "GeistMono-Medium" }}
             >
               Continue Learning
             </Text>
@@ -138,7 +163,10 @@ export default function Home() {
               className="flex flex-row items-center"
               onPress={() => router.push("/(tabs)/(courses)")}
             >
-              <Text className="text-sm" style={{ color: "#84E8E8" }}>
+              <Text
+                className="text-sm"
+                style={{ color: "#84E8E8", fontFamily: "GeistMono-Regular" }}
+              >
                 View All
               </Text>
               <ChevronRight width={14} height={14} stroke="#84E8E8" />
@@ -161,7 +189,13 @@ export default function Home() {
                     style={{ gap: 2.71 }}
                   >
                     <PlayIcon width={12} height={12} fill="#FFFFFF66" />
-                    <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                    <Text
+                      style={{
+                        color: "#FFFFFF66",
+                        fontSize: 10,
+                        fontFamily: "GeistMono-Regular",
+                      }}
+                    >
                       12 lessons
                     </Text>
                   </View>
@@ -170,7 +204,13 @@ export default function Home() {
                     style={{ gap: 2.71 }}
                   >
                     <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                    <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                    <Text
+                      style={{
+                        color: "#FFFFFF66",
+                        fontSize: 10,
+                        fontFamily: "GeistMono-Regular",
+                      }}
+                    >
                       2h 30min
                     </Text>
                   </View>

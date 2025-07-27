@@ -23,8 +23,18 @@ export default function StatCard({ type, stat, text }: StatCardProps) {
           <ChallengeIcon width={14.8} height={8.22} stroke="#A95CEE" />
         )}
       </View>
-      <Text className="font-semibold text-base  text-white">{stat}</Text>
-      <Text className="font-light text-xs  text-[#FFFFFF99]">{text}</Text>
+      <Text
+        className="font-semibold text-base text-white"
+        style={{ fontFamily: "GeistMono-SemiBold" }}
+      >
+        {stat}
+      </Text>
+      <Text
+        className="font-light text-xs text-[#FFFFFF99]"
+        style={{ fontFamily: "GeistMono-Light" }}
+      >
+        {text}
+      </Text>
     </View>
   );
 }

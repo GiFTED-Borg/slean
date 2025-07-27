@@ -16,7 +16,12 @@ export default function QuizToast({
         backgroundColor: status === "correct" ? "#1A3838" : "#67000080",
       }}
     >
-      <Text className="text-white text-base leading-[22px]">{text}</Text>
+      <Text
+        className="text-white text-base leading-[22px]"
+        style={{ fontFamily: "GeistMono-Regular" }}
+      >
+        {text}
+      </Text>
     </View>
   );
 }

@@ -27,13 +27,17 @@ export default function ProfileCard() {
         <View className="flex flex-col">
           <Text
             className="text-white font-semibold text-base leading-[22px]"
-            style={{ marginBottom: 2.5 }}
+            style={{ marginBottom: 2.5, fontFamily: "GeistMono-SemiBold" }}
           >
             Kenpachi_Mazino
           </Text>
           <Text
             className="text-[10px] leading-[16.22px]"
-            style={{ color: "#FFFFFF66", marginBottom: 3.85 }}
+            style={{
+              color: "#FFFFFF66",
+              marginBottom: 3.85,
+              fontFamily: "GeistMono-Regular",
+            }}
           >
             Rust Rookie
           </Text>
@@ -41,7 +45,7 @@ export default function ProfileCard() {
             <Chip size="lg" text="Level 3" variant="violet" />
             <Text
               className="text-[10px] leading-[16.22px]"
-              style={{ color: "#FFFFFF66" }}
+              style={{ color: "#FFFFFF66", fontFamily: "GeistMono-Regular" }}
             >
               Joined July 9 2025
             </Text>
@@ -53,12 +57,15 @@ export default function ProfileCard() {
           className="flex flex-col items-center justify-center"
           style={{ gap: 2 }}
         >
-          <Text className="text-white font-semibold text-sm leading-[19.7px]">
+          <Text
+            className="text-white font-semibold text-sm leading-[19.7px]"
+            style={{ fontFamily: "GeistMono-SemiBold" }}
+          >
             2
           </Text>
           <Text
             className="text-xs font-light leading-[19.7px]"
-            style={{ color: "#FFFFFF99" }}
+            style={{ color: "#FFFFFF99", fontFamily: "GeistMono-Regular" }}
           >
             Lessons
           </Text>
@@ -67,12 +74,15 @@ export default function ProfileCard() {
           className="flex flex-col items-center justify-center"
           style={{ gap: 2 }}
         >
-          <Text className="text-white font-semibold text-sm leading-[19.7px]">
+          <Text
+            className="text-white font-semibold text-sm leading-[19.7px]"
+            style={{ fontFamily: "GeistMono-SemiBold" }}
+          >
             2
           </Text>
           <Text
             className="text-xs font-light leading-[19.7px]"
-            style={{ color: "#FFFFFF99" }}
+            style={{ color: "#FFFFFF99", fontFamily: "GeistMono-Light" }}
           >
             Challenges
           </Text>
@@ -81,12 +91,15 @@ export default function ProfileCard() {
           className="flex flex-col items-center justify-center"
           style={{ gap: 2 }}
         >
-          <Text className="text-white font-semibold text-sm leading-[19.7px]">
+          <Text
+            className="text-white font-semibold text-sm leading-[19.7px]"
+            style={{ fontFamily: "GeistMono-SemiBold" }}
+          >
             450
           </Text>
           <Text
             className="text-xs font-light leading-[19.7px]"
-            style={{ color: "#FFFFFF99" }}
+            style={{ color: "#FFFFFF99", fontFamily: "GeistMono-Light" }}
           >
             XP
           </Text>
@@ -95,12 +108,15 @@ export default function ProfileCard() {
           className="flex flex-col items-center justify-center"
           style={{ gap: 2 }}
         >
-          <Text className="text-white font-semibold text-sm leading-[19.7px]">
+          <Text
+            className="text-white font-semibold text-sm leading-[19.7px]"
+            style={{ fontFamily: "GeistMono-SemiBold" }}
+          >
             7
           </Text>
           <Text
             className="text-xs font-light leading-[19.7px]"
-            style={{ color: "#FFFFFF99" }}
+            style={{ color: "#FFFFFF99", fontFamily: "GeistMono-Light" }}
           >
             Streak
           </Text>

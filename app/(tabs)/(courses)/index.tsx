@@ -25,12 +25,18 @@ export default function Courses() {
             className="flex flex-row items-center justify-between"
             style={{ marginBottom: 16 }}
           >
-            <Text className="font-medium text-white text-lg">
+            <Text
+              className="font-medium text-white text-lg"
+              style={{ fontFamily: "GeistMono-Medium" }}
+            >
               Learning Paths
             </Text>
           </View>
           <View>
-            <Text className="text-sm  text-[#FFFFFF99]">
+            <Text
+              className="text-sm  text-[#FFFFFF99]"
+              style={{ fontFamily: "GeistMono-Regular" }}
+            >
               Choose your journey to Solana mastery
             </Text>
           </View>
@@ -53,7 +59,13 @@ export default function Courses() {
                     style={{ gap: 2.71 }}
                   >
                     <PlayIcon width={12} height={12} fill="#FFFFFF66" />
-                    <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                    <Text
+                      style={{
+                        color: "#FFFFFF66",
+                        fontSize: 10,
+                        fontFamily: "GeistMono-Regular",
+                      }}
+                    >
                       12 lessons
                     </Text>
                   </View>
@@ -62,7 +74,13 @@ export default function Courses() {
                     style={{ gap: 2.71 }}
                   >
                     <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                    <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                    <Text
+                      style={{
+                        color: "#FFFFFF66",
+                        fontSize: 10,
+                        fontFamily: "GeistMono-Regular",
+                      }}
+                    >
                       2h 30min
                     </Text>
                   </View>
@@ -90,7 +108,13 @@ export default function Courses() {
                   style={{ gap: 2.71 }}
                 >
                   <PlayIcon width={12} height={12} fill="#FFFFFF66" />
-                  <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                  <Text
+                    style={{
+                      color: "#FFFFFF66",
+                      fontSize: 10,
+                      fontFamily: "GeistMono-Regular",
+                    }}
+                  >
                     14 lessons
                   </Text>
                 </View>
@@ -99,7 +123,13 @@ export default function Courses() {
                   style={{ gap: 2.71 }}
                 >
                   <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                  <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                  <Text
+                    style={{
+                      color: "#FFFFFF66",
+                      fontSize: 10,
+                      fontFamily: "GeistMono-Regular",
+                    }}
+                  >
                     3h 1min
                   </Text>
                 </View>
@@ -125,7 +155,13 @@ export default function Courses() {
                   style={{ gap: 2.71 }}
                 >
                   <PlayIcon width={12} height={12} fill="#FFFFFF66" />
-                  <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                  <Text
+                    style={{
+                      color: "#FFFFFF66",
+                      fontSize: 10,
+                      fontFamily: "GeistMono-Regular",
+                    }}
+                  >
                     8 lessons
                   </Text>
                 </View>
@@ -134,7 +170,13 @@ export default function Courses() {
                   style={{ gap: 2.71 }}
                 >
                   <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                  <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                  <Text
+                    style={{
+                      color: "#FFFFFF66",
+                      fontSize: 10,
+                      fontFamily: "GeistMono-Regular",
+                    }}
+                  >
                     4h 30min
                   </Text>
                 </View>
@@ -161,7 +203,13 @@ export default function Courses() {
                   style={{ gap: 2.71 }}
                 >
                   <PlayIcon width={12} height={12} fill="#FFFFFF66" />
-                  <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                  <Text
+                    style={{
+                      color: "#FFFFFF66",
+                      fontSize: 10,
+                      fontFamily: "GeistMono-Regular",
+                    }}
+                  >
                     12 lessons
                   </Text>
                 </View>
@@ -170,7 +218,13 @@ export default function Courses() {
                   style={{ gap: 2.71 }}
                 >
                   <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                  <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                  <Text
+                    style={{
+                      color: "#FFFFFF66",
+                      fontSize: 10,
+                      fontFamily: "GeistMono-Regular",
+                    }}
+                  >
                     2h 30min
                   </Text>
                 </View>

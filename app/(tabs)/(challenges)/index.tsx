@@ -32,7 +32,12 @@ export default function Challenges() {
             className="flex flex-row items-center justify-between"
             style={{ paddingHorizontal: 20 }}
           >
-            <Text className="font-medium text-white text-lg">Challenges</Text>
+            <Text
+              className="font-medium text-white text-lg"
+              style={{ fontFamily: "GeistMono-Medium" }}
+            >
+              Challenges
+            </Text>
           </View>
         </View>
         <View style={{ marginBottom: 18, paddingHorizontal: 20 }}>
@@ -53,7 +58,13 @@ export default function Challenges() {
                   style={{ gap: 2.71 }}
                 >
                   <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                  <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                  <Text
+                    style={{
+                      color: "#FFFFFF66",
+                      fontSize: 10,
+                      fontFamily: "GeistMono-Regular",
+                    }}
+                  >
                     15 min
                   </Text>
                 </View>
@@ -69,7 +80,10 @@ export default function Challenges() {
                 }}
               >
                 <View className="flex flex-row items-center justify-center">
-                  <Text className="text-[#000]" style={{ marginRight: 10 }}>
+                  <Text
+                    className="text-[#000]"
+                    style={{ marginRight: 10, fontFamily: "GeistMono-Regular" }}
+                  >
                     Start Challenge
                   </Text>
                   <PlayIcon fill="#292D32" />
@@ -97,7 +111,13 @@ export default function Challenges() {
                   style={{ gap: 2.71 }}
                 >
                   <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                  <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                  <Text
+                    style={{
+                      color: "#FFFFFF66",
+                      fontSize: 10,
+                      fontFamily: "GeistMono-Regular",
+                    }}
+                  >
                     15 min
                   </Text>
                 </View>
@@ -111,7 +131,10 @@ export default function Challenges() {
                   boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
                 }}
               >
-                <Text className="text-[#000]">
+                <Text
+                  className="text-[#000]"
+                  style={{ fontFamily: "GeistMono-Regular" }}
+                >
                   <View className="flex flex-row items-center justify-center gap-x-2.5">
                     <Text className="text-[#000]" style={{ marginRight: 10 }}>
                       Start Challenge
@@ -142,7 +165,13 @@ export default function Challenges() {
                   style={{ gap: 2.71 }}
                 >
                   <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                  <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                  <Text
+                    style={{
+                      color: "#FFFFFF66",
+                      fontSize: 10,
+                      fontFamily: "GeistMono-Regular",
+                    }}
+                  >
                     15 min
                   </Text>
                 </View>
@@ -156,7 +185,10 @@ export default function Challenges() {
                   boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
                 }}
               >
-                <Text className="text-[#000]">
+                <Text
+                  className="text-[#000]"
+                  style={{ fontFamily: "GeistMono-Regular" }}
+                >
                   <View className="flex flex-row items-center justify-center gap-x-2.5">
                     <Text className="text-[#000]" style={{ marginRight: 10 }}>
                       Start Challenge
@@ -187,7 +219,13 @@ export default function Challenges() {
                   style={{ gap: 2.71 }}
                 >
                   <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                  <Text style={{ color: "#FFFFFF66", fontSize: 10 }}>
+                  <Text
+                    style={{
+                      color: "#FFFFFF66",
+                      fontSize: 10,
+                      fontFamily: "GeistMono-Regular",
+                    }}
+                  >
                     15 min
                   </Text>
                 </View>
@@ -203,7 +241,13 @@ export default function Challenges() {
               >
                 <Text className="text-[#000]">
                   <View className="flex flex-row items-center justify-center gap-x-2.5">
-                    <Text className="text-[#000]" style={{ marginRight: 10 }}>
+                    <Text
+                      className="text-[#000]"
+                      style={{
+                        marginRight: 10,
+                        fontFamily: "GeistMono-Regular",
+                      }}
+                    >
                       Start Challenge
                     </Text>
                     <PlayIcon fill="#292D32" />

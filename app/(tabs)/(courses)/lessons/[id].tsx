@@ -38,12 +38,15 @@ export default function Lesson() {
             paddingHorizontal: 20,
           }}
         >
-          <Text className="font-semibold text-white text-lg">
+          <Text
+            className="font-semibold text-white text-lg"
+            style={{ fontFamily: "GeistMono-Semibold" }}
+          >
             Solana fundamentals
           </Text>
           <Text
             className="font-medium text-base"
-            style={{ color: "#FFFFFFBF" }}
+            style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Medium" }}
           >
             What is Solana?
           </Text>
@@ -54,13 +57,17 @@ export default function Lesson() {
         >
           <Text
             className="font-semibold text-white text-base"
-            style={{ marginBottom: 36 }}
+            style={{ marginBottom: 36, fontFamily: "GeistMono-SemiBold" }}
           >
             What is Solana?
           </Text>
           <Text
             className="text-base font-medium"
-            style={{ color: "#FFFFFFBF", marginBottom: 20 }}
+            style={{
+              color: "#FFFFFFBF",
+              marginBottom: 20,
+              fontFamily: "GeistMono-Medium",
+            }}
           >
             Solana accounts are fundamental data structures that store state on
             the blockchain. Unlike Ethereum where contracts store state
@@ -68,32 +75,36 @@ export default function Lesson() {
           </Text>
           <Text
             className="text-base font-medium"
-            style={{ color: "#FFFFFFBF", marginBottom: 20 }}
+            style={{
+              color: "#FFFFFFBF",
+              marginBottom: 20,
+              fontFamily: "GeistMono-Medium",
+            }}
           >
             ## Key Concepts:
           </Text>
           <View className="flex flex-col" style={{ gap: 4 }}>
             <Text
               className="text-base font-medium"
-              style={{ color: "#FFFFFFBF" }}
+              style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Medium" }}
             >
               - **Accounts store data and SOL balance**
             </Text>
             <Text
               className="text-base font-medium"
-              style={{ color: "#FFFFFFBF" }}
+              style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Medium" }}
             >
               - **Programs (smart contracts) are stateless**
             </Text>
             <Text
               className="text-base font-medium"
-              style={{ color: "#FFFFFFBF" }}
+              style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Medium" }}
             >
               - **Each account has a unique public key**
             </Text>
             <Text
               className="text-base font-medium"
-              style={{ color: "#FFFFFFBF" }}
+              style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Medium" }}
             >
               - **Accounts can be owned by programs or users**
             </Text>
@@ -109,7 +120,10 @@ export default function Lesson() {
           }}
           className="flex flex-col"
         >
-          <Text className="text-xs" style={{ color: "#FFFFFFBF" }}>
+          <Text
+            className="text-xs"
+            style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Regular" }}
+          >
             {`
               // Example account structure
             {
@@ -130,7 +144,12 @@ export default function Lesson() {
             marginHorizontal: 20,
           }}
         >
-          <Text className="text-white">Next Lesson</Text>
+          <Text
+            className="text-white"
+            style={{ fontFamily: "GeistMono-Regular" }}
+          >
+            Next Lesson
+          </Text>
         </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>

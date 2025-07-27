@@ -47,6 +47,7 @@ export default function Chip({ size, text, variant }: ChipProps) {
     >
       <Text
         className={`${chipStyles.text[size]} ${variantStyles.text[variant]} font-semibold`}
+        style={{ fontFamily: "GeistMono-SemiBold" }}
       >
         {text}
       </Text>
@@ -68,7 +69,10 @@ export function IconChip({
       ) : (
         <XPIcon width={10} height={14} stroke="#F6A10F" />
       )}
-      <Text className="text-[11.53px] leading-[16.22px] text-[#F6A10F]">
+      <Text
+        className="text-[11.53px] leading-[16.22px] text-[#F6A10F]"
+        style={{ fontFamily: "GeistMono-Regular" }}
+      >
         {text}
       </Text>
     </View>

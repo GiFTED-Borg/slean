@@ -34,7 +34,7 @@ export default function Profile() {
           <View className="flex flex-row items-center justify-between">
             <Text
               className="font-medium text-white text-lg"
-              style={{ fontFamily: "GeistMono-Regular" }}
+              style={{ fontFamily: "GeistMono-Medium" }}
             >
               Profile
             </Text>
@@ -70,7 +70,10 @@ export default function Profile() {
               paddingBottom: 13,
             }}
           >
-            <Text className="text-white font-semibold text-base leading-[19.7px]">
+            <Text
+              className="text-white font-semibold text-base leading-[19.7px]"
+              style={{ fontFamily: "GeistMono-SemiBold" }}
+            >
               Streaks
             </Text>
             <IconChip type="streak" text="3 days" />
@@ -100,7 +103,11 @@ export default function Profile() {
                     <Text
                       className="text-white text-center"
                       key={`${day}-${i}`}
-                      style={{ width: 30, height: 30 }}
+                      style={{
+                        width: 30,
+                        height: 30,
+                        fontFamily: "GeistMono-Regular",
+                      }}
                     >
                       {day}
                     </Text>
@@ -131,6 +138,7 @@ export default function Profile() {
                             : state === "today"
                               ? "#ccffff"
                               : "#fff",
+                        fontFamily: "GeistMono-Regular",
                       }}
                     >
                       {date?.day}

@@ -45,7 +45,10 @@ export default function Card({
         style={{ gap: headerExtraGap && (headerExtraGap === "sm" ? 7 : 11) }}
       >
         <View className="flex flex-row items-center justify-between">
-          <Text className="font-semibold text-white text-lg max-w-[192px]">
+          <Text
+            className="font-semibold text-white text-lg max-w-[192px]"
+            style={{ fontFamily: "GeistMono-SemiBold" }}
+          >
             {title}
           </Text>
           {rightExtra}
@@ -55,7 +58,10 @@ export default function Card({
       {info && info}
       {desc && (
         <View>
-          <Text className="text-xs" style={{ color: descColor }}>
+          <Text
+            className="text-xs"
+            style={{ color: descColor, fontFamily: "GeistMono-Regular" }}
+          >
             {desc}
           </Text>
         </View>

@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 
 const styles = {
   container: {
@@ -31,16 +31,24 @@ export default function QuizAnswer({
   enumerator: "A" | "B" | "C" | "D";
 }) {
   return (
-    <View
+    <TouchableOpacity
       className="rounded py-2.5 px-3.5 border flex flex-row items-center"
       style={{ gap: 15, ...styles.container[state] }}
     >
       <View className="rounded-[3px] flex flex-row items-center justify-center size-[30px] bg-[#313131]">
-        <Text className="text-white text-base leading-[22px] font-semibold">
+        <Text
+          className="text-white text-base leading-[22px] font-semibold"
+          style={{ fontFamily: "GeistMono-SemiBold" }}
+        >
           {enumerator}
         </Text>
       </View>
-      <Text className="text-white text-base leading-[22px]">{text}</Text>
-    </View>
+      <Text
+        className="text-white text-base leading-[22px]"
+        style={{ fontFamily: "GeistMono-Regular" }}
+      >
+        {text}
+      </Text>
+    </TouchableOpacity>
   );
 }

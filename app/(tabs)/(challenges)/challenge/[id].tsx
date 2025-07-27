@@ -127,8 +127,11 @@ export default function Challenge() {
             </Text>
           </View>
           <TouchableOpacity
-            className="rounded-[10px] w-full py-[9px] bg-cyan-600 items-center"
-            style={{ backgroundColor: "#84E8E8" }}
+            className="rounded-[10px] w-full py-[9px] items-center"
+            style={{
+              backgroundColor: "#84E8E8",
+              boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+            }}
           >
             <View className="flex flex-row items-center justify-center">
               <Text className="text-[#000]" style={{ marginRight: 10 }}>

@@ -54,7 +54,10 @@ export default function Home() {
             footer={
               <TouchableOpacity
                 className="rounded-[10px] w-full py-[9px] items-center"
-                style={{ backgroundColor: "#84E8E8" }}
+                style={{
+                  backgroundColor: "#84E8E8",
+                  boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+                }}
               >
                 <Text className="text-[#000]">Complete Today’s task</Text>
               </TouchableOpacity>
@@ -109,7 +112,10 @@ export default function Home() {
             footer={
               <TouchableOpacity
                 className="rounded-[10px] w-full py-[9px] items-center"
-                style={{ backgroundColor: "#84E8E8" }}
+                style={{
+                  backgroundColor: "#84E8E8",
+                  boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+                }}
               >
                 <Text className="text-[#000]">Complete Today’s task</Text>
               </TouchableOpacity>

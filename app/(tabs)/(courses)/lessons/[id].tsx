@@ -124,7 +124,11 @@ export default function Lesson() {
         </View>
         <TouchableOpacity
           className="rounded-[10px] w-full py-[9px] items-center"
-          style={{ backgroundColor: "#84E8E8" }}
+          style={{
+            backgroundColor: "#84E8E8",
+            boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+            marginHorizontal: 20,
+          }}
         >
           <Text className="text-white">Next Lesson</Text>
         </TouchableOpacity>

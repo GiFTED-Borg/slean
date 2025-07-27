@@ -61,9 +61,12 @@ export default function Challenges() {
             }
             footer={
               <TouchableOpacity
-                className="rounded-[10px] w-full py-[9px] bg-cyan-600 items-center"
+                className="rounded-[10px] w-full py-[9px] items-center"
                 onPress={() => router.push("/challenge/hello-solana-world")}
-                style={{ backgroundColor: "#84E8E8" }}
+                style={{
+                  backgroundColor: "#84E8E8",
+                  boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+                }}
               >
                 <View className="flex flex-row items-center justify-center">
                   <Text className="text-[#000]" style={{ marginRight: 10 }}>
@@ -102,8 +105,11 @@ export default function Challenges() {
             }
             footer={
               <TouchableOpacity
-                className="rounded-[10px] w-full py-[9px] bg-cyan-600 items-center"
-                style={{ backgroundColor: "#84E8E8" }}
+                className="rounded-[10px] w-full py-[9px] items-center"
+                style={{
+                  backgroundColor: "#84E8E8",
+                  boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+                }}
               >
                 <Text className="text-[#000]">
                   <View className="flex flex-row items-center justify-center gap-x-2.5">
@@ -144,8 +150,11 @@ export default function Challenges() {
             }
             footer={
               <TouchableOpacity
-                className="rounded-[10px] w-full py-[9px] bg-cyan-600 items-center"
-                style={{ backgroundColor: "#84E8E8" }}
+                className="rounded-[10px] w-full py-[9px] items-center"
+                style={{
+                  backgroundColor: "#84E8E8",
+                  boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+                }}
               >
                 <Text className="text-[#000]">
                   <View className="flex flex-row items-center justify-center gap-x-2.5">
@@ -186,8 +195,11 @@ export default function Challenges() {
             }
             footer={
               <TouchableOpacity
-                className="rounded-[10px] w-full py-[9px] bg-cyan-600 items-center"
-                style={{ backgroundColor: "#84E8E8" }}
+                className="rounded-[10px] w-full py-[9px] items-center"
+                style={{
+                  backgroundColor: "#84E8E8",
+                  boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+                }}
               >
                 <Text className="text-[#000]">
                   <View className="flex flex-row items-center justify-center gap-x-2.5">

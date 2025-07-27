@@ -78,6 +78,9 @@ export default function Course() {
               <TouchableOpacity
                 onPress={() => router.push("/lessons/1")}
                 className="rounded-[10px] w-full py-[9px] items-center border border-cyan-600"
+                style={{
+                  boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+                }}
               >
                 <Text style={{ color: "#84e8e8" }}>Review Lesson</Text>
               </TouchableOpacity>
@@ -113,7 +116,10 @@ export default function Course() {
             footer={
               <TouchableOpacity
                 className="rounded-[10px] w-full py-[9px] items-center"
-                style={{ backgroundColor: "#84e8e8" }}
+                style={{
+                  backgroundColor: "#84e8e8",
+                  boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+                }}
               >
                 <Text className="text-[#000]">Review Lesson</Text>
               </TouchableOpacity>
@@ -149,7 +155,10 @@ export default function Course() {
             footer={
               <TouchableOpacity
                 className="rounded-[10px] w-full py-[9px] items-center"
-                style={{ backgroundColor: "#84e8e8" }}
+                style={{
+                  backgroundColor: "#84e8e8",
+                  boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+                }}
               >
                 <Text className="text-[#000]">Review Lesson</Text>
               </TouchableOpacity>
@@ -185,7 +194,10 @@ export default function Course() {
             footer={
               <TouchableOpacity
                 className="rounded-[10px] w-full py-[9px] items-center"
-                style={{ backgroundColor: "#84e8e8" }}
+                style={{
+                  backgroundColor: "#84e8e8",
+                  boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+                }}
               >
                 <Text className="text-[#000]">Review Lesson</Text>
               </TouchableOpacity>

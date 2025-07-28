@@ -5,5 +5,5 @@ export const dynamicClient = createClient({
   environmentId: process.env.EXPO_PUBLIC_DYNAMIC_ENVIRONMENT_ID!,
   // Optional:
   appLogoUrl: "https://demo.dynamic.xyz/favicon-32x32.png",
-  appName: "Dynamic Demo",
+  appName: "Slean",
 }).extend(ReactNativeExtension());

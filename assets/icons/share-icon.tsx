@@ -8,7 +8,13 @@ type Props = {
 };
 
 const ShareIcon = ({ width = 16, height = 16, stroke = "#292D32" }: Props) => (
-  <Svg width={width} height={height} viewBox="0 0 16 16" stroke="none">
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 16 16"
+    stroke="none"
+    fill="none"
+  >
     <Path
       stroke={stroke}
       strokeLinecap="round"

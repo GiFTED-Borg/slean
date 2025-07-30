@@ -1,12 +1,26 @@
-import ChevronRight from "@/assets/icons/chevron-right";
+import { useState } from "react";
 import { ScrollView, TouchableOpacity, View, Text } from "react-native";
+import ChevronRight from "@/assets/icons/chevron-right";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
 import TimeIcon from "@/assets/icons/time-icon";
 import Chip from "@/components/chip";
+import ChallengeStatus from "@/components/challenge/challenge-status";
 
 export default function CodeChallenge() {
   const router = useRouter();
+  const [submit, setSubmit] = useState(false);
+
+  const messages = [
+    "Lorem Ipsum sum",
+    "Lorem Ipsum laude",
+    "Lorem Ipsum",
+    "Missing:Lorem Ipsum",
+  ];
+
+  if (submit) {
+    return <ChallengeStatus status="success" messages={messages} />;
+  }
   return (
     <SafeAreaView className="flex-1 bg-black">
       <ScrollView
@@ -62,6 +76,23 @@ export default function CodeChallenge() {
             </View>
           </View>
         </View>
+        <TouchableOpacity
+          className="rounded-[10px] py-[9px] items-center"
+          style={{
+            backgroundColor: "#84E8E8",
+            boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
+            marginHorizontal: 20,
+            marginTop: "auto",
+          }}
+          onPress={() => setSubmit(true)}
+        >
+          <Text
+            className="text-sm text-black"
+            style={{ fontFamily: "GeistMono-Regular" }}
+          >
+            Submit Solution
+          </Text>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );

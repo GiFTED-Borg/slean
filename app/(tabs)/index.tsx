@@ -62,7 +62,7 @@ export default function Home() {
                 className="rounded-[10px] w-full py-[9px] items-center"
                 style={{
                   backgroundColor: "#84E8E8",
-                  boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+                  boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
                 }}
               >
                 <Text
@@ -134,7 +134,7 @@ export default function Home() {
                 className="rounded-[10px] w-full py-[9px] items-center"
                 style={{
                   backgroundColor: "#84E8E8",
-                  boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+                  boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
                 }}
               >
                 <Text

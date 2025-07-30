@@ -1,11 +1,19 @@
 import { Stack, useRouter } from "expo-router";
 import React, { useState } from "react";
-import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  View,
+  Text,
+  Dimensions,
+  Image,
+} from "react-native";
 
-import { ThemedText } from "@/components/themed-text";
-import { ThemedView } from "@/components/themed-view";
 import { Toast } from "@/components/toast";
 import { dynamicClient } from "@/clients/dynamic";
+import googleIcon from "@/assets/images/google-icon.png";
+import xIcon from "@/assets/images/x-icon.png";
 
 export default function SignInScreen() {
   const [email, setEmail] = useState("");
@@ -75,42 +83,105 @@ export default function SignInScreen() {
   return (
     <>
       <Stack.Screen options={{ title: "Sign In" }} />
-      <ThemedView style={styles.container}>
-        <ThemedText type="title" style={styles.title}>
-          Sign In
-        </ThemedText>
-
-        <ThemedView style={styles.formContainer}>
-          <ThemedText style={styles.label}>Email Address</ThemedText>
+      <View
+        className="h-full flex flex-col flex-1"
+        style={{ backgroundColor: "#0B0C10", paddingHorizontal: 20 }}
+      >
+        <View className="flex flex-col flex-1">
+          <Text
+            className="text-white text-xl font-medium"
+            style={{
+              marginTop: 54,
+              marginBottom: 19,
+              fontFamily: "GeistMono-Medium",
+            }}
+          >
+            What is your email address?
+          </Text>
           <TextInput
             style={styles.input}
-            placeholder="Enter your email"
-            placeholderTextColor="#666"
+            placeholder="Enter email address"
+            placeholderTextColor="#84E8E880"
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
             autoCapitalize="none"
             autoCorrect={false}
           />
-
           <TouchableOpacity
             style={[styles.button, isLoading && styles.buttonDisabled]}
             onPress={handleGetOTP}
             disabled={isLoading}
           >
-            <ThemedText style={styles.buttonText}>
-              {isLoading ? "Sending..." : "Get OTP"}
-            </ThemedText>
+            <Text style={styles.buttonText}>
+              {isLoading ? "Sending..." : "Continue"}
+            </Text>
           </TouchableOpacity>
-        </ThemedView>
-
-        <Toast
-          visible={toast.visible}
-          message={toast.message}
-          type={toast.type}
-          onHide={() => setToast((prev) => ({ ...prev, visible: false }))}
-        />
-      </ThemedView>
+          <Toast
+            visible={toast.visible}
+            message={toast.message}
+            type={toast.type}
+            onHide={() => setToast((prev) => ({ ...prev, visible: false }))}
+          />
+        </View>
+        <View className="flex flex-col flex-1" style={{ gap: 40 }}>
+          <View
+            className="flex flex-row items-center justify-center"
+            style={{ gap: 3 }}
+          >
+            <View
+              style={{
+                width: Dimensions.get("window").width / 2 - 24,
+                height: 1,
+                backgroundColor: "#FFFFFF99",
+              }}
+            ></View>
+            <Text
+              style={{
+                color: "#FFFFFF99",
+                fontSize: 12,
+                fontFamily: "GeistMono-Regular",
+              }}
+            >
+              or
+            </Text>
+            <View
+              style={{
+                width: Dimensions.get("window").width / 2 - 24,
+                height: 1,
+                backgroundColor: "#FFFFFF99",
+              }}
+            ></View>
+          </View>
+          <View
+            className="flex flex-row items-center justify-center"
+            style={{ gap: 52 }}
+          >
+            <TouchableOpacity
+              className="flex flex-row items-center justify-center"
+              style={{
+                backgroundColor: "#27282C",
+                width: 64,
+                height: 64,
+                borderRadius: 6.03,
+              }}
+            >
+              <Image source={googleIcon} className="size-[42.57px]" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              className="flex flex-row items-center justify-center"
+              style={{
+                backgroundColor: "#27282C",
+                width: 64,
+                height: 64,
+                borderRadius: 6.03,
+              }}
+            >
+              <Image source={xIcon} className="size-[39.56px]" />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
     </>
   );
 }
@@ -137,19 +208,21 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   input: {
-    borderWidth: 1,
-    borderColor: "#ddd",
-    borderRadius: 8,
-    padding: 15,
-    fontSize: 16,
-    marginBottom: 20,
-    backgroundColor: "#fff",
+    backgroundColor: "#132224",
+    borderRadius: 20,
+    paddingLeft: 27,
+    paddingRight: 19,
+    paddingHorizontal: 19,
+    marginBottom: 46,
+    height: 58,
+    fontFamily: "GeistMono-Regular",
+    color: "#84E8E8",
   },
   button: {
-    backgroundColor: "#007AFF",
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    borderRadius: 8,
+    backgroundColor: "#84E8E8",
+    height: 58,
+    padding: 19,
+    borderRadius: 20,
     alignItems: "center",
     marginBottom: 20,
   },
@@ -157,9 +230,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#ccc",
   },
   buttonText: {
-    color: "#fff",
+    color: "#000000",
     fontSize: 16,
-    fontWeight: "600",
+    fontWeight: "400",
+    fontFamily: "GeistMono-Regular",
   },
   backLink: {
     marginTop: 20,

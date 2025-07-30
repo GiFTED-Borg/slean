@@ -2,7 +2,7 @@ import { ThemeProvider } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "react-native-reanimated";
 import "./global.css";
 
@@ -10,14 +10,38 @@ import { dynamicClient } from "@/clients/dynamic";
 
 import { SessionProvider, useSession } from "@/contexts/SessionContext";
 import { CustomTheme } from "@/constants/theme";
+import SplashScreenAnimated from "@/components/splash-screen";
 
 export default function RootLayout() {
+  const [appReady, setAppReady] = useState(false);
+  const [splashDone, setSplashDone] = useState(false);
+
   const [loaded] = useFonts({
     "GeistMono-Light": require("../assets/fonts/GeistMono-Light.ttf"),
     "GeistMono-Regular": require("../assets/fonts/GeistMono-Regular.ttf"),
     "GeistMono-Medium": require("../assets/fonts/GeistMono-Medium.ttf"),
     "GeistMono-SemiBold": require("../assets/fonts/GeistMono-SemiBold.ttf"),
   });
+
+  useEffect(() => {
+    const prepare = async () => {
+      // Do any loading or prep work here
+      await new Promise((resolve) => setTimeout(resolve, 500)); // simulate loading
+      setAppReady(true);
+    };
+
+    prepare();
+  }, []);
+
+  const onSplashFinish = async () => {
+    setSplashDone(true);
+  };
+
+  if (!appReady) return null;
+
+  if (!splashDone) {
+    return <SplashScreenAnimated onFinish={onSplashFinish} />;
+  }
 
   if (!loaded) {
     // Async font loading only occurs in development.

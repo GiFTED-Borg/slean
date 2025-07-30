@@ -100,7 +100,7 @@ export default function Course() {
                 onPress={() => router.push("/lessons/1")}
                 className="rounded-[10px] w-full py-[9px] items-center border border-cyan-600"
                 style={{
-                  boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+                  boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
                 }}
               >
                 <Text
@@ -149,7 +149,7 @@ export default function Course() {
                 className="rounded-[10px] w-full py-[9px] items-center"
                 style={{
                   backgroundColor: "#84e8e8",
-                  boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+                  boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
                 }}
               >
                 <Text
@@ -199,7 +199,7 @@ export default function Course() {
                 className="rounded-[10px] w-full py-[9px] items-center"
                 style={{
                   backgroundColor: "#84e8e8",
-                  boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+                  boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
                 }}
               >
                 <Text
@@ -249,7 +249,7 @@ export default function Course() {
                 className="rounded-[10px] w-full py-[9px] items-center"
                 style={{
                   backgroundColor: "#84e8e8",
-                  boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+                  boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
                 }}
               >
                 <Text
@@ -285,7 +285,7 @@ export default function Course() {
                 className="rounded-[10px] w-full py-[9px] items-center"
                 style={{
                   backgroundColor: "#84e8e8",
-                  boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+                  boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
                 }}
                 onPress={() => router.push("/quiz/solana-fundamentals")}
               >

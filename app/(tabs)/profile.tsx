@@ -1,10 +1,11 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ScrollView, View, Text } from "react-native";
+import { ScrollView, View, Text, TouchableOpacity } from "react-native";
 import { Calendar } from "react-native-calendars";
 import ProfileCard from "@/components/profile-card";
 import SkillsLevelCard from "@/components/skills-level-card";
 import { IconChip } from "@/components/chip";
 import SettingsIcon from "@/assets/icons/settings-icon";
+import ShareIcon from "@/assets/icons/share-icon";
 
 const markedDates: Record<string, { selected?: boolean; marked?: boolean }> = {
   "2025-07-23": {
@@ -78,7 +79,7 @@ export default function Profile() {
             </Text>
             <IconChip type="streak" text="3 days" />
           </View>
-          <View style={{ paddingHorizontal: 24 }}>
+          <View style={{ paddingHorizontal: 24, marginBottom: 20 }}>
             <Calendar
               style={{ backgroundColor: "transparent" }}
               theme={{
@@ -160,7 +161,42 @@ export default function Profile() {
               }}
             />
           </View>
+          <View
+            className="flex flex-row items-center"
+            style={{ paddingHorizontal: 24 }}
+          >
+            <Text
+              className="text-xs text-white"
+              style={{ fontFamily: "GeistMono-Regular" }}
+            >
+              Longest Streak:{" "}
+            </Text>
+            <Text
+              className="text-xs font-medium"
+              style={{ color: "#F6A10F", fontFamily: "GeistMono-Medium" }}
+            >
+              13 days
+            </Text>
+          </View>
         </View>
+        <TouchableOpacity
+          className="rounded-[10px] w-full py-[9px] items-center"
+          style={{
+            backgroundColor: "#84E8E8",
+            boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
+            marginTop: 54,
+          }}
+        >
+          <View className="flex flex-row items-center" style={{ gap: 10 }}>
+            <ShareIcon />
+            <Text
+              className="text-sm text-black"
+              style={{ fontFamily: "GeistMono-Regular" }}
+            >
+              Share Profile
+            </Text>
+          </View>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );

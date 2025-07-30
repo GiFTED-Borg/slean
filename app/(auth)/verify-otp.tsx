@@ -1,13 +1,18 @@
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import React, { useState, useRef } from "react";
-import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  View,
+  Text,
+} from "react-native";
 
-import { ThemedText } from "@/components/themed-text";
-import { ThemedView } from "@/components/themed-view";
 import { Toast } from "@/components/toast";
 import { dynamicClient } from "@/clients/dynamic";
 import { useSession } from "@/contexts/SessionContext";
 import { API_BASE_URL } from "@/clients/api";
+import RightArrowIcon from "@/assets/icons/right-arrow";
 
 export default function VerifyOTPScreen() {
   const { email } = useLocalSearchParams<{ email: string }>();
@@ -142,17 +147,15 @@ export default function VerifyOTPScreen() {
   return (
     <>
       <Stack.Screen options={{ title: "Verify OTP" }} />
-      <ThemedView style={styles.container}>
-        <ThemedText type="title" style={styles.title}>
-          Verify OTP
-        </ThemedText>
 
-        <ThemedText style={styles.subtitle}>
-          Enter the 6-digit code sent to{"\n"}
-          <ThemedText style={styles.email}>{email}</ThemedText>
-        </ThemedText>
-
-        <View style={styles.otpContainer}>
+      <View
+        className="h-full flex flex-col flex-1"
+        style={{ backgroundColor: "#0B0C10", paddingHorizontal: 20 }}
+      >
+        <View
+          className="flex flex-row items-center justify-center"
+          style={{ gap: 15, marginTop: 189, marginBottom: 108 }}
+        >
           {otp.map((digit, index) => (
             <TextInput
               key={index}
@@ -172,21 +175,34 @@ export default function VerifyOTPScreen() {
         </View>
 
         <TouchableOpacity
-          style={[styles.button, isLoading && styles.buttonDisabled]}
+          className="flex items-center justify-center"
+          style={{
+            height: 87,
+            width: "100%",
+            borderRadius: 15,
+            borderWidth: 1,
+            borderColor: "#A7FFFF80",
+            marginBottom: 19,
+            gap: 1,
+          }}
           onPress={handleVerifyOTP}
           disabled={isLoading}
         >
-          <ThemedText style={styles.buttonText}>
-            {isLoading ? "Verifying..." : "Verify OTP"}
-          </ThemedText>
+          <Text
+            style={{
+              fontSize: 22,
+              fontFamily: "GeistMono-SemiBold",
+              fontWeight: 600,
+              color: isLoading ? "#FFFFFF99" : "#FFFFFF",
+            }}
+          >
+            {isLoading ? "Verifying..." : "Enter"}
+          </Text>
+          <RightArrowIcon />
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.resendButton}
-          onPress={handleResendOTP}
-          disabled={isLoading}
-        >
-          <ThemedText style={styles.resendText}>Resend OTP</ThemedText>
+        <TouchableOpacity onPress={handleResendOTP} disabled={isLoading}>
+          <Text style={{ color: "#84E8E8" }}>Resend OTP</Text>
         </TouchableOpacity>
 
         <Toast
@@ -195,7 +211,7 @@ export default function VerifyOTPScreen() {
           type={toast.type}
           onHide={() => setToast((prev) => ({ ...prev, visible: false }))}
         />
-      </ThemedView>
+      </View>
     </>
   );
 }
@@ -231,13 +247,14 @@ const styles = StyleSheet.create({
   },
   otpInput: {
     width: 45,
-    height: 55,
-    borderWidth: 2,
-    borderColor: "#ddd",
-    borderRadius: 8,
+    height: 65,
+    borderWidth: 1.5,
+    borderColor: "#A7FFFF80",
+    borderRadius: 5,
     fontSize: 20,
     fontWeight: "bold",
-    backgroundColor: "#fff",
+    backgroundColor: "transparent",
+    color: "#84E8E8",
   },
   button: {
     backgroundColor: "#007AFF",

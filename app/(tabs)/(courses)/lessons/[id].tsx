@@ -118,7 +118,7 @@ export default function Lesson() {
             borderRadius: 10,
             gap: 2,
           }}
-          className="flex flex-col"
+          className="flex flex-col items-center justify-center"
         >
           <Text
             className="text-xs"
@@ -127,25 +127,25 @@ export default function Lesson() {
             {`
               // Example account structure
             {
-                "lamports": 1000000000,     // Balance in lamports
+                "lamports": 1000000000, // Balance in lamports
                 "owner": "11111111111111111111111111111111",
-                "data": [],      // Account data
-                "executable": false,     // Is this a program?
-                "rent_epoch": 200      // Rent payment info
+                "data": [], // Account data
+                "executable": false, // Is this a program?
+                "rent_epoch": 200 // Rent payment info
             }
             `}
           </Text>
         </View>
         <TouchableOpacity
-          className="rounded-[10px] w-full py-[9px] items-center"
+          className="rounded-[10px] py-[9px] items-center"
           style={{
             backgroundColor: "#84E8E8",
-            boxShadow: `-1px -1px 10px 0 #FFFFFF73, 1px 1px 10px 0 #FFFFFF73`,
+            boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
             marginHorizontal: 20,
           }}
         >
           <Text
-            className="text-white"
+            className="text-black"
             style={{ fontFamily: "GeistMono-Regular" }}
           >
             Next Lesson

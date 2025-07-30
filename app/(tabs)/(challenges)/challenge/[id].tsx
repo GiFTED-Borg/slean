@@ -5,6 +5,7 @@ import { useRouter } from "expo-router";
 import TimeIcon from "@/assets/icons/time-icon";
 import Chip from "@/components/chip";
 import PlayIcon from "@/assets/icons/play-icon";
+import CustomButton from "@/components/custom-button";
 
 export default function Challenge() {
   const router = useRouter();
@@ -171,24 +172,11 @@ export default function Challenge() {
               • Include appropriate comments
             </Text>
           </View>
-          <TouchableOpacity
-            className="rounded-[10px] w-full py-[9px] items-center"
-            style={{
-              backgroundColor: "#84E8E8",
-              boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
-            }}
-            onPress={() => router.push("/code-challenge/1")}
-          >
-            <View className="flex flex-row items-center justify-center">
-              <Text
-                className="text-[#000]"
-                style={{ marginRight: 10, fontFamily: "GeistMono-Regular" }}
-              >
-                Start Challenge
-              </Text>
-              <PlayIcon fill="#292D32" />
-            </View>
-          </TouchableOpacity>
+          <CustomButton
+            handlePress={() => router.push("/code-challenge/1")}
+            text="Start Challenge"
+            endIcon={<PlayIcon fill="#292D32" />}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>

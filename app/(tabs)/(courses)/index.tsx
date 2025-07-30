@@ -6,6 +6,7 @@ import Chip from "@/components/chip";
 import TimeIcon from "@/assets/icons/time-icon";
 import PlayIcon from "@/assets/icons/play-icon";
 import ProgressBar from "@/components/progress-bar";
+import CornerBracket from "@/components/corner-bracket";
 
 export default function Courses() {
   return (
@@ -25,12 +26,7 @@ export default function Courses() {
             className="flex flex-row items-center justify-between"
             style={{ marginBottom: 16 }}
           >
-            <Text
-              className="font-medium text-white text-lg"
-              style={{ fontFamily: "GeistMono-Medium" }}
-            >
-              Learning Paths
-            </Text>
+            <CornerBracket text="Learning Paths" />
           </View>
           <View>
             <Text

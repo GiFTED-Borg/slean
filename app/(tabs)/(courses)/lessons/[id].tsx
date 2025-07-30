@@ -4,6 +4,7 @@ import { ScrollView, View, Text, TouchableOpacity } from "react-native";
 import ChevronRight from "@/assets/icons/chevron-right";
 import { useRouter } from "expo-router";
 import LessonComplete from "@/components/quiz/lesson-complete";
+import CustomButton from "@/components/custom-button";
 
 export default function Lesson() {
   const router = useRouter();
@@ -143,22 +144,11 @@ export default function Lesson() {
             `}
           </Text>
         </View>
-        <TouchableOpacity
-          className="rounded-[10px] py-[9px] items-center"
-          style={{
-            backgroundColor: "#84E8E8",
-            boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
-            marginHorizontal: 20,
-          }}
-          onPress={() => setFinish(true)}
-        >
-          <Text
-            className="text-black"
-            style={{ fontFamily: "GeistMono-Regular" }}
-          >
-            Finish
-          </Text>
-        </TouchableOpacity>
+        <CustomButton
+          text="Finish"
+          handlePress={() => setFinish(true)}
+          style={{ marginHorizontal: 20, width: "auto" }}
+        />
       </ScrollView>
     </SafeAreaView>
   );

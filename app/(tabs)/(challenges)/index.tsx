@@ -2,9 +2,11 @@ import PlayIcon from "@/assets/icons/play-icon";
 import TimeIcon from "@/assets/icons/time-icon";
 import Card from "@/components/card";
 import Chip, { IconChip } from "@/components/chip";
-import { ScrollView, View, Text, TouchableOpacity } from "react-native";
+import { ScrollView, View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
+import CustomButton from "@/components/custom-button";
+import CornerBracket from "@/components/corner-bracket";
 
 export default function Challenges() {
   const router = useRouter();
@@ -32,12 +34,7 @@ export default function Challenges() {
             className="flex flex-row items-center justify-between"
             style={{ paddingHorizontal: 20 }}
           >
-            <Text
-              className="font-medium text-white text-lg"
-              style={{ fontFamily: "GeistMono-Medium" }}
-            >
-              Challenges
-            </Text>
+            <CornerBracket text="Challenges" />
           </View>
         </View>
         <View style={{ marginBottom: 18, paddingHorizontal: 20 }}>
@@ -71,24 +68,11 @@ export default function Challenges() {
               </View>
             }
             footer={
-              <TouchableOpacity
-                className="rounded-[10px] w-full py-[9px] items-center"
-                onPress={() => router.push("/challenge/hello-solana-world")}
-                style={{
-                  backgroundColor: "#84E8E8",
-                  boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
-                }}
-              >
-                <View className="flex flex-row items-center justify-center">
-                  <Text
-                    className="text-[#000]"
-                    style={{ marginRight: 10, fontFamily: "GeistMono-Regular" }}
-                  >
-                    Start Challenge
-                  </Text>
-                  <PlayIcon fill="#292D32" />
-                </View>
-              </TouchableOpacity>
+              <CustomButton
+                handlePress={() => router.push("/challenge/hello-solana-world")}
+                text="Start Challenge"
+                endIcon={<PlayIcon fill="#292D32" />}
+              />
             }
             shadow="gold"
           />
@@ -124,25 +108,13 @@ export default function Challenges() {
               </View>
             }
             footer={
-              <TouchableOpacity
-                className="rounded-[10px] w-full py-[9px] items-center"
-                style={{
-                  backgroundColor: "#84E8E8",
-                  boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
-                }}
-              >
-                <Text
-                  className="text-[#000]"
-                  style={{ fontFamily: "GeistMono-Regular" }}
-                >
-                  <View className="flex flex-row items-center justify-center gap-x-2.5">
-                    <Text className="text-[#000]" style={{ marginRight: 10 }}>
-                      Start Challenge
-                    </Text>
-                    <PlayIcon fill="#292D32" />
-                  </View>
-                </Text>
-              </TouchableOpacity>
+              <CustomButton
+                handlePress={() =>
+                  router.push("/challenge/token-transfer-logic")
+                }
+                text="Start Challenge"
+                endIcon={<PlayIcon fill="#292D32" />}
+              />
             }
             shadow="gold"
           />
@@ -178,25 +150,13 @@ export default function Challenges() {
               </View>
             }
             footer={
-              <TouchableOpacity
-                className="rounded-[10px] w-full py-[9px] items-center"
-                style={{
-                  backgroundColor: "#84E8E8",
-                  boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
-                }}
-              >
-                <Text
-                  className="text-[#000]"
-                  style={{ fontFamily: "GeistMono-Regular" }}
-                >
-                  <View className="flex flex-row items-center justify-center gap-x-2.5">
-                    <Text className="text-[#000]" style={{ marginRight: 10 }}>
-                      Start Challenge
-                    </Text>
-                    <PlayIcon fill="#292D32" />
-                  </View>
-                </Text>
-              </TouchableOpacity>
+              <CustomButton
+                handlePress={() =>
+                  router.push("/challenge/token-transfer-logic")
+                }
+                text="Start Challenge"
+                endIcon={<PlayIcon fill="#292D32" />}
+              />
             }
             shadow="gold"
           />
@@ -232,28 +192,11 @@ export default function Challenges() {
               </View>
             }
             footer={
-              <TouchableOpacity
-                className="rounded-[10px] w-full py-[9px] items-center"
-                style={{
-                  backgroundColor: "#84E8E8",
-                  boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
-                }}
-              >
-                <Text className="text-[#000]">
-                  <View className="flex flex-row items-center justify-center gap-x-2.5">
-                    <Text
-                      className="text-[#000]"
-                      style={{
-                        marginRight: 10,
-                        fontFamily: "GeistMono-Regular",
-                      }}
-                    >
-                      Start Challenge
-                    </Text>
-                    <PlayIcon fill="#292D32" />
-                  </View>
-                </Text>
-              </TouchableOpacity>
+              <CustomButton
+                handlePress={() => router.push("/challenge/hello-solana-world")}
+                text="Start Challenge"
+                endIcon={<PlayIcon fill="#292D32" />}
+              />
             }
             shadow="gold"
           />

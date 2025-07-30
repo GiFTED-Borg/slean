@@ -1,13 +1,14 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView, View, Text, TouchableOpacity } from "react-native";
-import { Link, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import Chip, { IconChip } from "@/components/chip";
 import Card from "@/components/card";
 import StatCard from "@/components/stat-card";
 import TimeIcon from "@/assets/icons/time-icon";
 import ChevronRight from "@/assets/icons/chevron-right";
-import ProgressBar from "@/components/progress-bar";
 import PlayIcon from "@/assets/icons/play-icon";
+import CustomButton from "@/components/custom-button";
+import CornerBracket from "@/components/corner-bracket";
 
 export default function Home() {
   const router = useRouter();
@@ -28,55 +29,35 @@ export default function Home() {
             className="flex flex-row items-center justify-between"
             style={{ marginBottom: 16 }}
           >
-            <Text
-              className="font-medium text-white text-lg"
-              style={{ fontFamily: "GeistMono-Medium" }}
-            >
-              Welcome Cadet 🫡
-            </Text>
-            <IconChip type="streak" text="3 days" />
+            <CornerBracket text="Welcome Cadet 🫡" />
+            <IconChip type="streak" text="1 day" />
           </View>
           <View>
             <Text
               className="text-sm  text-[#FFFFFF99]"
               style={{ fontFamily: "GeistMono-Regular" }}
             >
-              Level 3 • Rust Rookie
+              Level 1 • Rust Rookie
             </Text>
           </View>
         </View>
         <View style={{ marginBottom: 14 }}>
           <Card
             gap={20}
-            title="Daily Progress"
+            title="Progress"
             rightExtra={<Chip size="lg" text="Wed, Jul 9" variant="blue2" />}
             info={
               <View className="flex-row" style={{ gap: 10 }}>
-                <StatCard type="xp" stat={120} text="XP Today" />
-                <StatCard type="lessons" stat={2} text="Lessons" />
-                <StatCard type="challenge" stat={1} text="Challenge" />
+                <StatCard type="xp" stat={0} text="XP Today" />
+                <StatCard type="lessons" stat={0} text="Lessons" />
+                <StatCard type="challenge" stat={0} text="Challenge" />
               </View>
             }
-            footer={
-              <TouchableOpacity
-                className="rounded-[10px] w-full py-[9px] items-center"
-                style={{
-                  backgroundColor: "#84E8E8",
-                  boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
-                }}
-              >
-                <Text
-                  className="text-[#000]"
-                  style={{ fontFamily: "GeistMono-Regular" }}
-                >
-                  Complete Today’s task
-                </Text>
-              </TouchableOpacity>
-            }
+            footer={<CustomButton text="Complete Today’s task" isDisabled />}
             shadow="gold"
           />
         </View>
-        <View className="flex flex-col" style={{ marginBottom: 12 }}>
+        {/* <View className="flex flex-col" style={{ marginBottom: 12 }}>
           <View
             className="flex flex-row items-center justify-between"
             style={{ marginBottom: 12 }}
@@ -147,7 +128,7 @@ export default function Home() {
             }
             shadow="gold"
           />
-        </View>
+        </View> */}
         <View className="flex flex-col" style={{ marginBottom: 12 }}>
           <View
             className="flex flex-row items-center justify-between"
@@ -157,7 +138,7 @@ export default function Home() {
               className="font-medium text-white text-lg"
               style={{ lineHeight: 19.7, fontFamily: "GeistMono-Medium" }}
             >
-              Continue Learning
+              Start Learning
             </Text>
             <TouchableOpacity
               className="flex flex-row items-center"
@@ -172,54 +153,45 @@ export default function Home() {
               <ChevronRight width={14} height={14} stroke="#84E8E8" />
             </TouchableOpacity>
           </View>
-          <Link href={`/course/solana-fundamentals`}>
-            <Card
-              gap={20}
-              title="Solana Fundamentals"
-              rightExtra={<Chip size="lg" text="Beginner" variant="green" />}
-              headerExtraGap="lg"
-              desc="Begin your journey into Solana blockchain development with fundamental concepts"
-              headerExtra={
+
+          <Card
+            gap={20}
+            title="What is Solana?"
+            descColor="#FFFFFF99"
+            rightExtra={<PlayIcon fill="#25F082" />}
+            headerExtraGap="lg"
+            desc="Introduction to Solana Blockchain"
+            headerExtra={
+              <View
+                className="flex flex-row items-center"
+                style={{ gap: 8.71 }}
+              >
+                <Chip variant="violet" text="Theory" size="md" />
                 <View
                   className="flex flex-row items-center"
-                  style={{ gap: 8.71 }}
+                  style={{ gap: 2.71 }}
                 >
-                  <View
-                    className="flex flex-row items-center"
-                    style={{ gap: 2.71 }}
+                  <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
+                  <Text
+                    style={{
+                      color: "#FFFFFF66",
+                      fontSize: 10,
+                      fontFamily: "GeistMono-Regular",
+                    }}
                   >
-                    <PlayIcon width={12} height={12} fill="#FFFFFF66" />
-                    <Text
-                      style={{
-                        color: "#FFFFFF66",
-                        fontSize: 10,
-                        fontFamily: "GeistMono-Regular",
-                      }}
-                    >
-                      12 lessons
-                    </Text>
-                  </View>
-                  <View
-                    className="flex flex-row items-center"
-                    style={{ gap: 2.71 }}
-                  >
-                    <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                    <Text
-                      style={{
-                        color: "#FFFFFF66",
-                        fontSize: 10,
-                        fontFamily: "GeistMono-Regular",
-                      }}
-                    >
-                      2h 30min
-                    </Text>
-                  </View>
+                    15 min
+                  </Text>
                 </View>
-              }
-              footer={<ProgressBar progress={0.65} />}
-              shadow="gold"
-            />
-          </Link>
+              </View>
+            }
+            footer={
+              <CustomButton
+                handlePress={() => router.push("/lessons/1")}
+                text="Start Lesson"
+              />
+            }
+            shadow="silver"
+          />
         </View>
       </ScrollView>
     </SafeAreaView>

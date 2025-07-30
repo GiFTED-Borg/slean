@@ -1,11 +1,13 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ScrollView, View, Text, TouchableOpacity } from "react-native";
+import { ScrollView, View, Text } from "react-native";
 import { Calendar } from "react-native-calendars";
 import ProfileCard from "@/components/profile-card";
 import SkillsLevelCard from "@/components/skills-level-card";
 import { IconChip } from "@/components/chip";
 import SettingsIcon from "@/assets/icons/settings-icon";
 import ShareIcon from "@/assets/icons/share-icon";
+import CustomButton from "@/components/custom-button";
+import CornerBracket from "@/components/corner-bracket";
 
 const markedDates: Record<string, { selected?: boolean; marked?: boolean }> = {
   "2025-07-23": {
@@ -33,12 +35,7 @@ export default function Profile() {
       >
         <View className="flex flex-col" style={{ marginBottom: 25 }}>
           <View className="flex flex-row items-center justify-between">
-            <Text
-              className="font-medium text-white text-lg"
-              style={{ fontFamily: "GeistMono-Medium" }}
-            >
-              Profile
-            </Text>
+            <CornerBracket text="Profile" />
             <SettingsIcon
               width={24}
               height={24}
@@ -48,10 +45,19 @@ export default function Profile() {
           </View>
         </View>
         <View style={{ marginBottom: 27 }}>
-          <ProfileCard />
+          <ProfileCard
+            name="Kenpachi_Mazino"
+            level={1}
+            lessons={0}
+            challenges={0}
+            streak={0}
+            xp={0}
+            profileImage=""
+            dateJoined="July 1 2025"
+          />
         </View>
         <View style={{ marginBottom: 26 }}>
-          <SkillsLevelCard />
+          <SkillsLevelCard lvl1={0} lvl2={0} lvl3={0} lvl4={0} />
         </View>
         <View
           className="flex flex-col"
@@ -77,7 +83,7 @@ export default function Profile() {
             >
               Streaks
             </Text>
-            <IconChip type="streak" text="3 days" />
+            <IconChip type="streak" text="1 day" />
           </View>
           <View style={{ paddingHorizontal: 24, marginBottom: 20 }}>
             <Calendar
@@ -175,28 +181,15 @@ export default function Profile() {
               className="text-xs font-medium"
               style={{ color: "#F6A10F", fontFamily: "GeistMono-Medium" }}
             >
-              13 days
+              0 days
             </Text>
           </View>
         </View>
-        <TouchableOpacity
-          className="rounded-[10px] w-full py-[9px] items-center"
-          style={{
-            backgroundColor: "#84E8E8",
-            boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
-            marginTop: 54,
-          }}
-        >
-          <View className="flex flex-row items-center" style={{ gap: 10 }}>
-            <ShareIcon />
-            <Text
-              className="text-sm text-black"
-              style={{ fontFamily: "GeistMono-Regular" }}
-            >
-              Share Profile
-            </Text>
-          </View>
-        </TouchableOpacity>
+        <CustomButton
+          startIcon={<ShareIcon />}
+          style={{ marginTop: 54 }}
+          text="Share Profile"
+        />
       </ScrollView>
     </SafeAreaView>
   );

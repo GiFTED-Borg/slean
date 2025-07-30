@@ -10,7 +10,7 @@ type CardProps = {
   footer?: React.ReactNode;
   rightExtra: React.ReactNode;
   headerExtra?: React.ReactNode;
-  shadow: "gold" | "silver";
+  shadow: "gold" | "silver" | "solid-gold";
   descColor?: string;
 };
 
@@ -29,10 +29,17 @@ export default function Card({
   return (
     <Shadow
       stretch
-      distance={1.5}
+      distance={2}
       startColor={shadow === "gold" ? "#9A60131A" : "#FFFFFF1A"}
       endColor={shadow === "gold" ? "#9A601333" : "#FFFFFF33"}
-      style={{ borderRadius: 20 }}
+      style={{
+        borderRadius: 20,
+      }}
+      containerStyle={{
+        borderRadius: 20,
+        borderWidth: shadow === "solid-gold" ? 0.5 : 0,
+        borderColor: shadow === "solid-gold" ? "#EE7D2D" : "none",
+      }}
     >
       <View
         style={{

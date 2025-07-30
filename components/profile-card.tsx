@@ -1,8 +1,29 @@
-import { Image, View, Text } from "react-native";
+import { Image, View, Text, TouchableOpacity } from "react-native";
 import defaultImgIcon from "@/assets/images/defaultImgIcon.png";
 import Chip from "./chip";
+import EditIcon from "@/assets/icons/edit-icon";
 
-export default function ProfileCard() {
+type ProfileCardProps = {
+  name: string;
+  profileImage: string;
+  level: number;
+  dateJoined: string;
+  lessons: number;
+  challenges: number;
+  xp: number;
+  streak: number;
+};
+
+export default function ProfileCard({
+  name,
+  profileImage,
+  level,
+  dateJoined,
+  lessons,
+  challenges,
+  xp,
+  streak,
+}: ProfileCardProps) {
   return (
     <View className="rounded-[10px] bg-dark pt-3.5 pb-[9px] px-[1.625rem] flex flex-col">
       <View
@@ -19,18 +40,23 @@ export default function ProfileCard() {
           style={{ marginRight: 12 }}
         >
           <Image
-            source={defaultImgIcon}
+            source={defaultImgIcon || profileImage}
             tintColor="#A6A6A6"
             className="size-5"
           />
         </View>
-        <View className="flex flex-col">
-          <Text
-            className="text-white font-semibold text-base leading-[22px]"
-            style={{ marginBottom: 2.5, fontFamily: "GeistMono-SemiBold" }}
-          >
-            Kenpachi_Mazino
-          </Text>
+        <View className="flex flex-col flex-1">
+          <View className="flex flex-row items-center justify-between">
+            <Text
+              className="text-white font-semibold text-base leading-[22px]"
+              style={{ marginBottom: 2.5, fontFamily: "GeistMono-SemiBold" }}
+            >
+              {name}
+            </Text>
+            <TouchableOpacity className="p-4">
+              <EditIcon />
+            </TouchableOpacity>
+          </View>
           <Text
             className="text-[10px] leading-[16.22px]"
             style={{
@@ -42,12 +68,12 @@ export default function ProfileCard() {
             Rust Rookie
           </Text>
           <View className="flex flex-row items-center" style={{ gap: 8 }}>
-            <Chip size="lg" text="Level 3" variant="violet" />
+            <Chip size="lg" text={`Level ${level}`} variant="violet" />
             <Text
               className="text-[10px] leading-[16.22px]"
               style={{ color: "#FFFFFF66", fontFamily: "GeistMono-Regular" }}
             >
-              Joined July 9 2025
+              Joined {dateJoined}
             </Text>
           </View>
         </View>
@@ -61,7 +87,7 @@ export default function ProfileCard() {
             className="text-white font-semibold text-sm leading-[19.7px]"
             style={{ fontFamily: "GeistMono-SemiBold" }}
           >
-            2
+            {lessons}
           </Text>
           <Text
             className="text-xs font-light leading-[19.7px]"
@@ -75,10 +101,10 @@ export default function ProfileCard() {
           style={{ gap: 2 }}
         >
           <Text
-            className="text-white font-semibold text-sm leading-[19.7px]"
-            style={{ fontFamily: "GeistMono-SemiBold" }}
+            className="font-semibold text-sm leading-[19.7px]"
+            style={{ fontFamily: "GeistMono-SemiBold", color: "#FFFFFF99" }}
           >
-            2
+            {challenges}
           </Text>
           <Text
             className="text-xs font-light leading-[19.7px]"
@@ -95,7 +121,7 @@ export default function ProfileCard() {
             className="text-white font-semibold text-sm leading-[19.7px]"
             style={{ fontFamily: "GeistMono-SemiBold" }}
           >
-            450
+            {xp}
           </Text>
           <Text
             className="text-xs font-light leading-[19.7px]"
@@ -112,7 +138,7 @@ export default function ProfileCard() {
             className="text-white font-semibold text-sm leading-[19.7px]"
             style={{ fontFamily: "GeistMono-SemiBold" }}
           >
-            7
+            {streak}
           </Text>
           <Text
             className="text-xs font-light leading-[19.7px]"

@@ -1,11 +1,13 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ScrollView, View, Text, TouchableOpacity } from "react-native";
+import { ScrollView, View, Text } from "react-native";
 import TimeIcon from "@/assets/icons/time-icon";
 import Chip, { IconChip } from "@/components/chip";
 import PlayIcon from "@/assets/icons/play-icon";
 import Card from "@/components/card";
 import CompleteIcon from "@/assets/icons/complete-icon";
 import { useRouter } from "expo-router";
+import CustomButton from "@/components/custom-button";
+import CornerBracket from "@/components/corner-bracket";
 
 export default function Course() {
   const router = useRouter();
@@ -22,12 +24,7 @@ export default function Course() {
         }}
       >
         <View className="flex flex-col" style={{ marginBottom: 19, gap: 16 }}>
-          <Text
-            className="font-medium text-white text-lg"
-            style={{ fontFamily: "GeistMono-Medium" }}
-          >
-            Solana fundamentals
-          </Text>
+          <CornerBracket text="Solana fundamentals" />
           <View className="flex flex-row items-center justify-between">
             <View className="flex flex-row items-center" style={{ gap: 24 }}>
               <View
@@ -96,19 +93,11 @@ export default function Course() {
               </View>
             }
             footer={
-              <TouchableOpacity
-                onPress={() => router.push("/lessons/1")}
-                className="rounded-[10px] w-full py-[9px] items-center border border-cyan-600"
-                style={{
-                  boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
-                }}
-              >
-                <Text
-                  style={{ color: "#84e8e8", fontFamily: "GeistMono-Regular" }}
-                >
-                  Review Lesson
-                </Text>
-              </TouchableOpacity>
+              <CustomButton
+                handlePress={() => router.push("/lessons/1")}
+                text="Review Lesson"
+                variant="outline"
+              />
             }
             shadow="silver"
           />
@@ -145,20 +134,10 @@ export default function Course() {
               </View>
             }
             footer={
-              <TouchableOpacity
-                className="rounded-[10px] w-full py-[9px] items-center"
-                style={{
-                  backgroundColor: "#84e8e8",
-                  boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
-                }}
-              >
-                <Text
-                  className="text-[#000]"
-                  style={{ fontFamily: "GeistMono-Regular" }}
-                >
-                  Review Lesson
-                </Text>
-              </TouchableOpacity>
+              <CustomButton
+                handlePress={() => router.push("/lessons/2")}
+                text="Start Lesson"
+              />
             }
             shadow="silver"
           />
@@ -195,20 +174,10 @@ export default function Course() {
               </View>
             }
             footer={
-              <TouchableOpacity
-                className="rounded-[10px] w-full py-[9px] items-center"
-                style={{
-                  backgroundColor: "#84e8e8",
-                  boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
-                }}
-              >
-                <Text
-                  className="text-[#000]"
-                  style={{ fontFamily: "GeistMono-Regular" }}
-                >
-                  Review Lesson
-                </Text>
-              </TouchableOpacity>
+              <CustomButton
+                handlePress={() => router.push("/lessons/2")}
+                text="Start Lesson"
+              />
             }
             shadow="silver"
           />
@@ -245,20 +214,10 @@ export default function Course() {
               </View>
             }
             footer={
-              <TouchableOpacity
-                className="rounded-[10px] w-full py-[9px] items-center"
-                style={{
-                  backgroundColor: "#84e8e8",
-                  boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
-                }}
-              >
-                <Text
-                  className="text-[#000]"
-                  style={{ fontFamily: "GeistMono-Regular" }}
-                >
-                  Review Lesson
-                </Text>
-              </TouchableOpacity>
+              <CustomButton
+                handlePress={() => router.push("/lessons/2")}
+                text="Start Lesson"
+              />
             }
             shadow="silver"
           />
@@ -281,23 +240,12 @@ export default function Course() {
               </View>
             }
             footer={
-              <TouchableOpacity
-                className="rounded-[10px] w-full py-[9px] items-center"
-                style={{
-                  backgroundColor: "#84e8e8",
-                  boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
-                }}
-                onPress={() => router.push("/quiz/solana-fundamentals")}
-              >
-                <Text
-                  className="text-[#000]"
-                  style={{ fontFamily: "GeistMono-Regular" }}
-                >
-                  Start Quiz
-                </Text>
-              </TouchableOpacity>
+              <CustomButton
+                handlePress={() => router.push("/quiz/solana-fundamentals")}
+                text="Start Quiz"
+              />
             }
-            shadow="gold"
+            shadow="solid-gold"
           />
         </View>
       </ScrollView>

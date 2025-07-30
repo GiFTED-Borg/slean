@@ -1,7 +1,8 @@
 import CancelIcon from "@/assets/icons/cancel-icon";
 import ChallengeSuccess from "@/assets/icons/challenge-success";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import CustomButton from "../custom-button";
 
 type ChallengeStatusProps = {
   status: "success" | "error";
@@ -125,22 +126,11 @@ export default function ChallengeStatus({
               Hint: Lorem ipsum dolor
             </Text>
           </View>
-          <TouchableOpacity
-            className="rounded-[10px] w-full py-[9px] items-center"
-            onPress={handlePress}
-            style={{
-              backgroundColor: "#84E8E8",
-              boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
-              marginTop: "auto",
-            }}
-          >
-            <Text
-              className="text-sm text-black"
-              style={{ fontFamily: "GeistMono-Regular" }}
-            >
-              {status === "success" ? "Next Challenge" : "Retry Mission"}
-            </Text>
-          </TouchableOpacity>
+          <CustomButton
+            handlePress={handlePress}
+            text={status === "success" ? "Next Challenge" : "Retry Mission"}
+            style={{ marginTop: "auto" }}
+          />
         </View>
       </View>
     </SafeAreaView>

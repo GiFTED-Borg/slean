@@ -1,7 +1,25 @@
 import { View, Text } from "react-native";
 import ProgressBar from "./progress-bar";
 
-export default function SkillsLevelCard() {
+type SkillsLevelCardProps = {
+  lvl1: number;
+  lvl2: number;
+  lvl3: number;
+  lvl4: number;
+};
+
+export default function SkillsLevelCard({
+  lvl1,
+  lvl2,
+  lvl3,
+  lvl4,
+}: SkillsLevelCardProps) {
+  function calcProgress(lvl: number): number {
+    if (lvl <= 0) return 0;
+    const clamped = Math.min(lvl, 5);
+    return parseFloat((clamped / 5).toFixed(1));
+  }
+
   return (
     <View
       className="rounded-[10px] pt-3 pb-6 px-6 flex flex-col"
@@ -32,10 +50,14 @@ export default function SkillsLevelCard() {
             className="text-[8px] font-semibold leading-[8.72px]"
             style={{ color: "#FFFFFF99", fontFamily: "GeistMono-SemiBold" }}
           >
-            Lvl 4
+            Lvl {lvl1}
           </Text>
         </View>
-        <ProgressBar progress={0.6} color="#FFAA2C" width={289} />
+        <ProgressBar
+          progress={calcProgress(lvl1)}
+          color="#FFAA2C"
+          width={289}
+        />
       </View>
       <View className="flex flex-col" style={{ gap: 4 }}>
         <View className="flex flex-row items-center justify-between">
@@ -49,10 +71,14 @@ export default function SkillsLevelCard() {
             className="text-[8px] font-semibold leading-[8.72px]"
             style={{ color: "#FFFFFF99", fontFamily: "GeistMono-SemiBold" }}
           >
-            Lvl 1
+            Lvl {lvl2}
           </Text>
         </View>
-        <ProgressBar progress={0.2} color="#FFAA2C" width={289} />
+        <ProgressBar
+          progress={calcProgress(lvl2)}
+          color="#FFAA2C"
+          width={289}
+        />
       </View>
       <View className="flex flex-col" style={{ gap: 4 }}>
         <View className="flex flex-row items-center justify-between">
@@ -66,10 +92,14 @@ export default function SkillsLevelCard() {
             className="text-[8px] font-semibold leading-[8.72px]"
             style={{ color: "#FFFFFF99", fontFamily: "GeistMono-SemiBold" }}
           >
-            Lvl 5
+            Lvl {lvl3}
           </Text>
         </View>
-        <ProgressBar progress={1} color="#FFAA2C" width={289} />
+        <ProgressBar
+          progress={calcProgress(lvl3)}
+          color="#FFAA2C"
+          width={289}
+        />
       </View>
       <View className="flex flex-col" style={{ gap: 4 }}>
         <View className="flex flex-row items-center justify-between">
@@ -83,10 +113,14 @@ export default function SkillsLevelCard() {
             className="text-[8px] font-semibold leading-[8.72px]"
             style={{ color: "#FFFFFF99", fontFamily: "GeistMono-SemiBold" }}
           >
-            Lvl 2
+            Lvl {lvl4}
           </Text>
         </View>
-        <ProgressBar progress={0.4} color="#FFAA2C" width={289} />
+        <ProgressBar
+          progress={calcProgress(lvl4)}
+          color="#FFAA2C"
+          width={289}
+        />
       </View>
     </View>
   );

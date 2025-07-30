@@ -3,6 +3,7 @@ import { ScrollView, View, Text, TouchableOpacity } from "react-native";
 import ChevronRight from "@/assets/icons/chevron-right";
 import { useRouter } from "expo-router";
 import QuizAnswer from "@/components/quiz/quiz-answer";
+import CustomButton from "@/components/custom-button";
 
 export default function Quiz() {
   const router = useRouter();
@@ -31,9 +32,9 @@ export default function Quiz() {
     },
   ];
   return (
-    <SafeAreaView className="flex-1 bg-black">
+    <SafeAreaView className="flex-1 bg-black h-full">
       <ScrollView
-        className="flex-1 px-5 bg-black"
+        className="flex-1 px-5 bg-black h-full"
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{
           minHeight: "100%",
@@ -93,21 +94,7 @@ export default function Quiz() {
               />
             ))}
           </View>
-          <TouchableOpacity
-            className="rounded-[10px] w-full py-[9px] items-center"
-            style={{
-              backgroundColor: "#84E8E8",
-              boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
-              marginTop: 122,
-            }}
-          >
-            <Text
-              className="text-black"
-              style={{ fontFamily: "GeistMono-Regular" }}
-            >
-              {btnText}
-            </Text>
-          </TouchableOpacity>
+          <CustomButton text={btnText} style={{ marginTop: 122 }} />
         </View>
       </ScrollView>
     </SafeAreaView>

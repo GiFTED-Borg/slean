@@ -20,7 +20,7 @@ export default function TabsLayout() {
           width: "100%",
           height: "100%",
           justifyContent: "space-between",
-          alignContent: "center",
+          alignItems: "center",
           padding: 0,
           margin: 0,
         },
@@ -70,8 +70,16 @@ export default function TabsLayout() {
           title: "Community",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <CommunityIcon fill={focused ? "#84E8E8" : "#ffffff"} />
+            <CommunityIcon fill={focused ? "#FFFFFF99" : "#FFFFFF99"} />
           ),
+          tabBarLabelStyle: {
+            color: "#FFFFFF99",
+          },
+        }}
+        listeners={{
+          tabPress: (e) => {
+            e.preventDefault();
+          },
         }}
       />
       <Tabs.Screen

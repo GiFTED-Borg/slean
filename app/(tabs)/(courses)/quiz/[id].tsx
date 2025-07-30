@@ -1,12 +1,19 @@
+import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView, View, Text, TouchableOpacity } from "react-native";
 import ChevronRight from "@/assets/icons/chevron-right";
 import { useRouter } from "expo-router";
 import QuizAnswer from "@/components/quiz/quiz-answer";
 import CustomButton from "@/components/custom-button";
+import LessonComplete from "@/components/quiz/lesson-complete";
 
 export default function Quiz() {
   const router = useRouter();
+  const [finish, setFinish] = useState(false);
+
+  if (finish) {
+    return <LessonComplete />;
+  }
 
   const question = "Which of these doesn’t fall under the System account type?";
   const btnText = "Submit";
@@ -94,7 +101,11 @@ export default function Quiz() {
               />
             ))}
           </View>
-          <CustomButton text={btnText} style={{ marginTop: 122 }} />
+          <CustomButton
+            text={btnText}
+            style={{ marginTop: 122 }}
+            handlePress={() => setFinish(true)}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>

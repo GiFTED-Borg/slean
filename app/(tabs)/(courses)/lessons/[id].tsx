@@ -1,18 +1,12 @@
-import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView, View, Text, TouchableOpacity } from "react-native";
 import ChevronRight from "@/assets/icons/chevron-right";
 import { useRouter } from "expo-router";
-import LessonComplete from "@/components/quiz/lesson-complete";
 import CustomButton from "@/components/custom-button";
 
 export default function Lesson() {
   const router = useRouter();
-  const [finish, setFinish] = useState(false);
 
-  if (finish) {
-    return <LessonComplete />;
-  }
   return (
     <SafeAreaView className="flex-1 bg-black">
       <ScrollView
@@ -145,8 +139,7 @@ export default function Lesson() {
           </Text>
         </View>
         <CustomButton
-          text="Finish"
-          handlePress={() => setFinish(true)}
+          text="Next Lesson"
           style={{ marginHorizontal: 20, width: "auto" }}
         />
       </ScrollView>

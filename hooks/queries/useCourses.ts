@@ -1,20 +1,16 @@
-import { useApi } from "@/clients/api";
 import { useQuery } from "@tanstack/react-query";
 import { QUERY_KEYS } from "./queryKeys";
-import { Course } from "./types";
+import { useQueryFunctions } from "./useQueryFunctions";
 
-export const useCourses = () => {
-  const { get } = useApi();
+export const useCourses = ({ enabled = true }: { enabled?: boolean } = {}) => {
+  const queryFunctions = useQueryFunctions();
   return useQuery({
     queryKey: [QUERY_KEYS.COURSES],
-    queryFn: async () => {
-      const response = await get<Course[]>(`/courses`);
-
-      return response.data;
-    },
+    queryFn: queryFunctions.courses,
     throwOnError: (error: any) => {
       console.log("error", error);
       return false;
     },
+    enabled,
   });
 };

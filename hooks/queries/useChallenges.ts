@@ -1,17 +1,12 @@
-import { useApi } from "@/clients/api";
 import { useQuery } from "@tanstack/react-query";
 import { QUERY_KEYS } from "./queryKeys";
-import { Challenge } from "./types";
+import { useQueryFunctions } from "./useQueryFunctions";
 
 export const useChallenges = () => {
-  const { get } = useApi();
+  const queryFunctions = useQueryFunctions();
   return useQuery({
     queryKey: [QUERY_KEYS.CHALLENGES],
-    queryFn: async () => {
-      const response = await get<Challenge[]>(`/challenges`);
-
-      return response.data;
-    },
+    queryFn: queryFunctions.challenges,
     throwOnError: (error: any) => {
       console.log("error", error);
       return false;

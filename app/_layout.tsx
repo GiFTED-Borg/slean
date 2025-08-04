@@ -12,6 +12,7 @@ import { SessionProvider, useSession } from "@/contexts/SessionContext";
 import { CustomTheme } from "@/constants/theme";
 import SplashScreenAnimated from "@/components/splash-screen";
 import TanstackProvider from "@/clients/tanstack";
+import { PrefetchProvider } from "@/components/PrefetchProvider";
 
 export default function RootLayout() {
   const [appReady, setAppReady] = useState(false);
@@ -55,8 +56,9 @@ export default function RootLayout() {
       <SessionProvider>
         <ThemeProvider value={CustomTheme}>
           <dynamicClient.reactNative.WebView />
-
-          <RootNavigator />
+          <PrefetchProvider>
+            <RootNavigator />
+          </PrefetchProvider>
           <StatusBar style="light" />
         </ThemeProvider>
       </SessionProvider>

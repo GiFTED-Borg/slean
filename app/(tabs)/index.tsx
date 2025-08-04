@@ -9,9 +9,13 @@ import ChevronRight from "@/assets/icons/chevron-right";
 import PlayIcon from "@/assets/icons/play-icon";
 import CustomButton from "@/components/custom-button";
 import CornerBracket from "@/components/corner-bracket";
+import { useUser } from "@/hooks/queries/useUser";
+import { format } from "date-fns";
 
 export default function Home() {
   const router = useRouter();
+  const { data: user } = useUser();
+
   return (
     <SafeAreaView className="flex-1 bg-black">
       <ScrollView
@@ -30,7 +34,12 @@ export default function Home() {
             style={{ marginBottom: 16 }}
           >
             <CornerBracket text="Welcome Cadet 🫡" />
-            <IconChip type="streak" text="1 day" />
+            <IconChip
+              type="streak"
+              text={`${user?.currentStreak || 0} day${
+                user?.currentStreak === 1 ? "" : "s"
+              }`}
+            />
           </View>
           <View>
             <Text
@@ -45,12 +54,30 @@ export default function Home() {
           <Card
             gap={20}
             title="Progress"
-            rightExtra={<Chip size="lg" text="Wed, Jul 9" variant="blue2" />}
+            rightExtra={
+              <Chip
+                size="lg"
+                text={format(Date.now(), "EEE, MMM d")}
+                variant="blue2"
+              />
+            }
             info={
               <View className="flex-row" style={{ gap: 10 }}>
-                <StatCard type="xp" stat={0} text="XP Today" />
-                <StatCard type="lessons" stat={0} text="Lessons" />
-                <StatCard type="challenge" stat={0} text="Challenge" />
+                <StatCard
+                  type="xp"
+                  stat={user?.stats.totalXP ?? 0}
+                  text="XP Today"
+                />
+                <StatCard
+                  type="lessons"
+                  stat={user?.stats.totalTopicsCompleted ?? 0}
+                  text="Lessons"
+                />
+                <StatCard
+                  type="challenge"
+                  stat={user?.stats.totalChallengesCompleted ?? 0}
+                  text="Challenge"
+                />
               </View>
             }
             footer={<CustomButton text="Complete Today’s task" isDisabled />}

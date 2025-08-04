@@ -1,11 +1,12 @@
 import StreakIcon from "@/assets/icons/streak-icon";
 import XPIcon from "@/assets/icons/xp-icon";
+import { ChipVariant } from "@/utils/variant";
 import { View, Text } from "react-native";
 
 type ChipProps = {
   size: "lg" | "md" | "sm";
   text: string;
-  variant: "green" | "violet" | "yellow" | "red" | "blue" | "blue2";
+  variant: ChipVariant;
 };
 
 const chipStyles = {

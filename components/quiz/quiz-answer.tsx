@@ -25,15 +25,18 @@ export default function QuizAnswer({
   state,
   text,
   enumerator,
+  onPress,
 }: {
   state: "default" | "selected" | "correct" | "wrong";
   text: string;
   enumerator: "A" | "B" | "C" | "D";
+  onPress: () => void;
 }) {
   return (
     <TouchableOpacity
       className="rounded py-2.5 px-3.5 border flex flex-row items-center"
       style={{ gap: 15, ...styles.container[state] }}
+      onPress={onPress}
     >
       <View className="rounded-[3px] flex flex-row items-center justify-center size-[30px] bg-[#313131]">
         <Text

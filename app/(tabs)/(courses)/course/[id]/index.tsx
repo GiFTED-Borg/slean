@@ -5,12 +5,31 @@ import Chip, { IconChip } from "@/components/chip";
 import PlayIcon from "@/assets/icons/play-icon";
 import Card from "@/components/card";
 import CompleteIcon from "@/assets/icons/complete-icon";
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import CustomButton from "@/components/custom-button";
 import CornerBracket from "@/components/corner-bracket";
+import { useTopics } from "@/hooks/queries/useTopics";
+import { useCourseQuizzes } from "@/hooks/queries/useCourseQuizzes";
+import { useCourse, useStartCourse } from "@/hooks/queries/useCourse";
+import { getChipVariant } from "@/utils/variant";
 
 export default function Course() {
   const router = useRouter();
+  const { id: courseId } = useLocalSearchParams();
+  const { data: topics = [] } = useTopics(courseId as string);
+  const { data: quizzes = [] } = useCourseQuizzes(courseId as string);
+  const { data: course } = useCourse(courseId as string);
+
+  const { mutateAsync: startCourse, isPending: isStartingCourse } =
+    useStartCourse();
+
+  const handleStartCourse = async (index: number) => {
+    if (index === 0 && course?.progresses.length === 0) {
+      await startCourse({ courseId: courseId as string });
+    }
+    router.push(`/course/${courseId}/lessons/${topics[index].id}`);
+  };
+
   return (
     <SafeAreaView className="flex-1 bg-black">
       <ScrollView
@@ -24,7 +43,7 @@ export default function Course() {
         }}
       >
         <View className="flex flex-col" style={{ marginBottom: 19, gap: 16 }}>
-          <CornerBracket text="Solana fundamentals" />
+          <CornerBracket text={course?.title || ""} />
           <View className="flex flex-row items-center justify-between">
             <View className="flex flex-row items-center" style={{ gap: 24 }}>
               <View
@@ -39,7 +58,7 @@ export default function Course() {
                     fontFamily: "GeistMono-Regular",
                   }}
                 >
-                  12 lessons
+                  {topics.length} lessons
                 </Text>
               </View>
               <View
@@ -58,51 +77,71 @@ export default function Course() {
                 </Text>
               </View>
             </View>
-            <Chip variant="green" size="sm" text="Beginner" />
+            <Chip
+              variant={getChipVariant(course?.level || "").variant}
+              size="sm"
+              text={getChipVariant(course?.level || "").text}
+            />
           </View>
         </View>
-        <View style={{ marginBottom: 12.38 }}>
-          <Card
-            gap={20}
-            title="What is Solana?"
-            descColor="#FFFFFF99"
-            rightExtra={<CompleteIcon fill="#25F082" />}
-            headerExtraGap="lg"
-            desc="Introduction to Solana Blockchain"
-            headerExtra={
-              <View
-                className="flex flex-row items-center"
-                style={{ gap: 8.71 }}
-              >
-                <Chip variant="violet" text="Theory" size="md" />
+
+        {topics?.map((topic, index, topics) => (
+          <View key={topic.id} style={{ marginBottom: 12.38 }}>
+            <Card
+              gap={20}
+              title={topic.title}
+              descColor="#FFFFFF99"
+              rightExtra={
+                topic.progresses.length > 0 ? (
+                  <CompleteIcon fill="#25F082" />
+                ) : (
+                  <PlayIcon width={24} height={24} fill="#25F082" />
+                )
+              }
+              headerExtraGap="lg"
+              desc={topic.description}
+              headerExtra={
                 <View
                   className="flex flex-row items-center"
-                  style={{ gap: 2.71 }}
+                  style={{ gap: 8.71 }}
                 >
-                  <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                  <Text
-                    style={{
-                      color: "#FFFFFF66",
-                      fontSize: 10,
-                      fontFamily: "GeistMono-Regular",
-                    }}
+                  <Chip variant="violet" text="Theory" size="md" />
+                  <View
+                    className="flex flex-row items-center"
+                    style={{ gap: 2.71 }}
                   >
-                    15 min
-                  </Text>
+                    <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
+                    <Text
+                      style={{
+                        color: "#FFFFFF66",
+                        fontSize: 10,
+                        fontFamily: "GeistMono-Regular",
+                      }}
+                    >
+                      15 min
+                    </Text>
+                  </View>
                 </View>
-              </View>
-            }
-            footer={
-              <CustomButton
-                handlePress={() => router.push("/lessons/1")}
-                text="Review Lesson"
-                variant="outline"
-              />
-            }
-            shadow="silver"
-          />
-        </View>
-        <View style={{ marginBottom: 12.38 }}>
+              }
+              footer={
+                <CustomButton
+                  isDisabled={isStartingCourse}
+                  handlePress={() => handleStartCourse(index)}
+                  text={
+                    isStartingCourse
+                      ? "Starting..."
+                      : topic.progresses.length > 0
+                        ? "Review Lesson"
+                        : "Start Lesson"
+                  }
+                  variant={topic.progresses.length > 0 ? "outline" : undefined}
+                />
+              }
+              shadow="silver"
+            />
+          </View>
+        ))}
+        {/* <View style={{ marginBottom: 12.38 }}>
           <Card
             gap={20}
             title="Setting up development Environment"
@@ -221,33 +260,35 @@ export default function Course() {
             }
             shadow="silver"
           />
-        </View>
-        <View>
-          <Card
-            gap={20}
-            title="Solana Fundamentals"
-            rightExtra={<PlayIcon width={24} height={24} fill="#25F082" />}
-            headerExtraGap="lg"
-            desc="Solana Fundamentals Assessment"
-            descColor="#FFFFFF99"
-            headerExtra={
-              <View
-                className="flex flex-row items-center"
-                style={{ gap: 8.71 }}
-              >
-                <Chip variant="blue" text="Hands-on" size="md" />
-                <IconChip type="xp" text="50 XP" />
-              </View>
-            }
-            footer={
-              <CustomButton
-                handlePress={() => router.push("/quiz/solana-fundamentals")}
-                text="Start Quiz"
-              />
-            }
-            shadow="solid-gold"
-          />
-        </View>
+        </View> */}
+        {quizzes.map((quiz) => (
+          <View key={quiz.id}>
+            <Card
+              gap={20}
+              title="Solana Fundamentals"
+              rightExtra={<PlayIcon width={24} height={24} fill="#25F082" />}
+              headerExtraGap="lg"
+              desc="Solana Fundamentals Assessment"
+              descColor="#FFFFFF99"
+              headerExtra={
+                <View
+                  className="flex flex-row items-center"
+                  style={{ gap: 8.71 }}
+                >
+                  <Chip variant="blue" text="Hands-on" size="md" />
+                  <IconChip type="xp" text="50 XP" />
+                </View>
+              }
+              footer={
+                <CustomButton
+                  handlePress={() => router.push(`/quiz/${quiz.id}`)}
+                  text="Start Quiz"
+                />
+              }
+              shadow="solid-gold"
+            />
+          </View>
+        ))}
       </ScrollView>
     </SafeAreaView>
   );

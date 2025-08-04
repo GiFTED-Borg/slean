@@ -1,14 +1,19 @@
 import ChevronRight from "@/assets/icons/chevron-right";
 import { ScrollView, TouchableOpacity, View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import TimeIcon from "@/assets/icons/time-icon";
 import Chip from "@/components/chip";
 import PlayIcon from "@/assets/icons/play-icon";
 import CustomButton from "@/components/custom-button";
+import { useChallenge } from "@/hooks/queries/useChallenge";
+import Markdown from "react-native-markdown-display";
 
 export default function Challenge() {
   const router = useRouter();
+  const { id } = useLocalSearchParams();
+  const { data: challenge } = useChallenge(id as string);
+
   return (
     <SafeAreaView className="flex-1 bg-black">
       <ScrollView
@@ -46,7 +51,7 @@ export default function Challenge() {
             className="font-semibold text-white text-lg"
             style={{ fontFamily: "GeistMono-SemiBold" }}
           >
-            Token Transfer Logic
+            {challenge?.title}
           </Text>
           <View className="flex flex-row items-center" style={{ gap: 8 }}>
             <Chip text="Intermediate" variant="violet" size="lg" />
@@ -82,7 +87,7 @@ export default function Challenge() {
               fontFamily: "GeistMono-Medium",
             }}
           >
-            Build a function that transfers SPL tokens between accounts safely
+            {challenge?.description}
           </Text>
         </View>
         <View
@@ -96,82 +101,14 @@ export default function Challenge() {
           }}
           className="flex flex-col"
         >
-          <Text
-            className="text-white text-sm font-medium"
-            style={{ marginBottom: 25, fontFamily: "GeistMono-Medium" }}
+          <Markdown
+            style={{
+              body: { color: "#fff", marginBottom: 31 },
+              paragraph: { fontFamily: "GeistMono-Regular" },
+            }}
           >
-            Instructions
-          </Text>
-          <View className="flex flex-col" style={{ gap: 2, marginBottom: 28 }}>
-            <Text
-              className="text-xs"
-              style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Regular" }}
-            >
-              1. Takes sender and receiver account addresses
-            </Text>
-            <Text
-              className="text-xs"
-              style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Regular" }}
-            >
-              2. Takes the amount to transfer
-            </Text>
-            <Text
-              className="text-xs"
-              style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Regular" }}
-            >
-              3. Validates the sender has sufficient balance
-            </Text>
-            <Text
-              className="text-xs"
-              style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Regular" }}
-            >
-              4. Performs the transfer using Solana’s token program
-            </Text>
-            <Text
-              className="text-xs"
-              style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Regular" }}
-            >
-              5. Returns a success/error result
-            </Text>
-          </View>
-          <View className="flex flex-col" style={{ gap: 2, marginBottom: 31 }}>
-            <Text
-              className="text-xs"
-              style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Regular" }}
-            >
-              Requirements
-            </Text>
-            <Text
-              className="text-xs"
-              style={{
-                color: "#FFFFFFBF",
-                paddingLeft: 5,
-                fontFamily: "GeistMono-Regular",
-              }}
-            >
-              • Use proper error handling
-            </Text>
-            <Text
-              className="text-xs"
-              style={{
-                color: "#FFFFFFBF",
-                paddingLeft: 5,
-                fontFamily: "GeistMono-Regular",
-              }}
-            >
-              • Validate input parameters
-            </Text>
-            <Text
-              className="text-xs"
-              style={{
-                color: "#FFFFFFBF",
-                paddingLeft: 5,
-                fontFamily: "GeistMono-Regular",
-              }}
-            >
-              • Include appropriate comments
-            </Text>
-          </View>
+            {challenge?.content}
+          </Markdown>
           <CustomButton
             handlePress={() => router.push("/code-challenge/1")}
             text="Start Challenge"

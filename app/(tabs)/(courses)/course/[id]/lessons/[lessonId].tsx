@@ -1,11 +1,66 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView, View, Text, TouchableOpacity } from "react-native";
 import ChevronRight from "@/assets/icons/chevron-right";
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import CustomButton from "@/components/custom-button";
+import { useCompleteTopic, useTopic } from "@/hooks/queries/useTopic";
+import Markdown from "react-native-markdown-display";
+import { useTopics } from "@/hooks/queries/useTopics";
+import { useMemo } from "react";
+import { markdownStyles } from "@/utils/markdown";
 
 export default function Lesson() {
   const router = useRouter();
+  const { id: courseId, lessonId } = useLocalSearchParams();
+  const { data: topics = [] } = useTopics(courseId as string);
+  const { data: topic } = useTopic(courseId as string, lessonId as string);
+  const { mutateAsync: completeTopic, isPending: isCompletingTopic } =
+    useCompleteTopic();
+  const currentLessonIndex = topics.findIndex((topic) => topic.id === lessonId);
+  const nextLessonId = topics[currentLessonIndex + 1]?.id;
+  const isLastLesson = currentLessonIndex === topics.length - 1;
+
+  const hasQuiz = !!topic?.quizzes?.length;
+
+  const isCompleted = !!topic?.progresses?.[0]?.completedAt;
+
+  const label = useMemo(() => {
+    if (isCompletingTopic) {
+      return "Loading...";
+    }
+    if (isCompleted) {
+      return "Completed";
+    }
+    if (hasQuiz) {
+      return "Take Quiz";
+    }
+    if (!isLastLesson) {
+      return "Next Lesson";
+    }
+    return "Finish Course";
+  }, [isCompletingTopic, hasQuiz, isLastLesson, isCompleted]);
+
+  const handleNextLesson = async () => {
+    const topicProgress = await completeTopic({
+      courseProgressId: topic?.course?.progresses?.[0]?.id as string,
+      topicId: lessonId as string,
+    });
+    if (hasQuiz) {
+      const url = `/quiz/${topic?.quizzes?.[0]?.id}?topicId=${lessonId}&${
+        topicProgress?.courseProgressId
+          ? `&courseProgressId=${topicProgress.courseProgressId}`
+          : ""
+      }` as const;
+      router.push(url);
+      return;
+    }
+    if (nextLessonId) {
+      router.push(`/course/${courseId}/lessons/${nextLessonId}`);
+      return;
+    }
+
+    router.push(`/course/${courseId}`);
+  };
 
   return (
     <SafeAreaView className="flex-1 bg-black">
@@ -44,16 +99,22 @@ export default function Lesson() {
             className="font-semibold text-white text-lg"
             style={{ fontFamily: "GeistMono-Semibold" }}
           >
-            Solana fundamentals
+            {topic?.course?.title || "Solana fundamentals"}
           </Text>
           <Text
             className="font-medium text-base"
             style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Medium" }}
           >
-            What is Solana?
+            {topic?.title}
           </Text>
         </View>
         <View
+          className="flex flex-col"
+          style={{ marginBottom: 46, paddingHorizontal: 20 }}
+        >
+          <Markdown style={markdownStyles}>{topic?.content}</Markdown>
+        </View>
+        {/* <View
           className="flex flex-col"
           style={{ marginBottom: 46, paddingHorizontal: 20 }}
         >
@@ -137,10 +198,12 @@ export default function Lesson() {
             }
             `}
           </Text>
-        </View>
+        </View> */}
         <CustomButton
-          text="Next Lesson"
+          text={label}
           style={{ marginHorizontal: 20, width: "auto" }}
+          handlePress={handleNextLesson}
+          isDisabled={isCompletingTopic || isCompleted}
         />
       </ScrollView>
     </SafeAreaView>

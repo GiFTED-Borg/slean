@@ -7,9 +7,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
 import CustomButton from "@/components/custom-button";
 import CornerBracket from "@/components/corner-bracket";
+import { useChallenges } from "@/hooks/queries/useChallenges";
 
 export default function Challenges() {
   const router = useRouter();
+  const { data: challenges = [] } = useChallenges();
   return (
     <SafeAreaView className="flex-1 bg-black">
       <ScrollView
@@ -37,170 +39,52 @@ export default function Challenges() {
             <CornerBracket text="Challenges" />
           </View>
         </View>
-        <View style={{ marginBottom: 18, paddingHorizontal: 20 }}>
-          <Card
-            gap={20}
-            title="Hello Solana World"
-            rightExtra={<Chip size="lg" text="Beginner" variant="green" />}
-            headerExtraGap="sm"
-            desc="Create your first Solana program that prints a greeting message to the blockchain"
-            headerExtra={
-              <View
-                className="flex flex-row items-center"
-                style={{ gap: 8.71 }}
-              >
-                <IconChip type="xp" text="50 XP" />
+        {challenges.map((challenge) => (
+          <View
+            key={challenge.id}
+            style={{ marginBottom: 18, paddingHorizontal: 20 }}
+          >
+            <Card
+              gap={20}
+              // title="Hello Solana World"
+              title={challenge.title}
+              rightExtra={<Chip size="lg" text="Beginner" variant="green" />}
+              headerExtraGap="sm"
+              desc={challenge.description}
+              headerExtra={
                 <View
                   className="flex flex-row items-center"
-                  style={{ gap: 2.71 }}
+                  style={{ gap: 8.71 }}
                 >
-                  <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                  <Text
-                    style={{
-                      color: "#FFFFFF66",
-                      fontSize: 10,
-                      fontFamily: "GeistMono-Regular",
-                    }}
+                  <IconChip type="xp" text={`${challenge.xpReward} XP`} />
+                  <View
+                    className="flex flex-row items-center"
+                    style={{ gap: 2.71 }}
                   >
-                    15 min
-                  </Text>
+                    <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
+                    <Text
+                      style={{
+                        color: "#FFFFFF66",
+                        fontSize: 10,
+                        fontFamily: "GeistMono-Regular",
+                      }}
+                    >
+                      15 min
+                    </Text>
+                  </View>
                 </View>
-              </View>
-            }
-            footer={
-              <CustomButton
-                handlePress={() => router.push("/challenge/hello-solana-world")}
-                text="Start Challenge"
-                endIcon={<PlayIcon fill="#292D32" />}
-              />
-            }
-            shadow="gold"
-          />
-        </View>
-        <View style={{ marginBottom: 18, paddingHorizontal: 20 }}>
-          <Card
-            gap={20}
-            title="Token Transfer Logic"
-            rightExtra={<Chip size="lg" text="Intermediate" variant="violet" />}
-            headerExtraGap="sm"
-            desc="Create your first Solana program that prints a greeting message to the blockchain"
-            headerExtra={
-              <View
-                className="flex flex-row items-center"
-                style={{ gap: 8.71 }}
-              >
-                <IconChip type="xp" text="50 XP" />
-                <View
-                  className="flex flex-row items-center"
-                  style={{ gap: 2.71 }}
-                >
-                  <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                  <Text
-                    style={{
-                      color: "#FFFFFF66",
-                      fontSize: 10,
-                      fontFamily: "GeistMono-Regular",
-                    }}
-                  >
-                    15 min
-                  </Text>
-                </View>
-              </View>
-            }
-            footer={
-              <CustomButton
-                handlePress={() =>
-                  router.push("/challenge/token-transfer-logic")
-                }
-                text="Start Challenge"
-                endIcon={<PlayIcon fill="#292D32" />}
-              />
-            }
-            shadow="gold"
-          />
-        </View>
-        <View style={{ marginBottom: 18, paddingHorizontal: 20 }}>
-          <Card
-            gap={20}
-            title="Token Transfer Logic"
-            rightExtra={<Chip size="lg" text="Intermediate" variant="violet" />}
-            headerExtraGap="sm"
-            desc="Create your first Solana program that prints a greeting message to the blockchain"
-            headerExtra={
-              <View
-                className="flex flex-row items-center"
-                style={{ gap: 8.71 }}
-              >
-                <IconChip type="xp" text="50 XP" />
-                <View
-                  className="flex flex-row items-center"
-                  style={{ gap: 2.71 }}
-                >
-                  <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                  <Text
-                    style={{
-                      color: "#FFFFFF66",
-                      fontSize: 10,
-                      fontFamily: "GeistMono-Regular",
-                    }}
-                  >
-                    15 min
-                  </Text>
-                </View>
-              </View>
-            }
-            footer={
-              <CustomButton
-                handlePress={() =>
-                  router.push("/challenge/token-transfer-logic")
-                }
-                text="Start Challenge"
-                endIcon={<PlayIcon fill="#292D32" />}
-              />
-            }
-            shadow="gold"
-          />
-        </View>
-        <View style={{ marginBottom: 18, paddingHorizontal: 20 }}>
-          <Card
-            gap={20}
-            title="Hello Solana World"
-            rightExtra={<Chip size="lg" text="Beginner" variant="green" />}
-            headerExtraGap="sm"
-            desc="Create your first Solana program that prints a greeting message to the blockchain"
-            headerExtra={
-              <View
-                className="flex flex-row items-center"
-                style={{ gap: 8.71 }}
-              >
-                <IconChip type="xp" text="50 XP" />
-                <View
-                  className="flex flex-row items-center"
-                  style={{ gap: 2.71 }}
-                >
-                  <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                  <Text
-                    style={{
-                      color: "#FFFFFF66",
-                      fontSize: 10,
-                      fontFamily: "GeistMono-Regular",
-                    }}
-                  >
-                    15 min
-                  </Text>
-                </View>
-              </View>
-            }
-            footer={
-              <CustomButton
-                handlePress={() => router.push("/challenge/hello-solana-world")}
-                text="Start Challenge"
-                endIcon={<PlayIcon fill="#292D32" />}
-              />
-            }
-            shadow="gold"
-          />
-        </View>
+              }
+              footer={
+                <CustomButton
+                  handlePress={() => router.push(`/challenge/${challenge.id}`)}
+                  text="Start Challenge"
+                  endIcon={<PlayIcon fill="#292D32" />}
+                />
+              }
+              shadow="gold"
+            />
+          </View>
+        ))}
       </ScrollView>
     </SafeAreaView>
   );

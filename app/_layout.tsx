@@ -11,6 +11,7 @@ import { dynamicClient } from "@/clients/dynamic";
 import { SessionProvider, useSession } from "@/contexts/SessionContext";
 import { CustomTheme } from "@/constants/theme";
 import SplashScreenAnimated from "@/components/splash-screen";
+import TanstackProvider from "@/clients/tanstack";
 
 export default function RootLayout() {
   const [appReady, setAppReady] = useState(false);
@@ -50,19 +51,21 @@ export default function RootLayout() {
   }
 
   return (
-    <SessionProvider>
-      <ThemeProvider value={CustomTheme}>
-        <dynamicClient.reactNative.WebView />
+    <TanstackProvider>
+      <SessionProvider>
+        <ThemeProvider value={CustomTheme}>
+          <dynamicClient.reactNative.WebView />
 
-        <RootNavigator />
-        <StatusBar style="auto" />
-      </ThemeProvider>
-    </SessionProvider>
+          <RootNavigator />
+          <StatusBar style="light" />
+        </ThemeProvider>
+      </SessionProvider>
+    </TanstackProvider>
   );
 }
 
 function RootNavigator() {
-  const { isAuthenticated } = useSession();
+  const { isAuthenticated, isLoading } = useSession();
 
   return (
     <Stack screenOptions={{ headerShown: false }}>

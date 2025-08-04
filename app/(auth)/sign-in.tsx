@@ -85,7 +85,11 @@ export default function SignInScreen() {
       <Stack.Screen options={{ title: "Sign In" }} />
       <View
         className="h-full flex flex-col flex-1"
-        style={{ backgroundColor: "#0B0C10", paddingHorizontal: 20 }}
+        style={{
+          backgroundColor: "#0B0C10",
+          paddingHorizontal: 20,
+          paddingTop: 54,
+        }}
       >
         <View className="flex flex-col flex-1">
           <Text

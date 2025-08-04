@@ -11,7 +11,7 @@ import {
 import { Toast } from "@/components/toast";
 import { dynamicClient } from "@/clients/dynamic";
 import { useSession } from "@/contexts/SessionContext";
-import { API_BASE_URL } from "@/clients/api";
+import { API_BASE_URL } from "@/constants/api";
 import RightArrowIcon from "@/assets/icons/right-arrow";
 
 export default function VerifyOTPScreen() {
@@ -44,7 +44,7 @@ export default function VerifyOTPScreen() {
 
   const handleKeyPress = (e: any, index: number) => {
     // Handle backspace to go to previous input
-    if (e.nativeEvent.key === "Backspace" && !otp[index] && index > 0) {
+    if (e.nativeEvent.key === "Backspace" && index > 0) {
       inputRefs.current[index - 1]?.focus();
     }
   };
@@ -66,8 +66,6 @@ export default function VerifyOTPScreen() {
     try {
       const response = await dynamicClient.auth.email.verifyOTP(otpString);
 
-      console.log("response");
-
       if (response) {
         const res = await fetch(`${API_BASE_URL}/auth/signin`, {
           method: "POST",
@@ -80,8 +78,6 @@ export default function VerifyOTPScreen() {
         });
 
         const data = await res.json();
-
-        console.log("data", data);
 
         if (response.jwt && data?.user) {
           // Use the session handler to store the JWT from your backend
@@ -153,7 +149,7 @@ export default function VerifyOTPScreen() {
         style={{ backgroundColor: "#0B0C10", paddingHorizontal: 20 }}
       >
         <View
-          className="flex flex-row items-center justify-center"
+          className="flex flex-row items-center justify-between"
           style={{ gap: 15, marginTop: 189, marginBottom: 108 }}
         >
           {otp.map((digit, index) => (
@@ -175,7 +171,7 @@ export default function VerifyOTPScreen() {
         </View>
 
         <TouchableOpacity
-          className="flex items-center justify-center"
+          className="flex flex-row  items-center justify-center"
           style={{
             height: 87,
             width: "100%",
@@ -183,7 +179,7 @@ export default function VerifyOTPScreen() {
             borderWidth: 1,
             borderColor: "#A7FFFF80",
             marginBottom: 19,
-            gap: 1,
+            gap: 5,
           }}
           onPress={handleVerifyOTP}
           disabled={isLoading}
@@ -196,9 +192,9 @@ export default function VerifyOTPScreen() {
               color: isLoading ? "#FFFFFF99" : "#FFFFFF",
             }}
           >
-            {isLoading ? "Verifying..." : "Enter"}
+            {isLoading ? "VERIFYING..." : "ENTER"}
           </Text>
-          <RightArrowIcon />
+          {!isLoading && <RightArrowIcon width={28} height={24} />}
         </TouchableOpacity>
 
         <TouchableOpacity onPress={handleResendOTP} disabled={isLoading}>
@@ -247,6 +243,7 @@ const styles = StyleSheet.create({
   },
   otpInput: {
     width: 45,
+    flex: 1,
     height: 65,
     borderWidth: 1.5,
     borderColor: "#A7FFFF80",

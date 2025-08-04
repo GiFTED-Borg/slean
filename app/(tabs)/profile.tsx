@@ -8,19 +8,25 @@ import SettingsIcon from "@/assets/icons/settings-icon";
 import ShareIcon from "@/assets/icons/share-icon";
 import CustomButton from "@/components/custom-button";
 import CornerBracket from "@/components/corner-bracket";
-
-const markedDates: Record<string, { selected?: boolean; marked?: boolean }> = {
-  "2025-07-23": {
-    selected: true,
-    marked: true,
-  },
-  "2025-07-17": {
-    selected: true,
-    marked: true,
-  },
-};
+import { useUser, useUserStreaks } from "@/hooks/queries/useUser";
+import { format } from "date-fns";
 
 export default function Profile() {
+  const { data: user } = useUser();
+  const { data: streaks = [] } = useUserStreaks();
+
+  const markedDates = streaks.reduce(
+    (acc, streak) => {
+      const [date] = streak.date.split("T");
+      acc[date] = {
+        selected: true,
+        marked: true,
+      };
+      return acc;
+    },
+    {} as Record<string, { selected?: boolean; marked?: boolean }>
+  );
+
   return (
     <SafeAreaView className="flex-1 bg-black">
       <ScrollView
@@ -48,12 +54,15 @@ export default function Profile() {
           <ProfileCard
             name="Kenpachi_Mazino"
             level={1}
-            lessons={0}
-            challenges={0}
-            streak={0}
-            xp={0}
+            lessons={user?.stats.totalTopicsCompleted || 0}
+            challenges={user?.stats.totalChallengesCompleted || 0}
+            streak={user?.stats.currentStreak || 0}
+            xp={user?.xp || 0}
             profileImage=""
-            dateJoined="July 1 2025"
+            dateJoined={format(
+              new Date(user?.createdAt || Date.now()),
+              "MMMM d, yyyy"
+            )}
           />
         </View>
         <View style={{ marginBottom: 26 }}>
@@ -83,7 +92,14 @@ export default function Profile() {
             >
               Streaks
             </Text>
-            <IconChip type="streak" text="1 day" />
+            <IconChip
+              type="streak"
+              text={`${user?.stats.currentStreak || 0} day${
+                user?.stats.currentStreak && user?.stats.currentStreak === 1
+                  ? ""
+                  : "s"
+              }`}
+            />
           </View>
           <View style={{ paddingHorizontal: 24, marginBottom: 20 }}>
             <Calendar
@@ -181,7 +197,10 @@ export default function Profile() {
               className="text-xs font-medium"
               style={{ color: "#F6A10F", fontFamily: "GeistMono-Medium" }}
             >
-              0 days
+              {user?.stats.longestStreak || 0} day
+              {user?.stats.longestStreak && user?.stats.longestStreak === 1
+                ? ""
+                : "s"}
             </Text>
           </View>
         </View>

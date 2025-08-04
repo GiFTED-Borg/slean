@@ -1,6 +1,5 @@
+import { API_BASE_URL } from "@/constants/api";
 import { useSession } from "@/contexts/SessionContext";
-
-export const API_BASE_URL = process.env.EXPO_PUBLIC_API_BASE_URL!; // "http://192.XXX.XXX.XX:8001/api/v1"
 
 interface ApiResponse<T = any> {
   data?: T;
@@ -17,20 +16,21 @@ class ApiClient {
 
   private async request<T>(
     endpoint: string,
-    options: RequestInit = {}
+    { headers, ...options }: RequestInit = {}
   ): Promise<ApiResponse<T>> {
     const url = `${this.baseURL}${endpoint}`;
 
     const config: RequestInit = {
       headers: {
         "Content-Type": "application/json",
-        ...options.headers,
+        ...headers,
       },
       ...options,
     };
 
     try {
       const response = await fetch(url, config);
+
       const data = await response.json();
 
       if (!response.ok) {
@@ -121,7 +121,10 @@ export function useApi() {
     let response = await requestFn(token);
 
     // If token is expired, try to refresh
-    if (!response.success && response.error?.includes("unauthorized")) {
+    if (
+      !response.success &&
+      response.error?.toLowerCase()?.includes("unauthorized")
+    ) {
       await refreshToken();
       // Retry with new token
       if (token) {

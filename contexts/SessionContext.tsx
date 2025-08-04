@@ -1,6 +1,12 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import * as SecureStore from "expo-secure-store";
-import { API_BASE_URL } from "@/clients/api";
+import { API_BASE_URL } from "@/constants/api";
 
 interface User {
   id: string;
@@ -35,12 +41,7 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
     isAuthenticated: false,
   });
 
-  // Load session from secure storage on app start
-  useEffect(() => {
-    loadSession();
-  }, []);
-
-  const loadSession = async () => {
+  const loadSession = useCallback(async () => {
     try {
       const [token, sessionData] = await Promise.all([
         SecureStore.getItemAsync(TOKEN_STORAGE_KEY),
@@ -48,10 +49,30 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
       ]);
 
       if (token && sessionData) {
-        const user = JSON.parse(sessionData);
+        const res = await fetch(`${API_BASE_URL}/auth/signin`, {
+          method: "POST",
+          body: JSON.stringify({
+            authToken: token,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        const serverUserData = await res.json();
+
+        if (
+          !serverUserData?.success ||
+          serverUserData?.error ||
+          serverUserData?.statusCode === 401
+        ) {
+          await logout();
+          return;
+        }
+
         setSession({
           token,
-          user,
+          user: JSON.parse(sessionData),
           isLoading: false,
           isAuthenticated: true,
         });
@@ -62,7 +83,12 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
       console.error("Error loading session:", error);
       setSession((prev) => ({ ...prev, isLoading: false }));
     }
-  };
+  }, []);
+
+  // Load session from secure storage on app start
+  useEffect(() => {
+    loadSession();
+  }, [loadSession]);
 
   const login = async (token: string, user: User) => {
     try {
@@ -106,8 +132,8 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
     if (!session.token) return;
 
     try {
-      const response = await fetch(`${API_BASE_URL}/auth/refresh`, {
-        method: "POST",
+      const response = await fetch(`${API_BASE_URL}/users/profile`, {
+        method: "GET",
         headers: {
           Authorization: `Bearer ${session.token}`,
           "Content-Type": "application/json",

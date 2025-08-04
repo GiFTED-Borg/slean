@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "test-expo",
-    "slug": "test-expo",
+    "slug": "slean",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/slean-logo.png",
@@ -16,7 +16,8 @@
         "foregroundImage": "./assets/images/slean-logo.png",
         "backgroundColor": "#0B0C10"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.igifted.slean"
     },
     "web": {
       "bundler": "metro",
@@ -45,6 +46,14 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "792e3bc0-401c-45f9-8c6e-13951ce18070"
+      }
+    },
+    // "owner": "i-gifted"
+    "owner": "gifted-borg"
   }
 }

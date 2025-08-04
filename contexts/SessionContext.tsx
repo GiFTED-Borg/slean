@@ -17,13 +17,12 @@ interface User {
 
 interface Session {
   token: string | null;
-  user: User | null;
   isLoading: boolean;
   isAuthenticated: boolean;
 }
 
 interface SessionContextType extends Session {
-  login: (token: string, user: User) => Promise<void>;
+  login: (token: string) => Promise<void>;
   logout: () => Promise<void>;
   refreshToken: () => Promise<void>;
 }
@@ -36,19 +35,15 @@ const TOKEN_STORAGE_KEY = "auth_token";
 export function SessionProvider({ children }: { children: React.ReactNode }) {
   const [session, setSession] = useState<Session>({
     token: null,
-    user: null,
     isLoading: true,
     isAuthenticated: false,
   });
 
   const loadSession = useCallback(async () => {
     try {
-      const [token, sessionData] = await Promise.all([
-        SecureStore.getItemAsync(TOKEN_STORAGE_KEY),
-        SecureStore.getItemAsync(SESSION_STORAGE_KEY),
-      ]);
+      const token = await SecureStore.getItemAsync(TOKEN_STORAGE_KEY);
 
-      if (token && sessionData) {
+      if (token) {
         const res = await fetch(`${API_BASE_URL}/auth/signin`, {
           method: "POST",
           body: JSON.stringify({
@@ -72,7 +67,6 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
 
         setSession({
           token,
-          user: JSON.parse(sessionData),
           isLoading: false,
           isAuthenticated: true,
         });
@@ -90,16 +84,12 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
     loadSession();
   }, [loadSession]);
 
-  const login = async (token: string, user: User) => {
+  const login = async (token: string) => {
     try {
-      await Promise.all([
-        SecureStore.setItemAsync(TOKEN_STORAGE_KEY, token),
-        SecureStore.setItemAsync(SESSION_STORAGE_KEY, JSON.stringify(user)),
-      ]);
+      await SecureStore.setItemAsync(TOKEN_STORAGE_KEY, token);
 
       setSession({
         token,
-        user,
         isLoading: false,
         isAuthenticated: true,
       });
@@ -118,7 +108,6 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
 
       setSession({
         token: null,
-        user: null,
         isLoading: false,
         isAuthenticated: false,
       });
@@ -132,6 +121,7 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
     if (!session.token) return;
 
     try {
+      // TODO: Implement proper refresh token
       const response = await fetch(`${API_BASE_URL}/users/profile`, {
         method: "GET",
         headers: {
@@ -141,8 +131,8 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
       });
 
       if (response.ok) {
-        const { token: newToken, user } = await response.json();
-        await login(newToken, user);
+        const { token: newToken } = await response.json();
+        await login(newToken);
       } else {
         // Token refresh failed, logout user
         await logout();

@@ -67,7 +67,7 @@ export default function SignInScreen() {
           pathname: "/verify-otp",
           params: { email },
         });
-      }, 1500);
+      }, 200);
     } catch (error) {
       setToast({
         visible: true,

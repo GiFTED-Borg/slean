@@ -81,12 +81,9 @@ export default function VerifyOTPScreen() {
 
         if (response.jwt && data?.user) {
           // Use the session handler to store the JWT from your backend
-          await login(response.jwt, data.user);
+          await login(response.jwt);
 
-          // Navigate to main app after a short delay
-          setTimeout(() => {
-            router.push("/");
-          }, 500);
+          router.push("/");
 
           setToast({
             visible: true,

@@ -2,7 +2,7 @@ import { View, StyleSheet } from "react-native";
 import * as Progress from "react-native-progress";
 
 export default function ProgressBar({
-  progress,
+  progress = 1,
   color,
   unfilledColor = "#27282C",
 }: {
@@ -13,7 +13,7 @@ export default function ProgressBar({
   return (
     <View style={styles.container}>
       <Progress.Bar
-        progress={progress}
+        progress={progress === 1 || progress === 0 ? 0.025 : progress}
         animated
         color={color || "#84E8E8"}
         height={9}

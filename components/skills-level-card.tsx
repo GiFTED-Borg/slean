@@ -1,5 +1,6 @@
 import { View, Text } from "react-native";
 import ProgressBar from "./progress-bar";
+import { mapProgress } from "@/utils/helpers";
 
 type SkillsLevelCardProps = {
   lvl1: number;
@@ -58,7 +59,7 @@ export default function SkillsLevelCard({
           </Text>
         </View>
         <ProgressBar
-          progress={calcProgress(lvl1)}
+          progress={mapProgress(calcProgress(lvl1))}
           color="#FFAA2C"
           unfilledColor="#FFFFFFAB"
         />
@@ -83,7 +84,7 @@ export default function SkillsLevelCard({
           </Text>
         </View>
         <ProgressBar
-          progress={calcProgress(lvl2)}
+          progress={mapProgress(calcProgress(lvl2))}
           color="#FFAA2C"
           unfilledColor="#FFFFFFAB"
         />
@@ -108,7 +109,7 @@ export default function SkillsLevelCard({
           </Text>
         </View>
         <ProgressBar
-          progress={calcProgress(lvl3)}
+          progress={mapProgress(calcProgress(lvl3))}
           color="#FFAA2C"
           unfilledColor="#FFFFFFAB"
         />
@@ -133,7 +134,7 @@ export default function SkillsLevelCard({
           </Text>
         </View>
         <ProgressBar
-          progress={calcProgress(lvl4)}
+          progress={mapProgress(calcProgress(lvl4))}
           color="#FFAA2C"
           unfilledColor="#FFFFFFAB"
         />

@@ -17,7 +17,7 @@ export default function ProgressBar({
       height={9}
       width={width || 320}
       borderRadius={10}
-      unfilledColor="#161A1A"
+      unfilledColor="#27282C"
       borderWidth={0}
     />
   );

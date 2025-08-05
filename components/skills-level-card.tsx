@@ -57,6 +57,7 @@ export default function SkillsLevelCard({
           progress={calcProgress(lvl1)}
           color="#FFAA2C"
           width={289}
+          unfilledColor="#FFFFFFAB"
         />
       </View>
       <View className="flex flex-col" style={{ gap: 4 }}>
@@ -78,6 +79,7 @@ export default function SkillsLevelCard({
           progress={calcProgress(lvl2)}
           color="#FFAA2C"
           width={289}
+          unfilledColor="#FFFFFFAB"
         />
       </View>
       <View className="flex flex-col" style={{ gap: 4 }}>
@@ -99,6 +101,7 @@ export default function SkillsLevelCard({
           progress={calcProgress(lvl3)}
           color="#FFAA2C"
           width={289}
+          unfilledColor="#FFFFFFAB"
         />
       </View>
       <View className="flex flex-col" style={{ gap: 4 }}>
@@ -120,6 +123,7 @@ export default function SkillsLevelCard({
           progress={calcProgress(lvl4)}
           color="#FFAA2C"
           width={289}
+          unfilledColor="#FFFFFFAB"
         />
       </View>
     </View>

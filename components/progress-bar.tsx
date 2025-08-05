@@ -4,9 +4,11 @@ export default function ProgressBar({
   progress,
   width,
   color,
+  unfilledColor = "#27282C",
 }: {
   progress: number;
   color?: string;
+  unfilledColor?: string;
   width?: number;
 }) {
   return (
@@ -17,7 +19,7 @@ export default function ProgressBar({
       height={9}
       width={width || 320}
       borderRadius={10}
-      unfilledColor="#27282C"
+      unfilledColor={unfilledColor}
       borderWidth={0}
     />
   );

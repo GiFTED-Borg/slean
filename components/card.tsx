@@ -66,8 +66,11 @@ export default function Card({
         {desc && (
           <View style={{ paddingBottom: 10 }}>
             <Text
-              className="text-xs"
-              style={{ color: descColor, fontFamily: "GeistMono-Regular" }}
+              style={{
+                color: descColor,
+                fontFamily: "GeistMono-Regular",
+                fontSize: 12,
+              }}
             >
               {desc}
             </Text>

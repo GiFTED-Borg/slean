@@ -40,6 +40,7 @@ export default function CustomButton({
               : "transparent",
           borderWidth: variant === "outline" ? 1 : 0,
           borderColor: variant === "outline" ? "#84E8E8" : "transparent",
+          borderRadius: 10,
           boxShadow:
             variant === "outline"
               ? ""
@@ -54,6 +55,7 @@ export default function CustomButton({
           style={{
             fontFamily: "GeistMono-Regular",
             color: variant === "outline" ? "#84E8E8" : "#000000",
+            fontSize: 14,
           }}
         >
           {text}

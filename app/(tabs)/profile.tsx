@@ -66,7 +66,7 @@ export default function Profile() {
           />
         </View>
         <View style={{ marginBottom: 26 }}>
-          <SkillsLevelCard lvl1={0} lvl2={0} lvl3={0} lvl4={0} />
+          <SkillsLevelCard lvl1={1} lvl2={1} lvl3={1} lvl4={1} />
         </View>
         <View
           className="flex flex-col"
@@ -88,7 +88,7 @@ export default function Profile() {
           >
             <Text
               className="text-white font-semibold text-base leading-[19.7px]"
-              style={{ fontFamily: "GeistMono-SemiBold" }}
+              style={{ fontFamily: "GeistMono-SemiBold", fontSize: 16 }}
             >
               Streaks
             </Text>
@@ -101,7 +101,7 @@ export default function Profile() {
               }`}
             />
           </View>
-          <View style={{ paddingHorizontal: 24, marginBottom: 20 }}>
+          <View style={{ paddingHorizontal: 16, marginBottom: 20 }}>
             <Calendar
               style={{ backgroundColor: "transparent" }}
               theme={{
@@ -120,15 +120,15 @@ export default function Profile() {
               customHeader={() => (
                 <View
                   className="flex flex-row items-center justify-between"
-                  style={{ paddingHorizontal: 6 }}
+                  style={{ paddingHorizontal: 2 }}
                 >
                   {["S", "M", "T", "W", "T", "F", "S"].map((day, i) => (
                     <Text
                       className="text-white text-center"
                       key={`${day}-${i}`}
                       style={{
-                        width: 30,
-                        height: 30,
+                        width: 24,
+                        height: 24,
                         fontFamily: "GeistMono-Regular",
                       }}
                     >
@@ -146,8 +146,8 @@ export default function Profile() {
                   <View
                     className="flex items-center justify-center rounded-[3px]"
                     style={{
-                      width: 30,
-                      height: 30,
+                      width: 32,
+                      height: 32,
                       borderRadius: 3,
                       backgroundColor: isSelected ? "#3D6B6B" : "#1E2222",
                     }}
@@ -162,6 +162,7 @@ export default function Profile() {
                               ? "#ccffff"
                               : "#fff",
                         fontFamily: "GeistMono-Regular",
+                        fontSize: 12,
                       }}
                     >
                       {date?.day}
@@ -189,13 +190,17 @@ export default function Profile() {
           >
             <Text
               className="text-xs text-white"
-              style={{ fontFamily: "GeistMono-Regular" }}
+              style={{ fontFamily: "GeistMono-Regular", fontSize: 12 }}
             >
               Longest Streak:{" "}
             </Text>
             <Text
               className="text-xs font-medium"
-              style={{ color: "#F6A10F", fontFamily: "GeistMono-Medium" }}
+              style={{
+                color: "#F6A10F",
+                fontFamily: "GeistMono-Medium",
+                fontSize: 12,
+              }}
             >
               {user?.stats.longestStreak || 0} day
               {user?.stats.longestStreak && user?.stats.longestStreak === 1

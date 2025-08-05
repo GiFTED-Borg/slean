@@ -35,7 +35,7 @@ export default function Courses() {
           <View>
             <Text
               className="text-sm  text-[#FFFFFF99]"
-              style={{ fontFamily: "GeistMono-Regular" }}
+              style={{ fontFamily: "GeistMono-Regular", fontSize: 14 }}
             >
               Choose your journey to Solana mastery
             </Text>

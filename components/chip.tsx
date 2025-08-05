@@ -72,7 +72,7 @@ export function IconChip({
       )}
       <Text
         className="text-[11.53px] leading-[16.22px] text-[#F6A10F]"
-        style={{ fontFamily: "GeistMono-Regular" }}
+        style={{ fontFamily: "GeistMono-Regular", fontSize: 11.53 }}
       >
         {text}
       </Text>

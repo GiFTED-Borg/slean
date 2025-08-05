@@ -97,13 +97,17 @@ export default function Lesson() {
         >
           <Text
             className="font-semibold text-white text-lg"
-            style={{ fontFamily: "GeistMono-Semibold" }}
+            style={{ fontFamily: "GeistMono-Semibold", fontSize: 18 }}
           >
             {topic?.course?.title || "Solana fundamentals"}
           </Text>
           <Text
             className="font-medium text-base"
-            style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Medium" }}
+            style={{
+              color: "#FFFFFFBF",
+              fontFamily: "GeistMono-Medium",
+              fontSize: 16,
+            }}
           >
             {topic?.title}
           </Text>

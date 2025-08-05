@@ -25,13 +25,13 @@ export default function StatCard({ type, stat, text }: StatCardProps) {
       </View>
       <Text
         className="font-semibold text-base text-white"
-        style={{ fontFamily: "GeistMono-SemiBold" }}
+        style={{ fontFamily: "GeistMono-SemiBold", fontSize: 16 }}
       >
         {stat}
       </Text>
       <Text
         className="font-light text-xs text-[#FFFFFF99]"
-        style={{ fontFamily: "GeistMono-Light" }}
+        style={{ fontFamily: "GeistMono-Light", fontSize: 12 }}
       >
         {text}
       </Text>

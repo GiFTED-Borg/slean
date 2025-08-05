@@ -47,7 +47,7 @@ export default function ChallengeStatus({
           <View className="flex flex-col items-center" style={{ gap: 7 }}>
             <Text
               className="text-white text-lg font-semibold text-center"
-              style={{ fontFamily: "GeistMono-SemiBold" }}
+              style={{ fontFamily: "GeistMono-SemiBold", fontSize: 18 }}
             >
               {status === "success"
                 ? "Challenge Completed"
@@ -56,7 +56,11 @@ export default function ChallengeStatus({
             {status === "success" && (
               <Text
                 className="font-semibold text-center"
-                style={{ color: "#FFFFFF99", fontFamily: "GeistMono-SemiBold" }}
+                style={{
+                  color: "#FFFFFF99",
+                  fontFamily: "GeistMono-SemiBold",
+                  fontSize: 16,
+                }}
               >
                 You have earned {xpAmount} XP
               </Text>
@@ -69,6 +73,7 @@ export default function ChallengeStatus({
               fontFamily: "GeistMono-Regular",
               marginTop: 22,
               marginBottom: 29,
+              fontSize: 16,
             }}
           >
             {status === "error"
@@ -94,6 +99,7 @@ export default function ChallengeStatus({
                 color: status === "success" ? "#FCFF6699" : "#FF66AA99",
                 fontFamily: "GeistMono-SemiBold",
                 marginBottom: 14.85,
+                fontSize: 16,
               }}
             >
               {status === "success" ? "Your Work was Astute" : "ERROR_LOG.txt"}
@@ -109,6 +115,7 @@ export default function ChallengeStatus({
                     style={{
                       color: "#FFFFFF99",
                       fontFamily: "GeistMono-Regular",
+                      fontSize: 16,
                     }}
                   >
                     {" "}
@@ -121,6 +128,7 @@ export default function ChallengeStatus({
               style={{
                 color: "#D97B00",
                 fontFamily: "GeistMono-Regular",
+                fontSize: 16,
               }}
             >
               Hint: Lorem ipsum dolor

@@ -8,7 +8,7 @@ type Props = {
 };
 
 const CopyIcon = ({ width = 24, height = 24, fill = "#292D32" }: Props) => (
-  <Svg width={width} height={height} viewBox="0 0 16 16" fill="none">
+  <Svg width={width} height={height} viewBox="0 0 24 24" fill="none">
     <Path
       fill={fill}
       d="M11.1 22.75H6.9c-3.91 0-5.65-1.74-5.65-5.65v-4.2c0-3.91 1.74-5.65 5.65-5.65h4.2c3.91 0 5.65 1.74 5.65 5.65v4.2c0 3.91-1.74 5.65-5.65 5.65Zm-4.2-14c-3.1 0-4.15 1.05-4.15 4.15v4.2c0 3.1 1.05 4.15 4.15 4.15h4.2c3.1 0 4.15-1.05 4.15-4.15v-4.2c0-3.1-1.05-4.15-4.15-4.15H6.9Z"

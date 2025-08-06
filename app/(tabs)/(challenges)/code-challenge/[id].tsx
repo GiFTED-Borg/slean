@@ -6,6 +6,7 @@ import { useRouter } from "expo-router";
 import TimeIcon from "@/assets/icons/time-icon";
 import Chip from "@/components/chip";
 import ChallengeStatus from "@/components/challenge/challenge-status";
+import ExpandableCodeblock from "@/components/expandable-codeblock";
 
 export default function CodeChallenge() {
   const router = useRouter();
@@ -75,6 +76,9 @@ export default function CodeChallenge() {
               </Text>
             </View>
           </View>
+        </View>
+        <View style={{ marginHorizontal: 20 }}>
+          <ExpandableCodeblock />
         </View>
         <TouchableOpacity
           className="rounded-[10px] py-[9px] items-center"

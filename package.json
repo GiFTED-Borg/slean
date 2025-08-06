@@ -15,9 +15,11 @@
     "@dynamic-labs/react-hooks": "^4.23.0",
     "@dynamic-labs/react-native-extension": "^4.23.0",
     "@expo/vector-icons": "^14.1.0",
+    "@react-native-async-storage/async-storage": "2.1.2",
     "@react-navigation/bottom-tabs": "^7.3.10",
     "@react-navigation/elements": "^2.3.8",
     "@react-navigation/native": "^7.1.6",
+    "@rivascva/react-native-code-editor": "^1.2.2",
     "@tanstack/react-query": "^5.84.1",
     "date-fns": "^4.1.0",
     "expo": "^53.0.20",
@@ -53,8 +55,7 @@
     "react-native-shadow-2": "^7.1.2",
     "react-native-svg": "15.11.2",
     "react-native-web": "~0.20.0",
-    "react-native-webview": "13.13.5",
-    "@react-native-async-storage/async-storage": "2.1.2"
+    "react-native-webview": "13.13.5"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

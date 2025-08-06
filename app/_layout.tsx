@@ -67,7 +67,7 @@ export default function RootLayout() {
 }
 
 function RootNavigator() {
-  const { isAuthenticated, isLoading } = useSession();
+  const { isAuthenticated } = useSession();
 
   return (
     <Stack screenOptions={{ headerShown: false }}>

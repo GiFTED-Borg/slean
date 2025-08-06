@@ -34,7 +34,7 @@ export default function LessonComplete({
             >
               <Text
                 className="text-white text-lg font-semibold text-center"
-                style={{ fontFamily: "GeistMono-SemiBold" }}
+                style={{ fontFamily: "GeistMono-SemiBold", fontSize: 18 }}
               >
                 Lesson Complete
               </Text>
@@ -44,6 +44,7 @@ export default function LessonComplete({
                 style={{
                   color: "#FFFFFF99",
                   fontFamily: "GeistMono-SemiBold",
+                  fontSize: 16,
                 }}
               >
                 You have earned {xpAmount} XP
@@ -62,7 +63,7 @@ export default function LessonComplete({
           >
             <Text
               className="text-sm text-black"
-              style={{ fontFamily: "GeistMono-Regular" }}
+              style={{ fontFamily: "GeistMono-Regular", fontSize: 14 }}
             >
               Next Chapter
             </Text>

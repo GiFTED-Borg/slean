@@ -41,14 +41,14 @@ export default function QuizAnswer({
       <View className="rounded-[3px] flex flex-row items-center justify-center size-[30px] bg-[#313131]">
         <Text
           className="text-white text-base leading-[22px] font-semibold"
-          style={{ fontFamily: "GeistMono-SemiBold" }}
+          style={{ fontFamily: "GeistMono-SemiBold", fontSize: 16 }}
         >
           {enumerator}
         </Text>
       </View>
       <Text
         className="text-white text-base leading-[22px]"
-        style={{ fontFamily: "GeistMono-Regular" }}
+        style={{ fontFamily: "GeistMono-Regular", fontSize: 16 }}
       >
         {text}
       </Text>

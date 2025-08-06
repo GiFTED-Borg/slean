@@ -1,5 +1,6 @@
 import { View, Text } from "react-native";
 import ProgressBar from "./progress-bar";
+import { mapProgress } from "@/utils/helpers";
 
 type SkillsLevelCardProps = {
   lvl1: number;
@@ -34,92 +35,108 @@ export default function SkillsLevelCard({
     >
       <Text
         className="text-white font-semibold text-base leading-[19.7px]"
-        style={{ fontFamily: "GeistMono-SemiBold" }}
+        style={{ fontFamily: "GeistMono-SemiBold", fontSize: 16 }}
       >
-        Skills
+        Progress
       </Text>
       <View className="flex flex-col" style={{ gap: 4 }}>
         <View className="flex flex-row items-center justify-between">
           <Text
             className="text-xs leading-[19.7px] text-white"
-            style={{ fontFamily: "GeistMono-Regular" }}
+            style={{ fontFamily: "GeistMono-Regular", fontSize: 12 }}
           >
             Rust
           </Text>
           <Text
             className="text-[8px] font-semibold leading-[8.72px]"
-            style={{ color: "#FFFFFF99", fontFamily: "GeistMono-SemiBold" }}
+            style={{
+              color: "#FFFFFF99",
+              fontFamily: "GeistMono-SemiBold",
+              fontSize: 8,
+            }}
           >
             Lvl {lvl1}
           </Text>
         </View>
         <ProgressBar
-          progress={calcProgress(lvl1)}
+          progress={mapProgress(calcProgress(lvl1))}
           color="#FFAA2C"
-          width={289}
+          unfilledColor="#FFFFFFAB"
         />
       </View>
       <View className="flex flex-col" style={{ gap: 4 }}>
         <View className="flex flex-row items-center justify-between">
           <Text
             className="text-xs leading-[19.7px] text-white"
-            style={{ fontFamily: "GeistMono-Regular" }}
+            style={{ fontFamily: "GeistMono-Regular", fontSize: 12 }}
           >
             Solana Programs
           </Text>
           <Text
             className="text-[8px] font-semibold leading-[8.72px]"
-            style={{ color: "#FFFFFF99", fontFamily: "GeistMono-SemiBold" }}
+            style={{
+              color: "#FFFFFF99",
+              fontFamily: "GeistMono-SemiBold",
+              fontSize: 8,
+            }}
           >
             Lvl {lvl2}
           </Text>
         </View>
         <ProgressBar
-          progress={calcProgress(lvl2)}
+          progress={mapProgress(calcProgress(lvl2))}
           color="#FFAA2C"
-          width={289}
+          unfilledColor="#FFFFFFAB"
         />
       </View>
       <View className="flex flex-col" style={{ gap: 4 }}>
         <View className="flex flex-row items-center justify-between">
           <Text
             className="text-xs leading-[19.7px] text-white"
-            style={{ fontFamily: "GeistMono-Regular" }}
+            style={{ fontFamily: "GeistMono-Regular", fontSize: 12 }}
           >
             Anchor Framewok
           </Text>
           <Text
             className="text-[8px] font-semibold leading-[8.72px]"
-            style={{ color: "#FFFFFF99", fontFamily: "GeistMono-SemiBold" }}
+            style={{
+              color: "#FFFFFF99",
+              fontFamily: "GeistMono-SemiBold",
+              fontSize: 8,
+            }}
           >
             Lvl {lvl3}
           </Text>
         </View>
         <ProgressBar
-          progress={calcProgress(lvl3)}
+          progress={mapProgress(calcProgress(lvl3))}
           color="#FFAA2C"
-          width={289}
+          unfilledColor="#FFFFFFAB"
         />
       </View>
       <View className="flex flex-col" style={{ gap: 4 }}>
         <View className="flex flex-row items-center justify-between">
           <Text
             className="text-xs leading-[19.7px] text-white"
-            style={{ fontFamily: "GeistMono-Regular" }}
+            style={{ fontFamily: "GeistMono-Regular", fontSize: 12 }}
           >
             Token Standards
           </Text>
           <Text
             className="text-[8px] font-semibold leading-[8.72px]"
-            style={{ color: "#FFFFFF99", fontFamily: "GeistMono-SemiBold" }}
+            style={{
+              color: "#FFFFFF99",
+              fontFamily: "GeistMono-SemiBold",
+              fontSize: 8,
+            }}
           >
             Lvl {lvl4}
           </Text>
         </View>
         <ProgressBar
-          progress={calcProgress(lvl4)}
+          progress={mapProgress(calcProgress(lvl4))}
           color="#FFAA2C"
-          width={289}
+          unfilledColor="#FFFFFFAB"
         />
       </View>
     </View>

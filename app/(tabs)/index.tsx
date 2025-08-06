@@ -44,7 +44,7 @@ export default function Home() {
           <View>
             <Text
               className="text-sm  text-[#FFFFFF99]"
-              style={{ fontFamily: "GeistMono-Regular" }}
+              style={{ fontFamily: "GeistMono-Regular", fontSize: 14 }}
             >
               Level 1 • Rust Rookie
             </Text>
@@ -163,7 +163,11 @@ export default function Home() {
           >
             <Text
               className="font-medium text-white text-lg"
-              style={{ lineHeight: 19.7, fontFamily: "GeistMono-Medium" }}
+              style={{
+                lineHeight: 19.7,
+                fontFamily: "GeistMono-Medium",
+                fontSize: 18,
+              }}
             >
               Start Learning
             </Text>
@@ -173,7 +177,11 @@ export default function Home() {
             >
               <Text
                 className="text-sm"
-                style={{ color: "#84E8E8", fontFamily: "GeistMono-Regular" }}
+                style={{
+                  color: "#84E8E8",
+                  fontFamily: "GeistMono-Regular",
+                  fontSize: 14,
+                }}
               >
                 View All
               </Text>
@@ -213,7 +221,9 @@ export default function Home() {
             }
             footer={
               <CustomButton
-                handlePress={() => router.push("/lessons/1")}
+                handlePress={() =>
+                  router.push("/course/solana-fundamentals/lessons/1")
+                }
                 text="Start Lesson"
               />
             }

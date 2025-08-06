@@ -18,7 +18,7 @@ export default function QuizToast({
     >
       <Text
         className="text-white text-base leading-[22px]"
-        style={{ fontFamily: "GeistMono-Regular" }}
+        style={{ fontFamily: "GeistMono-Regular", fontSize: 16 }}
       >
         {text}
       </Text>

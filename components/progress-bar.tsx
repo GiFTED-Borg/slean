@@ -1,24 +1,33 @@
+import { View, StyleSheet } from "react-native";
 import * as Progress from "react-native-progress";
 
 export default function ProgressBar({
-  progress,
-  width,
+  progress = 1,
   color,
+  unfilledColor = "#27282C",
 }: {
   progress: number;
   color?: string;
-  width?: number;
+  unfilledColor?: string;
 }) {
   return (
-    <Progress.Bar
-      progress={progress}
-      animated
-      color={color || "#84E8E8"}
-      height={9}
-      width={width || 320}
-      borderRadius={10}
-      unfilledColor="#161A1A"
-      borderWidth={0}
-    />
+    <View style={styles.container}>
+      <Progress.Bar
+        progress={progress === 1 || progress === 0 ? 0.025 : progress}
+        animated
+        color={color || "#84E8E8"}
+        height={9}
+        borderRadius={10}
+        unfilledColor={unfilledColor}
+        borderWidth={0}
+        width={null}
+      />
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    width: "100%",
+  },
+});

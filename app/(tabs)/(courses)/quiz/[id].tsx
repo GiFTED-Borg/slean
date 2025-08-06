@@ -146,12 +146,19 @@ export default function Quiz() {
             paddingHorizontal: 20,
           }}
         >
-          <Text className="font-semibold text-white text-lg">
+          <Text
+            className="font-semibold text-white text-lg"
+            style={{ fontSize: 18 }}
+          >
             {quiz.title || "Quiz"}
           </Text>
           <Text
             className="font-medium text-base"
-            style={{ color: "#FFFFFFBF", fontFamily: "GeistMono-Medium" }}
+            style={{
+              color: "#FFFFFFBF",
+              fontFamily: "GeistMono-Medium",
+              fontSize: 16,
+            }}
           >
             Question {currentQuestionIndex + 1} of {quiz.questions.length}
           </Text>
@@ -162,7 +169,11 @@ export default function Quiz() {
         >
           <Text
             className="text-white font-semibold leading-[22px]"
-            style={{ marginBottom: 26, fontFamily: "GeistMono-SemiBold" }}
+            style={{
+              marginBottom: 26,
+              fontFamily: "GeistMono-SemiBold",
+              fontSize: 16,
+            }}
           >
             {currentQuestion.question}
           </Text>

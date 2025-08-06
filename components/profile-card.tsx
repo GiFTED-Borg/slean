@@ -27,7 +27,7 @@ export default function ProfileCard({
   return (
     <View className="rounded-[10px] bg-dark pt-3.5 pb-[9px] px-[1.625rem] flex flex-col">
       <View
-        className="flex flex-row"
+        className="flex flex-row items-center"
         style={{
           marginBottom: 4,
           paddingBottom: 16,
@@ -46,14 +46,21 @@ export default function ProfileCard({
           />
         </View>
         <View className="flex flex-col flex-1">
-          <View className="flex flex-row items-center justify-between">
+          <View
+            className="flex flex-row items-center justify-between"
+            style={{ marginBottom: 2.5 }}
+          >
             <Text
-              className="text-white font-semibold text-base leading-[22px]"
-              style={{ marginBottom: 2.5, fontFamily: "GeistMono-SemiBold" }}
+              className="text-white font-semibold text-base"
+              style={{
+                fontFamily: "GeistMono-SemiBold",
+                fontSize: 16,
+                lineHeight: 22,
+              }}
             >
               {name}
             </Text>
-            <TouchableOpacity className="p-4">
+            <TouchableOpacity className="p-px">
               <EditIcon />
             </TouchableOpacity>
           </View>
@@ -63,6 +70,7 @@ export default function ProfileCard({
               color: "#FFFFFF66",
               marginBottom: 3.85,
               fontFamily: "GeistMono-Regular",
+              fontSize: 10,
             }}
           >
             Rust Rookie
@@ -71,7 +79,11 @@ export default function ProfileCard({
             <Chip size="lg" text={`Level ${level}`} variant="violet" />
             <Text
               className="text-[10px] leading-[16.22px]"
-              style={{ color: "#FFFFFF66", fontFamily: "GeistMono-Regular" }}
+              style={{
+                color: "#FFFFFF66",
+                fontFamily: "GeistMono-Regular",
+                fontSize: 10,
+              }}
             >
               Joined {dateJoined}
             </Text>
@@ -91,7 +103,11 @@ export default function ProfileCard({
           </Text>
           <Text
             className="text-xs font-light leading-[19.7px]"
-            style={{ color: "#FFFFFF99", fontFamily: "GeistMono-Regular" }}
+            style={{
+              color: "#FFFFFF99",
+              fontFamily: "GeistMono-Regular",
+              fontSize: 12,
+            }}
           >
             Lessons
           </Text>
@@ -102,13 +118,21 @@ export default function ProfileCard({
         >
           <Text
             className="font-semibold text-sm leading-[19.7px]"
-            style={{ fontFamily: "GeistMono-SemiBold", color: "#FFFFFF99" }}
+            style={{
+              fontFamily: "GeistMono-SemiBold",
+              color: "#FFFFFF99",
+              fontSize: 14,
+            }}
           >
             {challenges}
           </Text>
           <Text
             className="text-xs font-light leading-[19.7px]"
-            style={{ color: "#FFFFFF99", fontFamily: "GeistMono-Light" }}
+            style={{
+              color: "#FFFFFF99",
+              fontFamily: "GeistMono-Light",
+              fontSize: 12,
+            }}
           >
             Challenges
           </Text>
@@ -119,13 +143,17 @@ export default function ProfileCard({
         >
           <Text
             className="text-white font-semibold text-sm leading-[19.7px]"
-            style={{ fontFamily: "GeistMono-SemiBold" }}
+            style={{ fontFamily: "GeistMono-SemiBold", fontSize: 14 }}
           >
             {xp}
           </Text>
           <Text
             className="text-xs font-light leading-[19.7px]"
-            style={{ color: "#FFFFFF99", fontFamily: "GeistMono-Light" }}
+            style={{
+              color: "#FFFFFF99",
+              fontFamily: "GeistMono-Light",
+              fontSize: 12,
+            }}
           >
             XP
           </Text>
@@ -136,13 +164,17 @@ export default function ProfileCard({
         >
           <Text
             className="text-white font-semibold text-sm leading-[19.7px]"
-            style={{ fontFamily: "GeistMono-SemiBold" }}
+            style={{ fontFamily: "GeistMono-SemiBold", fontSize: 14 }}
           >
             {streak}
           </Text>
           <Text
             className="text-xs font-light leading-[19.7px]"
-            style={{ color: "#FFFFFF99", fontFamily: "GeistMono-Light" }}
+            style={{
+              color: "#FFFFFF99",
+              fontFamily: "GeistMono-Light",
+              fontSize: 12,
+            }}
           >
             Streak
           </Text>

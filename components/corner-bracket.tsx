@@ -89,7 +89,7 @@ export default function CornerBracket({
 const styles = StyleSheet.create({
   container: {
     position: "relative",
-    paddingHorizontal: 10,
+    paddingHorizontal: 16,
     paddingVertical: 2,
     alignSelf: "flex-start",
   },

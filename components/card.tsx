@@ -1,5 +1,4 @@
 import { View, Text } from "react-native";
-import { Shadow } from "react-native-shadow-2";
 
 type CardProps = {
   gap: number;
@@ -27,54 +26,50 @@ export default function Card({
   descColor = "#ffffff",
 }: CardProps) {
   return (
-    <Shadow
-      stretch
-      distance={2}
-      startColor={shadow === "gold" ? "#9A60131A" : "#FFFFFF1A"}
-      endColor={shadow === "gold" ? "#9A601333" : "#FFFFFF33"}
+    <View
       style={{
+        gap,
+        borderWidth: 0.5,
+        borderColor: shadow === "solid-gold" ? "#EE7D2D" : "#EE7D2D00",
         borderRadius: 20,
+        backgroundColor: "#0F1014",
+        boxShadow:
+          shadow === "gold"
+            ? `inset 1.5px 1.5px 1.5px 0 #9A60131A, inset -1.5px -1.5px 1.5px 0 #9A601333`
+            : `inset 1.5px 1.5px 1.5px 0 #FFFFFF1A, inset -1.5px -1.5px 1.5px 0 #FFFFFF33`,
       }}
-      containerStyle={{
-        borderRadius: 20,
-        borderWidth: shadow === "solid-gold" ? 0.5 : 0,
-        borderColor: shadow === "solid-gold" ? "#EE7D2D" : "none",
-      }}
+      className={`flex flex-col py-3.5 px-[13px]`}
     >
       <View
-        style={{
-          gap,
-        }}
-        className={`flex flex-col py-3.5 px-[13px]`}
+        className="flex flex-col"
+        style={{ gap: headerExtraGap && (headerExtraGap === "sm" ? 7 : 11) }}
       >
-        <View
-          className="flex flex-col"
-          style={{ gap: headerExtraGap && (headerExtraGap === "sm" ? 7 : 11) }}
-        >
-          <View className="flex flex-row items-center justify-between">
-            <Text
-              className="font-semibold text-white text-lg max-w-[192px]"
-              style={{ fontFamily: "GeistMono-SemiBold" }}
-            >
-              {title}
-            </Text>
-            {rightExtra}
-          </View>
-          {headerExtra}
+        <View className="flex flex-row items-center justify-between">
+          <Text
+            className="font-semibold text-white text-lg max-w-[192px]"
+            style={{ fontFamily: "GeistMono-SemiBold" }}
+          >
+            {title}
+          </Text>
+          {rightExtra}
         </View>
-        {info && info}
-        {desc && (
-          <View>
-            <Text
-              className="text-xs"
-              style={{ color: descColor, fontFamily: "GeistMono-Regular" }}
-            >
-              {desc}
-            </Text>
-          </View>
-        )}
-        {footer}
+        {headerExtra}
       </View>
-    </Shadow>
+      {info && info}
+      {desc && (
+        <View style={{ paddingBottom: 10 }}>
+          <Text
+            style={{
+              color: descColor,
+              fontFamily: "GeistMono-Regular",
+              fontSize: 12,
+            }}
+          >
+            {desc}
+          </Text>
+        </View>
+      )}
+      {footer}
+    </View>
   );
 }

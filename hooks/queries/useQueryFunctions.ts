@@ -1,5 +1,5 @@
 import { useApi } from "@/clients/api";
-import { User, Course, Challenge } from "./types";
+import { User, Course, Challenge, UserStreak } from "./types";
 
 export const useQueryFunctions = () => {
   const { get } = useApi();
@@ -13,7 +13,7 @@ export const useQueryFunctions = () => {
     },
 
     userStreaks: async () => {
-      const response = await get(`/users/streaks`);
+      const response = await get<UserStreak[]>(`/users/streaks`);
       if (!response.success || !response.data) {
         throw new Error(response.error || "Failed to fetch user streaks");
       }

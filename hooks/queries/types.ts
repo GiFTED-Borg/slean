@@ -50,6 +50,12 @@ export interface User {
   xp: number;
 }
 
+export interface UserStreak {
+  id: string;
+  date: string;
+  activity: string;
+}
+
 export interface Topic {
   content: string;
   courseId: string;

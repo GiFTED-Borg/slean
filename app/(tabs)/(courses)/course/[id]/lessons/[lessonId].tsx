@@ -6,11 +6,14 @@ import CustomButton from "@/components/custom-button";
 import { useCompleteTopic, useTopic } from "@/hooks/queries/useTopic";
 import Markdown from "react-native-markdown-display";
 import { useTopics } from "@/hooks/queries/useTopics";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { markdownStyles } from "@/utils/markdown";
+import { useQueryClient } from "@tanstack/react-query";
+import { QUERY_KEYS } from "@/hooks/queries/queryKeys";
 
 export default function Lesson() {
   const router = useRouter();
+  const queryClient = useQueryClient();
   const { id: courseId, lessonId } = useLocalSearchParams();
   const { data: topics = [] } = useTopics(courseId as string);
   const { data: topic } = useTopic(courseId as string, lessonId as string);
@@ -40,10 +43,15 @@ export default function Lesson() {
     return "Finish Course";
   }, [isCompletingTopic, hasQuiz, isLastLesson, isCompleted]);
 
-  const handleNextLesson = async () => {
+  const handleNextLesson = useCallback(async () => {
+    const courseProgressId = topic?.course?.progresses?.[0]?.id as string;
+
     const topicProgress = await completeTopic({
-      courseProgressId: topic?.course?.progresses?.[0]?.id as string,
+      courseProgressId,
       topicId: lessonId as string,
+    });
+    queryClient.invalidateQueries({
+      queryKey: [QUERY_KEYS.TOPICS, courseId],
     });
     if (hasQuiz) {
       const url = `/quiz/${topic?.quizzes?.[0]?.id}?topicId=${lessonId}&${
@@ -51,16 +59,25 @@ export default function Lesson() {
           ? `&courseProgressId=${topicProgress.courseProgressId}`
           : ""
       }` as const;
-      router.push(url);
+      router.replace(url);
       return;
     }
     if (nextLessonId) {
-      router.push(`/course/${courseId}/lessons/${nextLessonId}`);
+      router.replace(`/course/${courseId}/lessons/${nextLessonId}`);
       return;
     }
 
-    router.push(`/course/${courseId}`);
-  };
+    router.replace(`/course/${courseId}`);
+  }, [
+    topic,
+    completeTopic,
+    lessonId,
+    hasQuiz,
+    nextLessonId,
+    router,
+    courseId,
+    queryClient,
+  ]);
 
   return (
     <SafeAreaView className="flex-1 bg-black">

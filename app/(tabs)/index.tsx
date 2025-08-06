@@ -66,7 +66,7 @@ export default function Home() {
                 <StatCard
                   type="xp"
                   stat={user?.stats.totalXP ?? 0}
-                  text="XP Today"
+                  text="XP Earned"
                 />
                 <StatCard
                   type="lessons"
@@ -76,7 +76,7 @@ export default function Home() {
                 <StatCard
                   type="challenge"
                   stat={user?.stats.totalChallengesCompleted ?? 0}
-                  text="Challenge"
+                  text="Challenges"
                 />
               </View>
             }

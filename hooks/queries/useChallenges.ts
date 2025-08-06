@@ -8,7 +8,7 @@ export const useChallenges = () => {
     queryKey: [QUERY_KEYS.CHALLENGES],
     queryFn: queryFunctions.challenges,
     throwOnError: (error: any) => {
-      console.log("error", error);
+      console.log("myChallengesWerror", error);
       return false;
     },
   });

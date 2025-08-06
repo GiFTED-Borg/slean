@@ -2,24 +2,68 @@ import { useState } from "react";
 import { ScrollView, TouchableOpacity, View, Text } from "react-native";
 import ChevronRight from "@/assets/icons/chevron-right";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import TimeIcon from "@/assets/icons/time-icon";
 import Chip from "@/components/chip";
 import ChallengeStatus from "@/components/challenge/challenge-status";
+import {
+  useChallenge,
+  useCompleteChallenge,
+} from "@/hooks/queries/useChallenge";
+import CodeBlock from "@/components/code-block";
+import { getChipVariant } from "@/utils/variant";
+import { useCountDown } from "@/hooks/useCountDown";
 
 export default function CodeChallenge() {
   const router = useRouter();
+  const { id } = useLocalSearchParams();
+  const { data: challenge, isLoading } = useChallenge(id as string);
   const [submit, setSubmit] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
-  const messages = [
-    "Lorem Ipsum sum",
-    "Lorem Ipsum laude",
-    "Lorem Ipsum",
-    "Missing:Lorem Ipsum",
+  const { mutate: completeChallenge } = useCompleteChallenge();
+
+  const handleCompleteChallenge = () => {
+    setSubmit(true);
+    completeChallenge({
+      challengeId: id as string,
+      answer: inputValue,
+    });
+  };
+
+  const { formattedTime } = useCountDown({
+    initialTime: 60 * 5,
+    autoStart: true,
+    onComplete: handleCompleteChallenge,
+  });
+
+  const successMessages = [
+    "Congratulations! You've completed the challenge.",
+    `You've earned ${challenge?.xpReward} XP 🚀`,
+  ];
+
+  const errorMessages = [
+    `The correct answer is: ${challenge?.codeSnippetOutput}`,
   ];
 
   if (submit) {
-    return <ChallengeStatus status="success" messages={messages} />;
+    const isCorrect = challenge?.codeSnippetOutput === inputValue;
+    return (
+      <ChallengeStatus
+        status={isCorrect ? "success" : "error"}
+        messages={isCorrect ? successMessages : errorMessages}
+        handlePress={() => router.replace("/(tabs)/(challenges)")}
+        xpAmount={challenge?.xpReward ?? 0}
+      />
+    );
+  }
+
+  if (isLoading) {
+    return <Text>Loading...</Text>;
+  }
+
+  if (!challenge) {
+    return <Text>Challenge not found</Text>;
   }
   return (
     <SafeAreaView className="flex-1 bg-black">
@@ -58,10 +102,14 @@ export default function CodeChallenge() {
             className="font-semibold text-white text-lg"
             style={{ fontFamily: "GeistMono-SemiBold" }}
           >
-            Token Transfer Logic
+            {challenge?.title}
           </Text>
           <View className="flex flex-row items-center" style={{ gap: 8 }}>
-            <Chip text="Intermediate" variant="violet" size="lg" />
+            <Chip
+              text={getChipVariant(challenge.difficulty).text}
+              variant={getChipVariant(challenge.difficulty).variant}
+              size="lg"
+            />
             <View className="flex flex-row items-center" style={{ gap: 2.71 }}>
               <TimeIcon width={12} height={12} stroke="#F25123" />
               <Text
@@ -71,20 +119,27 @@ export default function CodeChallenge() {
                   fontFamily: "GeistMono-Regular",
                 }}
               >
-                9:59
+                {formattedTime.minutes}:{formattedTime.seconds}
               </Text>
             </View>
           </View>
         </View>
+
+        <CodeBlock
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          tokens={challenge?.codeSnippet ?? []}
+        />
+
         <TouchableOpacity
           className="rounded-[10px] py-[9px] items-center"
           style={{
             backgroundColor: "#84E8E8",
             boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
             marginHorizontal: 20,
-            marginTop: "auto",
+            marginTop: 20,
           }}
-          onPress={() => setSubmit(true)}
+          onPress={handleCompleteChallenge}
         >
           <Text
             className="text-sm text-black"

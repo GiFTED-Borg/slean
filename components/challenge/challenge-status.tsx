@@ -6,14 +6,14 @@ import CustomButton from "../custom-button";
 
 type ChallengeStatusProps = {
   status: "success" | "error";
-  xpAmount?: number;
+  xpAmount: number;
   handlePress?: () => void;
   messages: string[];
 };
 
 export default function ChallengeStatus({
   status,
-  xpAmount = 70,
+  xpAmount,
   handlePress = () => {},
   messages,
 }: ChallengeStatusProps) {
@@ -76,9 +76,7 @@ export default function ChallengeStatus({
               fontSize: 16,
             }}
           >
-            {status === "error"
-              ? "Code has been rejected by compiler, lorem ipsum dolor epsum juot"
-              : ""}
+            {status === "error" ? "Aw, snap! You've missed a few things." : ""}
           </Text>
           <View
             className="flex flex-col w-full"
@@ -124,19 +122,23 @@ export default function ChallengeStatus({
                 </View>
               ))}
             </View>
-            <Text
-              style={{
-                color: "#D97B00",
-                fontFamily: "GeistMono-Regular",
-                fontSize: 16,
-              }}
-            >
-              Hint: Lorem ipsum dolor
-            </Text>
+            {status === "error" && (
+              <Text
+                style={{
+                  color: "#D97B00",
+                  fontFamily: "GeistMono-Regular",
+                  fontSize: 16,
+                }}
+              >
+                PS: You can try this challenge again in 24 hours
+              </Text>
+            )}
           </View>
           <CustomButton
             handlePress={handlePress}
-            text={status === "success" ? "Next Challenge" : "Retry Mission"}
+            text={
+              status === "success" ? "Next Challenge" : "Try Other Missions"
+            }
             style={{ marginTop: "auto" }}
           />
         </View>

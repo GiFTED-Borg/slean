@@ -1,14 +1,24 @@
+export interface Token {
+  content: string;
+  color: string;
+}
+
+export type Level = "BEGINNER" | "INTERMEDIATE" | "ADVANCED" | "EXPERT";
+
 export interface Challenge {
   id: string;
   title: string;
   description?: string;
-  difficulty: "EASY" | "MEDIUM" | "HARD";
+  difficulty: Level;
   content: string;
   solution?: string;
   xpReward: number;
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
+  codeSnippet: Token[][];
+  codeSnippetOutput: string;
+  codeSnippetLanguage: string;
 }
 
 export interface Course {
@@ -17,7 +27,7 @@ export interface Course {
   id: string;
   imageUrl: string;
   isActive: boolean;
-  level: "BEGINNER" | "INTERMEDIATE" | "ADVANCED" | "EXPERT";
+  level: Level;
   title: string;
   updatedAt: string;
   _count: {

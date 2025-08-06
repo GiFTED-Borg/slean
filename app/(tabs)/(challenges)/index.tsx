@@ -8,6 +8,7 @@ import { useRouter } from "expo-router";
 import CustomButton from "@/components/custom-button";
 import CornerBracket from "@/components/corner-bracket";
 import { useChallenges } from "@/hooks/queries/useChallenges";
+import { getChipVariant } from "@/utils/variant";
 
 export default function Challenges() {
   const router = useRouter();
@@ -48,7 +49,13 @@ export default function Challenges() {
               gap={20}
               // title="Hello Solana World"
               title={challenge.title}
-              rightExtra={<Chip size="lg" text="Beginner" variant="green" />}
+              rightExtra={
+                <Chip
+                  size="lg"
+                  text={getChipVariant(challenge.difficulty).text}
+                  variant={getChipVariant(challenge.difficulty).variant}
+                />
+              }
               headerExtraGap="sm"
               desc={challenge.description}
               headerExtra={

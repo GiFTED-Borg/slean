@@ -13,7 +13,7 @@ export default function TabsLayout() {
         tabBarActiveTintColor: "#84E8E8",
         tabBarInactiveTintColor: "#FFFFFF",
         tabBarLabelStyle: {
-          fontSize: 10,
+          fontSize: 10.5,
           fontFamily: "GeistMono-Regular",
         },
         tabBarItemStyle: {

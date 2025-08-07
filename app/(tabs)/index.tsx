@@ -66,7 +66,7 @@ export default function Home() {
                 <StatCard
                   type="xp"
                   stat={user?.stats.totalXP ?? 0}
-                  text="XP Today"
+                  text="XP Earned"
                 />
                 <StatCard
                   type="lessons"
@@ -76,7 +76,7 @@ export default function Home() {
                 <StatCard
                   type="challenge"
                   stat={user?.stats.totalChallengesCompleted ?? 0}
-                  text="Challenge"
+                  text="Challenges"
                 />
               </View>
             }
@@ -84,78 +84,7 @@ export default function Home() {
             shadow="gold"
           />
         </View>
-        {/* <View className="flex flex-col" style={{ marginBottom: 12 }}>
-          <View
-            className="flex flex-row items-center justify-between"
-            style={{ marginBottom: 12 }}
-          >
-            <Text
-              className="font-medium text-white text-lg"
-              style={{ lineHeight: 19.7, fontFamily: "GeistMono-Medium" }}
-            >
-              Today’s Challenge
-            </Text>
-            <TouchableOpacity
-              className="flex flex-row items-center"
-              onPress={() => router.push("/(tabs)/(challenges)")}
-            >
-              <Text
-                className="text-sm"
-                style={{ color: "#84E8E8", fontFamily: "GeistMono-Regular" }}
-              >
-                View All
-              </Text>
-              <ChevronRight width={14} height={14} stroke="#84E8E8" />
-            </TouchableOpacity>
-          </View>
-          <Card
-            gap={20}
-            title="Hello Solana World"
-            rightExtra={<Chip size="lg" text="Beginner" variant="green" />}
-            headerExtraGap="sm"
-            desc="Create your first Solana program that prints a greeting message to the blockchain"
-            headerExtra={
-              <View
-                className="flex flex-row items-center"
-                style={{ gap: 8.71 }}
-              >
-                <IconChip type="xp" text="50 XP" />
-                <View
-                  className="flex flex-row items-center"
-                  style={{ gap: 2.71 }}
-                >
-                  <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
-                  <Text
-                    style={{
-                      color: "#FFFFFF66",
-                      fontSize: 10,
-                      fontFamily: "GeistMono-Regular",
-                    }}
-                  >
-                    15 min
-                  </Text>
-                </View>
-              </View>
-            }
-            footer={
-              <TouchableOpacity
-                className="rounded-[10px] w-full py-[9px] items-center"
-                style={{
-                  backgroundColor: "#84E8E8",
-                  boxShadow: `-1px -1px 5px 0 #FFFFFF73, 1px 1px 5px 0 #FFFFFF73`,
-                }}
-              >
-                <Text
-                  className="text-[#000]"
-                  style={{ fontFamily: "GeistMono-Regular" }}
-                >
-                  Complete Today’s task
-                </Text>
-              </TouchableOpacity>
-            }
-            shadow="gold"
-          />
-        </View> */}
+
         <View className="flex flex-col" style={{ marginBottom: 12 }}>
           <View
             className="flex flex-row items-center justify-between"

@@ -9,6 +9,8 @@ import CustomButton from "@/components/custom-button";
 import { useChallenge } from "@/hooks/queries/useChallenge";
 import Markdown from "react-native-markdown-display";
 
+import { getChipVariant } from "@/utils/variant";
+
 export default function Challenge() {
   const router = useRouter();
   const { id } = useLocalSearchParams();
@@ -54,7 +56,13 @@ export default function Challenge() {
             {challenge?.title}
           </Text>
           <View className="flex flex-row items-center" style={{ gap: 8 }}>
-            <Chip text="Intermediate" variant="violet" size="lg" />
+            {challenge && (
+              <Chip
+                text={getChipVariant(challenge.difficulty).text}
+                variant={getChipVariant(challenge.difficulty).variant}
+                size="lg"
+              />
+            )}
             <View className="flex flex-row items-center" style={{ gap: 2.71 }}>
               <TimeIcon width={12} height={12} stroke="#FFFFFF66" />
               <Text
@@ -90,6 +98,7 @@ export default function Challenge() {
             {challenge?.description}
           </Text>
         </View>
+
         <View
           style={{
             marginHorizontal: 20,
@@ -110,7 +119,7 @@ export default function Challenge() {
             {challenge?.content}
           </Markdown>
           <CustomButton
-            handlePress={() => router.push("/code-challenge/1")}
+            handlePress={() => router.push(`/code-challenge/${id}`)}
             text="Start Challenge"
             endIcon={<PlayIcon fill="#292D32" />}
           />

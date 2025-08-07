@@ -1,5 +1,5 @@
 import { useApi } from "@/clients/api";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { QUERY_KEYS } from "./queryKeys";
 import { useChallenges } from "./useChallenges";
 import { Challenge } from "./types";
@@ -16,5 +16,25 @@ export const useChallenge = (id: string) => {
     },
     enabled: !!id,
     initialData: challenges.find((challenge) => challenge.id === id),
+  });
+};
+
+type CompleteChallengeData = {
+  challengeId: string;
+  answer: string;
+};
+
+export const useCompleteChallenge = () => {
+  const { post } = useApi();
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (completeChallengeData: CompleteChallengeData) => {
+      return post<Challenge>(`/challenges/submit`, completeChallengeData);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.CHALLENGES] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.USER] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.USER_STREAKS] });
+    },
   });
 };

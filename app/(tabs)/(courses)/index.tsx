@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView, View, Text, Pressable } from "react-native";
 import { useRouter } from "expo-router";
@@ -12,39 +10,12 @@ import CornerBracket from "@/components/corner-bracket";
 import { useCourses } from "@/hooks/queries/useCourses";
 import { getChipVariant } from "@/utils/variant";
 
-const CLICKED_COURSES_KEY = "clicked_courses";
-
 export default function Courses() {
   const { data: courses = [] } = useCourses();
-  const [clickedCourses, setClickedCourses] = useState<Record<string, boolean>>(
-    {}
-  );
+
   const router = useRouter();
 
-  // Load from storage on mount
-  useEffect(() => {
-    const loadClickedCourses = async () => {
-      try {
-        const stored = await AsyncStorage.getItem(CLICKED_COURSES_KEY);
-        if (stored) {
-          setClickedCourses(JSON.parse(stored));
-        }
-      } catch (err) {
-        console.error("Failed to load clicked courses:", err);
-      }
-    };
-    loadClickedCourses();
-  }, []);
-
-  // Handle card click
-  const handleCardPress = async (courseId: string) => {
-    const updated = { ...clickedCourses, [courseId]: true };
-    setClickedCourses(updated);
-    try {
-      await AsyncStorage.setItem(CLICKED_COURSES_KEY, JSON.stringify(updated));
-    } catch (err) {
-      console.error("Failed to save clicked course:", err);
-    }
+  const handleCardPress = (courseId: string) => {
     router.push(`/course/${courseId}`);
   };
 
@@ -132,12 +103,9 @@ export default function Courses() {
                   </View>
                 }
                 footer={
-                  (course.completedTopics / course._count.topics === 1 ||
-                    clickedCourses[course.id]) && (
-                    <ProgressBar
-                      progress={course.completedTopics / course._count.topics}
-                    />
-                  )
+                  <ProgressBar
+                    progress={course.completedTopics / course._count.topics}
+                  />
                 }
                 shadow="gold"
               />
